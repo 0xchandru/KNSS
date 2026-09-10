@@ -1,0 +1,30 @@
+{
+  "name": "Keerthi Networks and Security Solution",
+  "short_name": "KNSS",
+  "description": "CCTV, Intercom, Networking, Biometric, Access Control & Fire Safety solutions in Theni, Tamil Nadu.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0B1F3A",
+  "theme_color": "#0B1F3A",
+  "lang": "en-IN",
+  "icons": [
+    {
+      "src": "/assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "title": "Frequently Asked Questions | Keerthi Networks and Security Solution",
+  "description": "Answers about CCTV installation, networking, biometric attendance, intercom systems, fire safety and site surveys by Keerthi Networks in Theni and Bodinayakanur.",
+  "h1": "Frequently Asked Questions",
+  "lead": "Quick answers to the questions customers ask us most. If your question is not answered here, message us on WhatsApp — we reply with straight, practical answers.",
+  "groups": [
+    {
+      "name": "General",
+      "items": [
+        { "q": "Which areas do you serve?", "a": "We are based in Bodinayakanur, Theni district, and serve customers across Tamil Nadu including Theni, Periyakulam, Cumbum, Andipatti, Dindigul, Madurai and Chennai. Contact us to confirm availability in your location." },
+        { "q": "Do you provide free site surveys?", "a": "We recommend a site assessment before quoting so the system is designed around your actual premises. Contact us by phone, WhatsApp or the site visit form to discuss and schedule a visit." },
+        { "q": "How do I get a quotation?", "a": "The fastest way is to message us on WhatsApp with your requirement — you can also use our Request a Quote form, which prepares a structured message for you. For accurate pricing we may suggest a quick site visit." },
+        { "q": "Do you work with businesses only, or homes too?", "a": "Both. We serve homes and individual customers as well as offices, shops, factories, warehouses, schools, hospitals, hotels, apartments and other organisations." }
+      ]
+    },
+    {
+      "name": "CCTV Surveillance",
+      "items": [
+        { "q": "Do you provide CCTV installation?", "a": "Yes. We design and install CCTV systems for homes, shops, offices, factories, warehouses and institutions — including camera supply, cabling, DVR/NVR setup, remote mobile viewing and after-sales support." },
+        { "q": "Can I watch my cameras from another city?", "a": "Yes. We configure secure remote viewing so you can see live and recorded footage on your smartphone from anywhere with internet access." },
+        { "q": "Do you service CCTV systems installed by others?", "a": "Yes, we take up maintenance and troubleshooting of existing systems — camera faults, DVR/NVR problems, cabling issues and upgrades." }
+      ]
+    },
+    {
+      "name": "Intercom & Video Door Phone",
+      "items": [
+        { "q": "Do you provide intercom systems?", "a": "Yes. We install audio intercoms, video door phones and multi-unit intercom systems for homes, apartments, offices, hotels and commercial buildings." },
+        { "q": "Can the intercom open my gate or door?", "a": "Many intercom systems support electric lock or gate release from the indoor station. We check compatibility with your door and gate hardware during the survey." }
+      ]
+    },
+    {
+      "name": "Networking",
+      "items": [
+        { "q": "Do you provide networking for offices?", "a": "Yes. Office LAN setup, CAT6/CAT6A structured cabling, network racks, patch panels, switches, routers, Wi-Fi coverage and network troubleshooting are core services for us." },
+        { "q": "Can you improve slow or unreliable Wi-Fi?", "a": "Yes. We assess the building, plan access point positions and install a properly wired network so coverage is even and speeds are consistent across floors." }
+      ]
+    },
+    {
+      "name": "Biometric & Access Control",
+      "items": [
+        { "q": "Do you provide biometric attendance systems?", "a": "Yes. We supply and install fingerprint and face-recognition attendance systems with reporting software for offices, factories, schools and other organisations." },
+        { "q": "Can attendance devices also control doors?", "a": "Yes. Access-control devices can drive electric locks, so the same fingerprint, face or card that marks attendance can also allow or deny entry through controlled doors." }
+      ]
+    },
+    {
+      "name": "Fire Safety",
+      "items": [
+        { "q": "Do you provide fire extinguishers?", "a": "Yes. We supply ABC dry chemical powder, CO2, foam and other extinguisher types, along with fire buckets and safety accessories, for businesses and institutions." },
+        { "q": "Do you refill and service fire extinguishers?", "a": "Yes, we support inspection, refilling and maintenance of extinguishers, with records maintained. Contact us with your extinguisher details and quantities." }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "title": "CCTV Installation in Theni & Bodinayakanur | Keerthi Networks",
+  "description": "CCTV surveillance, intercom, networking, biometric access control and fire safety solutions for homes, offices, shops, factories and institutions in Theni, Bodinayakanur and across Tamil Nadu.",
+  "trustHighlights": [
+    {
+      "icon": "shield",
+      "title": "Complete Security Solutions",
+      "text": "CCTV, intercom, networking, biometric access and fire safety from a single, accountable partner."
+    },
+    {
+      "icon": "users",
+      "title": "Homes to Industries",
+      "text": "Tailored systems for residences, shops, offices, factories, warehouses, schools, hospitals and hotels."
+    },
+    {
+      "icon": "wrench",
+      "title": "Professional Installation",
+      "text": "Neat cabling, correct device selection and properly commissioned systems — done right the first time."
+    },
+    {
+      "icon": "headset",
+      "title": "Responsive After-Sales Support",
+      "text": "Maintenance, troubleshooting and honest guidance long after the installation is complete."
+    }
+  ],
+  "howWeWork": [
+    {
+      "step": "01",
+      "icon": "clipboard",
+      "title": "Requirement Discussion",
+      "text": "We understand your property, security concerns and budget on a call or during a site visit."
+    },
+    {
+      "step": "02",
+      "icon": "search",
+      "title": "Site Assessment & Survey",
+      "text": "We inspect the site, note coverage areas, entry points, network readiness and power availability."
+    },
+    {
+      "step": "03",
+      "icon": "doc",
+      "title": "System Design & Quotation",
+      "text": "You receive a clear, itemised proposal — recommended devices, scope of work and transparent pricing."
+    },
+    {
+      "step": "04",
+      "icon": "wrench",
+      "title": "Professional Installation",
+      "text": "Neat cabling, correct mounting and careful configuration with minimal disruption to your routine."
+    },
+    {
+      "step": "05",
+      "icon": "gear",
+      "title": "Configuration & Handover",
+      "text": "We configure the system, set up mobile or control-room access, and train your team on daily use."
+    },
+    {
+      "step": "06",
+      "icon": "headset",
+      "title": "After-Sales Support",
+      "text": "We remain available for maintenance, service calls, troubleshooting and future expansion."
+    }
+  ],
+  "serviceArea": {
+    "primary": [
+      "Bodinayakanur",
+      "Theni",
+      "Periyakulam",
+      "Gudalur",
+      "Andipatti"
+    ],
+    "extended": [
+      "Cumbum",
+      "Uthamapalayam",
+      "Kambam",
+      "Theni Allinagaram",
+      "Palani",
+      "Dindigul",
+      "Madurai",
+      "Chennai"
+    ],
+    "note": "Based in Bodinayakanur, Theni district — serving customers across Tamil Nadu. Contact us to confirm availability in your location."
+  },
+  "finalCta": {
+    "title": "Ready to Secure Your Property?",
+    "text": "Tell us what you need — a quick call or WhatsApp message is all it takes to get expert advice, a site visit or a clear, itemised quotation."
+  },
+  "homeFaq": [
+    {
+      "q": "Do you provide CCTV installation for homes and shops?",
+      "a": "Yes. We design and install CCTV surveillance systems for homes, shops, offices, factories, warehouses, schools and other premises — including camera selection, cabling, DVR/NVR setup, remote mobile viewing configuration and after-sales support."
+    },
+    {
+      "q": "Do you handle office networking and structured cabling?",
+      "a": "Yes. We take up office LAN setup, CAT6/CAT6A structured cabling, network racks, patch panels, switch and router installation, Wi-Fi coverage and network troubleshooting for businesses and institutions."
+    },
+    {
+      "q": "Do you supply biometric attendance and access control systems?",
+      "a": "Yes. We offer fingerprint and face-recognition attendance systems, RFID card-based access, door access control and related solutions for offices, factories, schools and commercial buildings."
+    },
+    {
+      "q": "Do you provide intercom and video door phone systems?",
+      "a": "Yes. We install audio intercoms, video door phones and intercom systems for apartments, offices, villas, commercial buildings and institutions."
+    },
+    {
+      "q": "Do you supply and service fire extinguishers?",
+      "a": "Yes. We supply fire extinguishers such as ABC dry chemical powder, CO2 and other types, along with installation, inspection, refilling and maintenance support where applicable."
+    },
+    {
+      "q": "Do you offer a free site survey before quoting?",
+      "a": "We recommend a site assessment so the system is designed around your actual premises rather than guesswork. Contact us by phone or WhatsApp to discuss your requirement and schedule a visit."
+    }
+  ],
+  "featuredProjectsLead": "Typical scopes our team delivers — photos are representative of each solution category."
+}

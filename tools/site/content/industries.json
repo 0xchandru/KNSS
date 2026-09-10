@@ -1,0 +1,105 @@
+{
+  "title": "Industries We Serve | Keerthi Networks and Security Solution",
+  "description": "Security, surveillance, networking, biometric access control and fire safety solutions for offices, homes, retail, factories, warehouses, schools, hospitals, hotels, apartments and construction sites.",
+  "h1": "Industries & Properties We Serve",
+  "lead": "Every type of property has its own security and infrastructure challenges. Here is how we approach the sectors we work with — and what we typically recommend.",
+  "note": "The solutions below are typical recommendations for each sector. Every property is different — we assess your site and design around what you actually need.",
+  "industries": [
+    {
+      "id": "corporate-offices",
+      "name": "Corporate Offices",
+      "icon": "office",
+      "challenges": ["Monitoring entrances, cabins and common areas", "Visitor control and reception management", "Employee attendance and payroll records", "Reliable network for daily operations"],
+      "solutions": ["CCTV surveillance for entrances, lobbies and work areas", "Biometric attendance and door access control", "Structured cabling and office LAN setup", "Intercom between reception, cabins and meeting rooms"],
+      "benefits": ["Professional, controlled workplace", "Accurate attendance for payroll", "Recorded evidence for disputes", "Network that supports growth"]
+    },
+    {
+      "id": "residential",
+      "name": "Residential & Homes",
+      "icon": "home",
+      "challenges": ["Verifying visitors before opening the door", "Watching over children and elderly family members", "Deterring intrusion when away or travelling", "Covering gates, car ports and backyards"],
+      "solutions": ["Video door phone at the main entrance", "CCTV coverage of gates, entrances and outdoor areas", "Remote mobile viewing from anywhere", "Motion-activated recording for key zones"],
+      "benefits": ["Peace of mind at home and away", "Visitors verified before entry", "Family activity visible on your phone", "Strong deterrent to intruders"]
+    },
+    {
+      "id": "retail",
+      "name": "Retail & Shops",
+      "icon": "shop",
+      "challenges": ["Theft and inventory shrinkage", "Disputes at the billing counter", "Monitoring when the owner is not present", "Multiple staff across counters and stores"],
+      "solutions": ["CCTV over counters, entries and stock areas", "Remote viewing for owners from anywhere", "DVR/NVR storage sized for dispute resolution", "Door access for stock rooms"],
+      "benefits": ["Reduced shrinkage and losses", "Clear evidence in disputes", "Owners stay informed remotely", "Safer cash handling"]
+    },
+    {
+      "id": "manufacturing",
+      "name": "Manufacturing & Factories",
+      "icon": "factory",
+      "challenges": ["Worker safety and compliance visibility", "Material movement tracking across yards", "Shift attendance for large workforces", "Fire safety readiness for audits"],
+      "solutions": ["CCTV across production floors, yards and gates", "Biometric attendance with shift reporting", "Fire extinguisher supply and periodic inspection", "Network linking office, floor and warehouse"],
+      "benefits": ["Visible safety compliance", "Shift-wise attendance automation", "Reduced material pilferage", "Audit-ready fire safety records"]
+    },
+    {
+      "id": "warehouses",
+      "name": "Warehouses & Logistics",
+      "icon": "box",
+      "challenges": ["Large areas with valuable, fast-moving stock", "Vehicle and gate movement control", "Theft during loading and unloading", "Night-time security when unmanned"],
+      "solutions": ["Long-range and PTZ cameras for wide coverage", "Night-vision CCTV for dark yards", "Access control at gates and stock rooms", "Networking across sheds and offices"],
+      "benefits": ["Full visibility of stock areas", "Documented vehicle movements", "Protected perimeters after dark", "Controlled access to valuables"]
+    },
+    {
+      "id": "schools",
+      "name": "Schools & Institutions",
+      "icon": "school",
+      "challenges": ["Student safety across campus areas", "Controlling visitor entry to premises", "Staff attendance across departments", "Emergency fire readiness"],
+      "solutions": ["CCTV at gates, corridors and common areas", "Video intercom at the entrance gate", "Biometric staff attendance", "Fire extinguishers with inspection schedule"],
+      "benefits": ["Safer campus environment", "Verified visitor entry", "Streamlined staff attendance", "Preparedness for emergencies"]
+    },
+    {
+      "id": "hospitals",
+      "name": "Hospitals & Healthcare",
+      "icon": "hospital",
+      "challenges": ["24×7 security across sensitive areas", "Crowd and visitor management", "Records for incident review", "Hygiene-conscious attendance systems"],
+      "solutions": ["CCTV in lobbies, corridors and perimeters", "Access control for pharmacies and records rooms", "Touchless face-recognition attendance", "Reliable network for admin operations"],
+      "benefits": ["Round-the-clock monitoring", "Restricted access to sensitive stores", "Touchless check-in options", "Incident footage on record"]
+    },
+    {
+      "id": "hotels",
+      "name": "Hotels & Hospitality",
+      "icon": "hotel",
+      "challenges": ["Guest and staff movement across many areas", "Back-of-house and storage security", "Parking and entrance oversight", "Discreet, professional appearance of equipment"],
+      "solutions": ["CCTV in lobbies, corridors, parking and kitchens", "Intercom between reception and rooms/departments", "Access control for stores and staff areas", "Neat, professional installation"],
+      "benefits": ["Guest confidence in safety", "Controlled back-of-house access", "Better coordination between departments", "Evidence for incident handling"]
+    },
+    {
+      "id": "apartments",
+      "name": "Apartments & Gated Communities",
+      "icon": "apartment",
+      "challenges": ["Verifying visitors at the gate", "Common area security across blocks", "Parking and amenity misuse", "Coordinating security across many flats"],
+      "solutions": ["Entrance gate CCTV with recording", "Multi-flat video intercom / door phone", "CCTV in parking, play areas and lobbies", "Access control for gyms and common facilities"],
+      "benefits": ["Verified visitor entry", "Safer common areas", "Documented incidents for association review", "Shared cost, shared security"]
+    },
+    {
+      "id": "construction",
+      "name": "Construction Sites",
+      "icon": "crane",
+      "challenges": ["Expensive material and equipment on open sites", "Theft and unauthorised entry after hours", "Tracking worker presence and movement", "Remote monitoring by owners and engineers"],
+      "solutions": ["Rugged CCTV coverage of storage and work zones", "Remote viewing for owners from anywhere", "Biometric attendance for labour muster", "Solar/power-planning advice for site conditions"],
+      "benefits": ["Material stays accounted for", "Sites monitored without being present", "Accurate labour records", "Evidence for disputes and incidents"]
+    },
+    {
+      "id": "government-institutions",
+      "name": "Government & Institutions",
+      "icon": "govt",
+      "challenges": ["Public-facing premises with high footfall", "Accountability and record-keeping requirements", "Large campuses with multiple blocks", "Procurement and documentation standards"],
+      "solutions": ["CCTV across public areas and offices", "Biometric attendance for staff", "Structured networking between blocks", "Fire safety equipment with maintenance records"],
+      "benefits": ["Documented public-area oversight", "Reliable attendance records", "Connected multi-block campuses", "Maintained safety compliance"]
+    },
+    {
+      "id": "commercial-buildings",
+      "name": "Commercial Buildings",
+      "icon": "building",
+      "challenges": ["Multiple tenants with different needs", "Shared area security and management", "Central monitoring expectations", "Coordinated cabling and infrastructure"],
+      "solutions": ["Common area CCTV and entrance monitoring", "Building-wide intercom systems", "Structured cabling backbone for tenants", "Access control for lifts, lobbies and terraces"],
+      "benefits": ["Attractive, secure premises for tenants", "Managed common areas", "Infrastructure ready for occupancy", "One system, one accountable partner"]
+    }
+  ]
+}

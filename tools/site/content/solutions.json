@@ -1,0 +1,238 @@
+{
+  "cctv-surveillance": {
+    "name": "CCTV Surveillance",
+    "navLabel": "CCTV Surveillance",
+    "title": "CCTV Surveillance Solutions in Theni | Keerthi Networks",
+    "description": "Professional CCTV installation in Theni and Bodinayakanur — IP and HD cameras, DVR/NVR, remote mobile viewing and maintenance for homes, shops, offices, factories and warehouses.",
+    "h1": "CCTV Surveillance Solutions",
+    "lead": "A properly designed CCTV system deters trouble before it happens and answers questions after it does. We design, install and maintain surveillance systems for homes, shops, offices, factories and warehouses — with clear coverage, reliable recording and viewing on your phone, wherever you are.",
+    "image": "sol-cctv",
+    "waProduct": "CCTV Surveillance",
+    "problems": [
+      { "title": "Theft & Shrinkage", "text": "Unmonitored stock rooms, cash counters and storage areas are where losses quietly accumulate. Well-placed cameras deter and document." },
+      { "title": "No Idea What Happened", "text": "Without recorded footage, disputes and incidents become a matter of one word against another. Recording changes that." },
+      { "title": "Blind Spots & Bad Coverage", "text": "Poorly planned camera layouts leave exactly the areas you care about uncovered — gates, entrances, and safe passages." },
+      { "title": "Cannot Check Remotely", "text": "Owners and managers should be able to check on their property from anywhere, not only when they are physically present." },
+      { "title": "Dead Cameras & Missing Footage", "text": "Systems that were installed and forgotten — failed cameras, full disks and missing recordings — fail precisely when needed." }
+    ],
+    "offerTitle": "CCTV Solutions We Offer",
+    "offers": [
+      { "title": "HD Analog & IP Cameras", "text": "We recommend the right technology for your cabling, budget and image-quality needs." },
+      { "title": "Dome, Bullet & PTZ Cameras", "text": "Discrete indoor domes, long-range outdoor bullets and pan-tilt-zoom cameras for wide areas." },
+      { "title": "Night Vision Cameras", "text": "Infrared and low-light cameras that keep entrances, compounds and stores covered after dark." },
+      { "title": "DVR / NVR & Storage", "text": "Recording units and storage sized for your retention needs, so footage is there when required." },
+      { "title": "Remote Mobile Viewing", "text": "We configure secure viewing on your phone or computer so you can check in from anywhere." },
+      { "title": "Installation & Maintenance", "text": "Neat cabling, correct mounting, and periodic servicing to keep every camera recording." }
+    ],
+    "applications": ["Homes & apartments", "Shops & retail stores", "Offices & commercial buildings", "Factories & manufacturing units", "Warehouses & godowns", "Schools & institutions", "Hotels & guest houses", "Construction sites"],
+    "benefits": [
+      { "icon": "shield", "title": "Visible Deterrence", "text": "Cameras discourage theft, trespassing and misconduct before it happens." },
+      { "icon": "eye", "title": "Evidence & Records", "text": "Recorded footage resolves disputes and supports investigations." },
+      { "icon": "phone", "title": "Remote Peace of Mind", "text": "Check your property live from your phone, at work or away." },
+      { "icon": "users", "title": "Workplace Accountability", "text": "Clear visibility of operations, safety compliance and customer interaction." }
+    ],
+    "process": [
+      { "title": "Site Survey", "text": "We map entry points, blind spots, lighting and cabling routes before proposing anything." },
+      { "title": "Camera Plan & Quote", "text": "A clear camera layout, recommended models and an itemised quotation — no surprises." },
+      { "title": "Installation", "text": "Conduit cabling, correct heights and angles, weatherproofing and tidy finish." },
+      { "title": "Setup & Training", "text": "DVR/NVR configuration, mobile app setup and a walkthrough of how to use everything." },
+      { "title": "Support & Maintenance", "text": "Periodic checks, servicing and quick response when something needs attention." }
+    ],
+    "faq": [
+      { "q": "How many cameras will my property need?", "a": "It depends on the layout, not a fixed number. During a site survey we identify entry points, vulnerable areas and coverage overlaps, then propose the minimum set of cameras that covers your property properly." },
+      { "q": "Can I view my cameras on my mobile phone?", "a": "Yes. We configure secure remote viewing on your smartphone so you can see live and recorded footage from anywhere with an internet connection." },
+      { "q": "How long can footage be stored?", "a": "Storage is sized to your requirement — commonly a few weeks of continuous recording. We recommend the appropriate hard disk capacity based on camera count, resolution and retention needs." },
+      { "q": "Do the cameras work at night?", "a": "Yes, we use cameras with infrared or low-light capability for night coverage, so entrances, compounds and stores remain monitored after dark." },
+      { "q": "Do you provide service for existing CCTV systems?", "a": "Yes, we take up maintenance and troubleshooting of CCTV systems, including camera replacement, DVR/NVR issues and cabling faults. Contact us with details of your current system." },
+      { "q": "Analog HD or IP cameras — which should I choose?", "a": "Both have their place. Analog HD is cost-effective over existing coaxial cabling; IP cameras offer higher resolution and flexibility over network cabling. We recommend based on your site, budget and quality needs rather than one-size-fits-all." }
+    ]
+  },
+  "intercom-systems": {
+    "name": "Intercom Systems",
+    "navLabel": "Intercom Systems",
+    "title": "Intercom & Video Door Phone Installation in Theni | Keerthi Networks",
+    "description": "Audio and video intercom systems, video door phones and apartment intercom installation in Theni and Bodinayakanur for homes, offices, apartments and commercial buildings.",
+    "h1": "Intercom & Video Door Phone Systems",
+    "lead": "Know who is at the door before opening it, and keep every floor, office or apartment connected. We install audio intercoms, video door phones and multi-unit intercom systems that make communication simple and entry controlled.",
+    "image": "sol-intercom",
+    "waProduct": "Intercom Systems",
+    "problems": [
+      { "title": "Opening the Door Blind", "text": "Without a door phone, there is no way to verify a visitor before opening the door — a genuine safety risk for families and staff." },
+      { "title": "Shouting Across Floors", "text": "In offices and homes with multiple floors or sections, basic communication wastes time and looks unprofessional." },
+      { "title": "Uncontrolled Visitors", "text": "Buildings without visitor verification let deliveries, strangers and salespeople walk in unchallenged." },
+      { "title": "Apartment Coordination", "text": "Multi-unit buildings need a reliable way for visitors to reach the right flat or office without confusion." }
+    ],
+    "offerTitle": "Intercom Solutions We Offer",
+    "offers": [
+      { "title": "Audio Intercom", "text": "Clear two-way audio communication between entrance points and rooms or cabins." },
+      { "title": "Video Intercom & Door Phone", "text": "See and speak with visitors at the gate or door before letting them in." },
+      { "title": "Apartment & Multi-Unit Intercom", "text": "Panel at the entrance calling individual flats or offices, with door release options." },
+      { "title": "Office Intercom", "text": "Intercom extensions across cabins, reception, stores and meeting rooms." },
+      { "title": "IP Intercom", "text": "Network-based intercom systems that integrate with existing structured cabling." },
+      { "title": "Installation & Support", "text": "Professional wiring, neat mounting and dependable after-sales service." }
+    ],
+    "applications": ["Independent homes & villas", "Apartment buildings & gated communities", "Offices & commercial complexes", "Schools & institutions", "Hospitals & clinics", "Hotels & guest houses", "Factories & warehouses"],
+    "benefits": [
+      { "icon": "eye", "title": "Visitor Verification", "text": "See and confirm who is at the door before opening it." },
+      { "icon": "shield", "title": "Controlled Entry", "text": "Gate and door release only after you have verified the visitor." },
+      { "icon": "intercom", "title": "Instant Communication", "text": "Reach any room, cabin or floor without walking or shouting." },
+      { "icon": "users", "title": "Better Building Management", "text": "Orderly visitor handling for apartments, offices and commercial buildings." }
+    ],
+    "process": [
+      { "title": "Requirement Discussion", "text": "Number of units, floors, entry points and whether audio-only or video is needed." },
+      { "title": "System Recommendation", "text": "The right intercom type and model set for your building's layout and budget." },
+      { "title": "Installation", "text": "Concealed or neat surface wiring, proper mounting and placement of stations." },
+      { "title": "Testing & Handover", "text": "Every station tested, residents or staff briefed on usage." },
+      { "title": "Service & Support", "text": "Prompt help for any faults, additions or expansions later." }
+    ],
+    "faq": [
+      { "q": "What is the difference between audio and video intercoms?", "a": "An audio intercom lets you speak with the visitor; a video intercom (video door phone) also shows you a live camera view of them at the door. Video models add an important layer of verification, especially at night." },
+      { "q": "Can one entrance panel call multiple flats or offices?", "a": "Yes. Multi-unit intercom systems allow visitors to dial a flat or office number from a common entrance panel, with each unit having its own indoor station." },
+      { "q": "Can the intercom unlock the gate or door?", "a": "Many intercom systems support electric lock or gate release from the indoor station, so you can let in a verified visitor without walking to the door. We will advise on compatibility during survey." },
+      { "q": "Will installation damage my walls?", "a": "We plan wiring routes carefully. Where possible, cabling is concealed; otherwise neat casing is used. We treat finished homes and offices with care and clean up after the work." },
+      { "q": "Do you service old intercom systems?", "a": "We take up intercom repair and troubleshooting where parts are available, and can advise honestly when replacement is more sensible than repair." }
+    ]
+  },
+  "networking-solutions": {
+    "name": "Networking Solutions",
+    "navLabel": "Networking Solutions",
+    "title": "Networking & Structured Cabling in Theni | Keerthi Networks",
+    "description": "Office LAN setup, CAT6 structured cabling, network racks, switches, routers, Wi-Fi and fiber networking services in Theni, Bodinayakanur and across Tamil Nadu.",
+    "h1": "Networking & Structured Cabling Solutions",
+    "lead": "Everything today runs on the network — CCTV, computers, biometric devices, internet and phones. We design and build office and industrial networks with proper cabling, correctly rated components and tidy, labelled racks that stay manageable for years.",
+    "image": "sol-networking",
+    "waProduct": "Networking Solutions",
+    "problems": [
+      { "title": "Ad-hoc Cabling Chaos", "text": "Networks that grew without planning end up as a tangle of unlabelled cables — impossible to troubleshoot and unsafe to disturb." },
+      { "title": "Dead Spots & Slow Wi-Fi", "text": "One router pushed to cover an entire building gives slow speeds in some rooms and none in others." },
+      { "title": "Frequent Disconnections", "text": "Cheap connectors, poor termination and unsuitable cables cause intermittent failures that waste working hours." },
+      { "title": "No Documentation", "text": "When nobody knows which cable goes where, every small change becomes a major disruption." },
+      { "title": "Growing Beyond the Network", "text": "New staff, new CCTV cameras or a new floor should not mean rebuilding your network from scratch." }
+    ],
+    "offerTitle": "Networking Solutions We Offer",
+    "offers": [
+      { "title": "Structured Cabling (CAT6 / CAT6A)", "text": "Planned, terminated and tested cabling certified for your bandwidth needs." },
+      { "title": "Office LAN Setup", "text": "Complete local area networks for offices, factories and institutions." },
+      { "title": "Network Racks & Patch Panels", "text": "Organised, labelled racks with proper patch panels and cable management." },
+      { "title": "Switch & Router Installation", "text": "Correctly sized and configured switches and routers for reliable performance." },
+      { "title": "Wi-Fi Networking", "text": "Access point planning and installation for whole-building wireless coverage." },
+      { "title": "Fiber Networking", "text": "Fiber optic links for long distances and high-bandwidth backbones where required." },
+      { "title": "Network Troubleshooting", "text": "Diagnosis and repair of existing network faults, however they were originally installed." }
+    ],
+    "applications": ["Offices & IT-enabled workplaces", "Factories & plants", "Schools, colleges & institutions", "Hospitals & clinics", "Hotels & resorts", "Warehouses & logistics", "Commercial buildings", "Residential networks"],
+    "benefits": [
+      { "icon": "network", "title": "Reliable Day-to-Day Operations", "text": "A stable network means fewer interruptions to work, billing and surveillance." },
+      { "icon": "doc", "title": "Organised & Documented", "text": "Labelled patching and tidy racks make every future change quick and safe." },
+      { "icon": "gear", "title": "Ready to Scale", "text": "Structured cabling lets you add users, cameras and devices without rework." },
+      { "icon": "shield", "title": "Built on Quality Components", "text": "Correctly rated cables, connectors and hardware — installed to standard, not to cut corners." }
+    ],
+    "process": [
+      { "title": "Requirement & Site Study", "text": "User count, device count, floor plan, and where racks and outlets should live." },
+      { "title": "Network Design", "text": "Cabling plan, component selection and capacities — documented and explained." },
+      { "title": "Cabling & Installation", "text": "Conduit work, cable pulling, termination and rack assembly by trained hands." },
+      { "title": "Testing & Labelling", "text": "Every link tested and labelled before handover — no mystery cables." },
+      { "title": "Configuration & Support", "text": "Switch and router configuration, and dependable support as your needs grow." }
+    ],
+    "faq": [
+      { "q": "Do you take up office networking projects?", "a": "Yes. Office LAN setup and structured cabling are core services for us — from small offices to multi-floor commercial buildings, including racks, patch panels, switches and Wi-Fi." },
+      { "q": "CAT6 or CAT6A — what do I need?", "a": "For most offices, CAT6 is sufficient and cost-effective. CAT6A suits higher bandwidth and longer runs, such as busy backbones or future-proofing for 10G. We recommend based on measured distances and actual usage." },
+      { "q": "Can you fix networks installed by someone else?", "a": "Yes. We frequently take over undocumented or poorly installed networks — re-terminating, re-organising racks, testing links and bringing the setup to a maintainable standard." },
+      { "q": "Can you provide Wi-Fi coverage for an entire building?", "a": "Yes. We plan access point positions based on the building layout and construction, so coverage is even and speeds are consistent rather than depending on a single overloaded router." },
+      { "q": "Do you handle fiber optic cabling?", "a": "Where a project needs fiber links — for distance, bandwidth or interference reasons — we include fiber cabling in the design. Tell us your requirement and we will advise." }
+    ]
+  },
+  "biometric-access-control": {
+    "name": "Biometric & Access Control",
+    "navLabel": "Biometric & Access Control",
+    "title": "Biometric Attendance & Access Control in Theni | Keerthi Networks",
+    "description": "Fingerprint and face recognition attendance systems, RFID access control and door access installation in Theni and Bodinayakanur for offices, factories, schools and commercial buildings.",
+    "h1": "Biometric Attendance & Access Control",
+    "lead": "Replace error-prone manual attendance with biometric systems that record exactly who came, when and where — and control which doors people can open. We install fingerprint, face-recognition and card-based systems for organisations of every size.",
+    "image": "sol-biometric",
+    "waProduct": "Biometric & Access Control",
+    "problems": [
+      { "title": "Buddy Punching & Proxy Attendance", "text": "Manual registers and card systems let one person mark attendance for another. Biometrics make that impossible." },
+      { "title": "Time-Consuming Payroll", "text": "HR staff waste days every month reconciling attendance before payroll can even begin." },
+      { "title": "Unauthorized Entry", "text": "Uncontrolled doors mean anyone can enter restricted areas — stores, server rooms, cash rooms, labs." },
+      { "title": "No Visitor Record", "text": "Without a check-in system, there is no record of who entered your premises and when." },
+      { "title": "Disputes Over Hours", "text": "Arguments about overtime and shift timings disappear when timestamps are automatic and tamper-proof." }
+    ],
+    "offerTitle": "Solutions We Offer",
+    "offers": [
+      { "title": "Fingerprint Attendance", "text": "Reliable fingerprint time-attendance for staff, workers and contract employees." },
+      { "title": "Face Recognition", "text": "Touchless face-recognition terminals for fast, hygienic attendance and access." },
+      { "title": "RFID Card Systems", "text": "Card-based attendance and access where biometrics are not preferred." },
+      { "title": "Door Access Control", "text": "Electric locks and controllers to restrict entry to approved people only." },
+      { "title": "Attendance Reporting", "text": "Reports and software for shift management, late-coming, overtime and payroll." },
+      { "title": "Visitor Management", "text": "Check-in solutions that keep a proper record of visitors to your premises." }
+    ],
+    "applications": ["Offices & corporate workplaces", "Factories & manufacturing units", "Schools & colleges", "Warehouses & logistics hubs", "Apartment & facility security", "Hospitals & clinics", "Retail chains & showrooms", "Commercial buildings"],
+    "benefits": [
+      { "icon": "fingerprint", "title": "Accurate Attendance", "text": "Every punch is tied to a real person — no proxies, no manual errors." },
+      { "icon": "clock", "title": "Faster Payroll", "text": "Automated reports cut attendance processing from days to minutes." },
+      { "icon": "shield", "title": "Secure Access", "text": "Restricted areas stay restricted — entry only for approved personnel." },
+      { "icon": "chart", "title": "Centralised Visibility", "text": "Attendance and access records available in one place, when you need them." }
+    ],
+    "process": [
+      { "title": "Requirement Study", "text": "Employee count, shift patterns, shift gates and which doors need control." },
+      { "title": "Device & Software Selection", "text": "Right mix of fingerprint, face or card devices plus reporting software." },
+      { "title": "Installation", "text": "Devices, door hardware, locks and power — installed neatly at the right points." },
+      { "title": "Enrollment & Training", "text": "Staff enrollment, report setup and training for HR or administrators." },
+      { "title": "Ongoing Support", "text": "Device servicing, software help and expansion as your team grows." }
+    ],
+    "faq": [
+      { "q": "Do you provide biometric attendance systems?", "a": "Yes. We supply and install fingerprint and face-recognition attendance systems for offices, factories, schools and other organisations, including reporting software and staff training." },
+      { "q": "Fingerprint or face recognition — which is better?", "a": "Fingerprint devices are proven and economical. Face-recognition terminals are touchless and faster at gates, and work well where fingers are worn by manual work. We recommend based on your workforce and usage points." },
+      { "q": "Can the same device control a door lock?", "a": "Yes. Most access-control devices can drive an electric lock, so the same credential that marks attendance can also allow or deny entry through a door." },
+      { "q": "What happens if the device or network fails?", "a": "Attendance devices store records locally and sync when connectivity returns, so punches are not lost during brief failures. We configure and advise appropriately for your site." },
+      { "q": "Can we get monthly attendance reports for payroll?", "a": "Yes. The software generates daily, monthly and shift-wise reports — late-coming, overtime, absentees — which can be exported for payroll processing." }
+    ]
+  },
+  "fire-safety": {
+    "name": "Fire Safety Solutions",
+    "navLabel": "Fire Safety Solutions",
+    "title": "Fire Safety Equipment & Extinguishers in Theni | Keerthi Networks",
+    "description": "Fire extinguisher supply, installation, inspection, refilling and maintenance in Theni and Bodinayakanur — ABC dry powder, CO2, foam and clean agent extinguishers for workplaces.",
+    "h1": "Fire Safety Solutions",
+    "lead": "The right extinguisher, in the right place, in working condition — that is what fire safety actually looks like. We supply fire extinguishers and safety equipment, and support installation, inspection, refilling and replacement for businesses and institutions.",
+    "image": "sol-fire",
+    "waProduct": "Fire Safety Solutions",
+    "problems": [
+      { "title": "No Extinguishers Where They Matter", "text": "Many premises have equipment only on paper — or placed where nobody can reach it in the critical first minutes." },
+      { "title": "Expired or Unserviced Units", "text": "An extinguisher that has lost pressure or passed its service date may fail exactly when it is needed most." },
+      { "title": "Wrong Type for the Risk", "text": "A water extinguisher on an electrical fire or CO2 on a deep combustible fire can make matters worse. Matching type to risk matters." },
+      { "title": "Audit & Compliance Pressure", "text": "Factories, schools, hotels and offices are expected to maintain serviceable fire safety equipment with records to prove it." },
+      { "title": "Nobody Knows How to Use Them", "text": "Equipment without basic familiarity is of limited value in a real emergency." }
+    ],
+    "offerTitle": "Fire Safety Solutions We Offer",
+    "offers": [
+      { "title": "ABC Dry Chemical Powder", "text": "The versatile workhorse for general office, shop and industrial fire risks." },
+      { "title": "CO2 Extinguishers", "text": "Suitable for electrical fires — server rooms, panels and equipment areas." },
+      { "title": "Foam Extinguishers", "text": "For flammable liquid risks such as fuel storage and generators." },
+      { "title": "Water & Clean Agent Types", "text": "Where the fire class calls for them — recommended based on actual site risks." },
+      { "title": "Fire Buckets & Accessories", "text": "Buckets, stands, signage and safety accessories for complete readiness." },
+      { "title": "Inspection, Refilling & Maintenance", "text": "Periodic checks, refilling after use or expiry, and replacement guidance." }
+    ],
+    "applications": ["Offices & commercial establishments", "Factories & manufacturing units", "Warehouses & storage facilities", "Schools & educational institutions", "Hospitals & clinics", "Hotels & restaurants", "Shops & retail outlets", "Apartments & residential buildings"],
+    "benefits": [
+      { "icon": "fire", "title": "First-Minute Response", "text": "A serviceable extinguisher within reach can stop a small fire becoming a disaster." },
+      { "icon": "check", "title": "Compliance Readiness", "text": "Proper equipment, placement and records keep you ready for inspections." },
+      { "icon": "shield", "title": "Right Equipment, Right Risk", "text": "We match extinguisher type to the actual hazards on your premises." },
+      { "icon": "headset", "title": "Ongoing Readiness", "text": "Scheduled inspection and refilling so equipment never silently expires." }
+    ],
+    "process": [
+      { "title": "Risk Assessment", "text": "We review your premises to identify fire risks and the extinguisher types each area needs." },
+      { "title": "Supply & Placement", "text": "Extinguishers supplied and mounted at correct heights and locations with signage." },
+      { "title": "Inspection & Records", "text": "Periodic checks with records maintained — pressure, seals, tags and condition." },
+      { "title": "Refilling & Replacement", "text": "Refilling after use or expiry, and honest advice when replacement is due." },
+      { "title": "Usage Familiarisation", "text": "We brief your staff on basic extinguisher handling so the equipment is usable, not decorative." }
+    ],
+    "faq": [
+      { "q": "Do you supply fire extinguishers?", "a": "Yes. We supply fire extinguishers including ABC dry chemical powder, CO2, foam and other types, along with fire buckets and safety accessories, for businesses and institutions." },
+      { "q": "Which extinguisher type does my premises need?", "a": "It depends on the fire risks present. Offices generally need ABC dry powder; electrical and server areas need CO2; fuel or solvent storage areas need foam or dry powder. We assess your site and recommend accordingly." },
+      { "q": "Do you provide refilling services?", "a": "Yes, we support refilling of extinguishers after use or on expiry of their service interval, along with the required records. Contact us with your extinguisher details." },
+      { "q": "How often should extinguishers be inspected?", "a": "Extinguishers should be visually checked regularly (pressure gauge, seals, access) and serviced on the interval marked by the manufacturer. We can include periodic inspection visits for your premises." },
+      { "q": "Can you tell us where extinguishers should be installed?", "a": "Yes. Placement matters — along escape routes, near exits, at risk areas, mounted at correct height with signage. We plan placement as part of supply." }
+    ]
+  }
+}

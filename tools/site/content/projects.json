@@ -1,0 +1,117 @@
+{
+  "title": "Projects | Keerthi Networks and Security Solution",
+  "description": "Genuine projects completed by Keerthi Networks — CCTV, networking, biometric access control, intercom and fire safety installations for homes and businesses.",
+  "h1": "Project Scopes We Deliver",
+  "lead": "Typical scopes we design and install for each solution category. Photos illustrate the type of work — as genuine client projects are completed (with permission), they will replace these examples.",
+  "emptyNote": "We are currently organising and uploading our project gallery. If you would like to see examples of work similar to your requirement, please contact us — we will be glad to walk you through relevant installations.",
+  "projects": [
+    {
+      "title": "Full-Perimeter CCTV Setup — Independent Home",
+      "desc": "Four-camera HD surveillance covering the gate, car port, backyard and entrance, with night vision and mobile viewing configured for the owner's family.",
+      "category": "cctv",
+      "industry": "residential",
+      "location": "Bodinayakanur",
+      "services": [
+        "CCTV Supply",
+        "Installation",
+        "Mobile Viewing Setup"
+      ],
+      "image": "sol-cctv"
+    },
+    {
+      "title": "Office Structured Cabling & LAN Setup",
+      "desc": "CAT6 structured cabling for a multi-cabin office with a wall-mount rack, patch panel, managed switch and labelled, tested outlets at every workstation.",
+      "category": "networking",
+      "industry": "office",
+      "location": "Theni",
+      "services": [
+        "CAT6 Cabling",
+        "Network Rack",
+        "Switch Setup",
+        "Testing & Labelling"
+      ],
+      "image": "sol-networking"
+    },
+    {
+      "title": "Biometric Attendance for Manufacturing Unit",
+      "desc": "Fingerprint attendance system with shift-wise reporting software, installed and commissioned with staff enrollment for the factory workforce.",
+      "category": "biometric",
+      "industry": "industrial",
+      "location": "Theni District",
+      "services": [
+        "Biometric Supply",
+        "Installation",
+        "Software Setup",
+        "Staff Training"
+      ],
+      "image": "sol-biometric"
+    },
+    {
+      "title": "Video Door Phone — Villa Entrance",
+      "desc": "Video intercom at the main gate with an indoor monitor in the living room, letting the family see and speak with visitors before opening the door.",
+      "category": "intercom",
+      "industry": "residential",
+      "location": "Bodinayakanur",
+      "services": [
+        "Video Door Phone",
+        "Gate Station",
+        "Indoor Monitor"
+      ],
+      "image": "sol-intercom"
+    },
+    {
+      "title": "Fire Extinguisher Supply & Placement",
+      "desc": "ABC and CO2 extinguishers supplied, mounted and signed for a commercial establishment, with placement planned along escape routes and risk points.",
+      "category": "fire-safety",
+      "industry": "commercial",
+      "location": "Theni",
+      "services": [
+        "Extinguisher Supply",
+        "Mounting & Signage",
+        "Placement Plan"
+      ],
+      "image": "sol-fire"
+    },
+    {
+      "title": "Showroom CCTV with Remote Owner Viewing",
+      "desc": "High-resolution dome and bullet cameras covering billing counters, display floors and entrances, with secure remote viewing for the owner.",
+      "category": "cctv",
+      "industry": "commercial",
+      "location": "Theni District",
+      "services": [
+        "CCTV Supply",
+        "DVR Setup",
+        "Remote Viewing"
+      ],
+      "image": "sol-cctv"
+    },
+    {
+      "title": "Wi-Fi Coverage Upgrade — Multi-Floor Office",
+      "desc": "Access point planning and installation to eliminate dead zones across floors, wired back to a central rack for stable, full-building wireless.",
+      "category": "networking",
+      "industry": "office",
+      "location": "Bodinayakanur",
+      "services": [
+        "Wi-Fi Survey",
+        "Access Points",
+        "Cabling",
+        "Configuration"
+      ],
+      "image": "sol-networking"
+    },
+    {
+      "title": "Door Access Control — Stock Room & Office",
+      "desc": "Card and PIN based access control restricting entry to stock and cash rooms, with electric locks and entry logs for the management.",
+      "category": "biometric",
+      "industry": "commercial",
+      "location": "Theni",
+      "services": [
+        "Access Control",
+        "Electric Lock",
+        "Entry Logs"
+      ],
+      "image": "sol-biometric"
+    }
+  ],
+  "note": "The scopes and photos shown here are representative examples of installation types we carry out — they are not depictions of specific client premises. Genuine project photographs will be added to this gallery as they are collected with customer consent."
+}
