@@ -1,0 +1,42 @@
+{
+  "updated": "Last updated: September 2026",
+  "privacy": {
+    "title": "Privacy Policy",
+    "intro": "Keerthi Networks and Security Solution (\"we\", \"our\", \"us\") respects your privacy. This policy explains what information we collect through this website and how it is used.",
+    "sections": [
+      { "h": "Information We Collect", "p": "This website is a static website. We do not operate a database or server-side storage of your information. When you use our enquiry, quotation, site visit or contact forms, the details you enter (such as your name, phone number, email, location and requirement) are formatted into a message and opened in WhatsApp (or your email client) for you to review and send to us. We receive the information only when you choose to send it." },
+      { "h": "How We Use Your Information", "p": "Information you share with us is used solely to respond to your enquiry — to contact you, understand your requirement, prepare quotations, schedule site visits and provide the services you request. We do not sell or rent your information to third parties." },
+      { "h": "WhatsApp and Third-Party Services", "p": "Enquiries submitted through this website are transmitted via WhatsApp, operated by a third party. Once you press Send within WhatsApp, your message is handled under WhatsApp's own privacy practices. We encourage you to review those separately. This website does not set advertising cookies, and no analytics identifiers are active unless explicitly enabled by us in future with appropriate disclosures." },
+      { "h": "Communication Records", "p": "When you contact us, we may retain your message and related details on our own devices and business records for the purpose of servicing your enquiry and maintaining our customer relationship. You may ask us to delete your details at any time by writing to knsschennai@gmail.com." },
+      { "h": "Your Choices", "p": "You are never required to share more information than you are comfortable with. Required form fields are limited to what we need to respond meaningfully. You may opt out of further communication from us at any time by telling us over WhatsApp, phone or email." },
+      { "h": "Changes to This Policy", "p": "We may update this policy as our website and services evolve. The latest version will always be published on this page." },
+      { "h": "Contact", "p": "For any privacy-related questions, write to knsschennai@gmail.com or write to us at: Keerthi Networks and Security Solution, No. 159, Karuppasamy Koil Street, Dharmathupatti, Melachokkanathapuram, Bodinayakanur, Theni – 625582, Tamil Nadu, India." }
+    ]
+  },
+  "terms": {
+    "title": "Terms & Conditions",
+    "intro": "These terms govern your use of this website and the enquiry services it provides. By using the website, you agree to these terms.",
+    "sections": [
+      { "h": "Use of This Website", "p": "This website is provided for information about Keerthi Networks and Security Solution and our services, and for making enquiries. You agree to use it lawfully and not to attempt to disrupt, probe or misuse the website or its features." },
+      { "h": "Enquiries Via WhatsApp", "p": "Forms on this website prepare a structured message and open it in WhatsApp for you to review and send. Submitting a form does not by itself create a service commitment, contract or quotation. An enquiry becomes a service engagement only when confirmed and accepted by us directly." },
+      { "h": "Quotations and Pricing", "p": "Indicative information on this website does not constitute an offer. Quotations are provided individually, based on your requirements and site conditions, and are subject to their own validity periods and terms. Prices, product availability and specifications are confirmed at the time of order." },
+      { "h": "Product and Service Information", "p": "We describe our services in good faith and as accurately as reasonably possible. Specific brands, models, certifications and availability for any engagement are communicated in our quotations and invoices. Images on this website are illustrative of the types of solutions we provide." },
+      { "h": "Intellectual Property", "p": "The content, design and materials of this website belong to Keerthi Networks and Security Solution unless otherwise stated. You may not reproduce or reuse them commercially without our written permission." },
+      { "h": "Limitation of Liability", "p": "The website is provided on an \"as is\" basis. While we strive for accuracy, we do not warrant that the website will always be available, complete or error-free. Our liability arising from your use of the website itself is limited to the extent permitted by law; engagements for goods and services are governed by their own agreed terms, quotations and invoices." },
+      { "h": "Governing Law", "p": "These terms are governed by the laws of India. Disputes arising in connection with the website are subject to the jurisdiction of courts in Tamil Nadu, India." },
+      { "h": "Contact", "p": "Questions about these terms may be sent to knsschennai@gmail.com." }
+    ]
+  },
+  "disclaimer": {
+    "title": "Disclaimer",
+    "intro": "The information provided on this website is for general information about Keerthi Networks and Security Solution and our services.",
+    "sections": [
+      { "h": "General Information Only", "p": "Content on this website — including service descriptions, recommendations and typical applications — is of a general nature. It is not a substitute for a site-specific assessment. Security, networking and fire safety recommendations depend on individual premises, and we provide specific advice only after understanding your requirement, typically through a site visit." },
+      { "h": "Images", "p": "Photographs on this website are used to illustrate the types of solutions and installations we provide. Some images are representative and may have been enhanced or staged for presentation. They are not intended to depict specific client premises unless explicitly stated." },
+      { "h": "External Links", "p": "Where this website links to external services (such as WhatsApp or mapping services), we do not control those platforms and are not responsible for their content or availability." },
+      { "h": "No Warranties", "p": "While we aim to keep information current and accurate, we make no warranties of any kind about the completeness, reliability or suitability of the website information for any particular purpose. Any reliance you place on such information is at your own discretion; please confirm specifics with us directly before making decisions." },
+      { "h": "Trademarks", "p": "All product names, logos and brands mentioned are property of their respective owners. Their use does not imply endorsement or affiliation unless explicitly stated." },
+      { "h": "Contact", "p": "If anything on this website appears unclear or outdated, please let us know at knsschennai@gmail.com so we can correct it." }
+    ]
+  }
+}

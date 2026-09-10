@@ -1,0 +1,32 @@
+{
+  "businessName": "Keerthi Networks and Security Solution",
+  "businessNameUpper": "KEERTHI NETWORKS AND SECURITY SOLUTION",
+  "tagline": "Protect. Connect. Secure.",
+  "positioning": "Security, Surveillance, Communication & Networking Solutions Partner",
+  "footerAbout": "Security, surveillance, networking and infrastructure solutions for homes, businesses and organizations.",
+  "email": "knsschennai@gmail.com",
+  "gstin": "33JIDPK6358B1ZC",
+  "phoneDisplay": "PHONE_NUMBER_HERE",
+  "phoneHref": "",
+  "whatsapp": "WHATSAPP_NUMBER_HERE",
+  "businessHours": "BUSINESS_HOURS_HERE",
+  "googleMapsUrl": "GOOGLE_MAPS_URL_HERE",
+  "gaMeasurementId": "GA_MEASUREMENT_ID",
+  "gtmContainerId": "GTM_CONTAINER_ID",
+  "siteUrl": "https://keerthinetworks.in/",
+  "address": {
+    "line1": "No. 159, Karuppasamy Koil Street,",
+    "line2": "Dharmathupatti, Melachokkanathapuram,",
+    "line3": "Bodinayakanur, Theni – 625582,",
+    "line4": "Tamil Nadu, India"
+  },
+  "addressShort": "Bodinayakanur, Theni – 625582",
+  "year": 2026,
+  "solutionOrder": [
+    "cctv-surveillance",
+    "intercom-systems",
+    "networking-solutions",
+    "biometric-access-control",
+    "fire-safety"
+  ]
+}

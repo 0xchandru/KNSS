@@ -1,0 +1,11 @@
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+
+# Local tooling (the site itself has zero dependencies)
+node_modules/
+.tools/
+
+# Logs
+*.log
