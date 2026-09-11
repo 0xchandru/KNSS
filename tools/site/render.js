@@ -253,6 +253,31 @@ export const langToggle = (variant = '') => `
   <button type="button" class="lang-btn" data-lang-option="ta" aria-pressed="false" lang="ta" title="தமிழ்">த</button>
 </div>`;
 
+/* ---------- Config-driven social icons ---------- */
+export const getActiveSocials = (variant = 'topbar') => {
+  const socialMeta = {
+    whatsapp: { cls: 'social-btn--wa', title: 'WhatsApp', label: 'Chat on WhatsApp', icon: WHATSAPP_ICON, isWa: true },
+    facebook: { cls: 'social-btn--fb', title: 'Facebook', label: 'Follow KNSS on Facebook', icon: SOCIAL_ICONS.facebook },
+    instagram: { cls: 'social-btn--ig', title: 'Instagram', label: 'Follow KNSS on Instagram', icon: SOCIAL_ICONS.instagram },
+    youtube: { cls: 'social-btn--yt', title: 'YouTube', label: 'Watch KNSS on YouTube', icon: SOCIAL_ICONS.youtube },
+    linkedin: { cls: 'social-btn--in', title: 'LinkedIn', label: 'Connect on LinkedIn', icon: SOCIAL_ICONS.linkedin },
+    twitter: { cls: 'social-btn--tw', title: 'Twitter / X', label: 'Follow KNSS on Twitter / X', icon: SOCIAL_ICONS.twitter }
+  };
+
+  const active = Object.entries(site.socialLinks || {})
+    .filter(([key, u]) => {
+      if (variant === 'footer' && key === 'whatsapp') return false;
+      return u && typeof u === 'string' && u.trim().length > 0 && socialMeta[key];
+    });
+
+  return active.map(([key, u]) => {
+    const m = socialMeta[key];
+    const itemCls = variant === 'topbar' ? `topbar-social-btn ${m.cls}` : `footer-social-btn ${m.cls}`;
+    const waAttr = m.isWa ? ` data-wa data-track="${variant}_wa_click"` : ` data-track="${variant}_social_${key}"`;
+    return `<a href="${esc(u)}" target="_blank" rel="noopener noreferrer" class="${itemCls}" aria-label="${esc(m.label)}" title="${esc(m.title)}"${waAttr}>${m.icon}</a>`;
+  }).join('');
+};
+
 export const header = (activeId = '') => {
   const navItems = NAV.map((n) => {
     const isActive = (n.id === activeId);
@@ -272,17 +297,7 @@ export const header = (activeId = '') => {
   }).join('');
 
 
-  const socialMeta = {
-    whatsapp: { cls: 'topbar-social--wa', title: 'WhatsApp', label: 'Chat on WhatsApp', icon: WHATSAPP_ICON, isWa: true },
-    facebook: { cls: 'topbar-social--fb', title: 'Facebook', label: 'Follow KNSS on Facebook', icon: SOCIAL_ICONS.facebook },
-    instagram: { cls: 'topbar-social--ig', title: 'Instagram', label: 'Follow KNSS on Instagram', icon: SOCIAL_ICONS.instagram },
-    youtube: { cls: 'topbar-social--yt', title: 'YouTube', label: 'Watch KNSS on YouTube', icon: SOCIAL_ICONS.youtube },
-    linkedin: { cls: 'topbar-social--in', title: 'LinkedIn', label: 'Connect on LinkedIn', icon: SOCIAL_ICONS.linkedin },
-    twitter: { cls: 'topbar-social--tw', title: 'Twitter / X', label: 'Follow KNSS on Twitter / X', icon: SOCIAL_ICONS.twitter }
-  };
-
-  const activeSocials = Object.entries(site.socialLinks || {})
-    .filter(([_, u]) => u && typeof u === 'string' && u.trim().length > 0);
+  const topbarSocials = getActiveSocials('topbar');
 
   return `
 <a class="skip-link" href="#main">Skip to main content</a>
@@ -298,17 +313,18 @@ export const header = (activeId = '') => {
         ${icon('clock')}
         <span>${esc(site.businessHours)}</span>
       </span>
+      <span class="topbar-sep topbar-sep--email" aria-hidden="true"></span>
+      <a href="mailto:${esc(site.email)}" class="topbar-item topbar-email" aria-label="Email: ${esc(site.email)}" title="Send email to ${esc(site.email)}">
+        ${icon('mail')}
+        <span lang="en">${esc(site.email)}</span>
+      </a>
     </div>
     <div class="topbar-right">
       <a href="${phoneHref}" class="topbar-item topbar-phone" data-tel aria-label="Call: ${esc(phoneDisplay)}">
         ${icon('phone-call')}
         <span lang="en">${esc(phoneDisplay)}</span>
       </a>
-      <span class="topbar-sep" aria-hidden="true"></span>
-      <a href="https://wa.me/${esc(site.whatsapp)}" target="_blank" rel="noopener noreferrer" class="topbar-wa-pill" data-wa aria-label="Chat on WhatsApp">
-        ${WHATSAPP_ICON}
-        <span>WhatsApp</span>
-      </a>
+      ${topbarSocials ? `<span class="topbar-sep" aria-hidden="true"></span><div class="topbar-socials" aria-label="Social profiles">${topbarSocials}</div>` : ''}
       <span class="topbar-sep" aria-hidden="true"></span>
       <a href="/request-site-visit.html" class="topbar-cta-pill" data-track="topbar_visit_click">
         <span class="topbar-pulse" aria-hidden="true"></span>
@@ -317,15 +333,15 @@ export const header = (activeId = '') => {
       </a>
     </div>
     <div class="topbar-mobile">
-      <a href="${phoneHref}" class="topbar-mob-item" data-tel aria-label="Call: ${esc(phoneDisplay)}">
+      <a href="${phoneHref}" class="topbar-mob-item topbar-mob-phone" data-tel aria-label="Call: ${esc(phoneDisplay)}">
         ${icon('phone-call')}
         <span lang="en">${esc(phoneDisplay)}</span>
       </a>
       <span class="topbar-sep" aria-hidden="true"></span>
-      <a href="https://wa.me/${esc(site.whatsapp)}" target="_blank" rel="noopener noreferrer" class="topbar-mob-item topbar-mob-wa" data-wa aria-label="Chat on WhatsApp">
-        ${WHATSAPP_ICON}
-        <span>WhatsApp</span>
+      <a href="mailto:${esc(site.email)}" class="topbar-mob-item topbar-mob-email" aria-label="Email: ${esc(site.email)}" title="${esc(site.email)}">
+        ${icon('mail')}
       </a>
+      ${topbarSocials ? `<span class="topbar-sep" aria-hidden="true"></span><div class="topbar-mob-socials">${topbarSocials}</div>` : ''}
       <span class="topbar-sep" aria-hidden="true"></span>
       <a href="/request-site-visit.html" class="topbar-mob-item topbar-mob-cta" data-track="topbar_mobile_visit">
         <span class="topbar-pulse" aria-hidden="true"></span>
@@ -390,15 +406,61 @@ export const header = (activeId = '') => {
 
 /* ---------- footer ---------- */
 
-export const footer = () => `
+export const footer = () => {
+  const footerSocials = getActiveSocials('footer');
+  return `
 <footer class="site-footer">
   <div class="footer-pattern" aria-hidden="true">${iconSize('shield')}${iconSize('network')}${iconSize('camera')}${iconSize('fingerprint')}</div>
+
+  <!-- Location Map Section -->
+  <div class="footer-map-section">
+    <div class="container">
+      <div class="footer-map-card reveal">
+        <div class="footer-map-info">
+          <div class="footer-map-badge">${icon('map-pin')} <span>Our Location</span></div>
+          <h2 class="footer-map-title">Visit Our Experience Center</h2>
+          <p class="footer-map-lead">Serving Theni, Bodinayakanur, Cumbum &amp; all surrounding regions across Tamil Nadu with certified security, CCTV, and network engineering.</p>
+          <address class="footer-map-address">
+            <strong>${esc(site.businessName)}</strong><br>
+            ${site.address.line1}<br>
+            ${site.address.line2}<br>
+            ${site.address.line3}<br>
+            ${site.address.line4}
+          </address>
+          <div class="footer-map-meta">
+            <span class="footer-map-hours">${icon('clock')} <span>${esc(site.businessHours)}</span></span>
+          </div>
+          <div class="footer-map-actions">
+            <a href="${esc(site.googleMapsUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm footer-map-btn" data-track="footer_map_directions">
+              <span>Get Directions</span>
+              ${icon('external')}
+            </a>
+            <a href="/request-site-visit.html" class="btn btn--outline-light btn--sm footer-map-visit" data-track="footer_map_site_visit">
+              ${icon('calendar')}<span>Request Site Visit</span>
+            </a>
+          </div>
+        </div>
+        <div class="footer-map-frame-wrap">
+          <iframe
+            class="footer-map-iframe"
+            title="Keerthi Networks and Security Solution Office Location Map"
+            src="https://maps.google.com/maps?q=10.0163,77.3507&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
         ${logo()}
         <p class="footer-about">${esc(site.footerAbout)}</p>
         <p class="footer-gst"><span>GSTIN</span> ${esc(site.gstin)}</p>
+        ${footerSocials ? `<div class="footer-socials" aria-label="Social media profiles">${footerSocials}</div>` : ''}
         <div class="footer-badge-row">
           <span class="footer-badge">${icon('shield-check')} Security Solutions</span>
           <span class="footer-badge">${icon('network')} Networking</span>
@@ -426,10 +488,9 @@ export const footer = () => `
       <div class="footer-col footer-contact">
         <h3>Contact</h3>
         <ul>
-          <li>${icon('map-pin')}<address>${site.address.line1}<br>${site.address.line2}<br>${site.address.line3}<br>${site.address.line4}</address></li>
-          <li><a href="mailto:${esc(site.email)}">${icon('mail')}<span lang="en">${esc(site.email)}</span></a></li>
           ${site.phoneHref ? `<li><a href="${site.phoneHref}" data-track="phone_click">${icon('phone-call')}<span lang="en">${esc(phoneDisplay)}</span></a></li>` : `<li><span class="footer-muted">${icon('phone-call')}<span>Phone: available shortly — please use WhatsApp or email</span></span></li>`}
-          <li><a href="#" data-wa data-track="whatsapp_click">${WHATSAPP_ICON}<span>Chat on WhatsApp</span></a></li>
+          <li><a href="mailto:${esc(site.email)}">${icon('mail')}<span lang="en">${esc(site.email)}</span></a></li>
+          <li><a href="https://wa.me/${esc(site.whatsapp)}" target="_blank" rel="noopener noreferrer" data-wa data-track="whatsapp_click">${WHATSAPP_ICON}<span>Chat on WhatsApp</span></a></li>
         </ul>
       </div>
     </div>
@@ -447,6 +508,7 @@ export const footer = () => `
     </div>
   </div>
 </footer>`;
+};
 
 /* ---------- floating system ---------- */
 

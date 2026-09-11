@@ -371,7 +371,7 @@ const contactForm = () => `
   ${formStatus()}
   <div class="form-actions">
     <button type="submit" class="btn btn--wa btn--lg">${WHATSAPP_ICON}<span>Send Enquiry on WhatsApp</span></button>
-    <p class="form-note">${icon('info')} Your enquiry opens in <strong>WhatsApp</strong> with all details pre-filled — please press <strong>Send</strong> there. Nothing is sent automatically.</p>
+    <p class="form-note">${icon('info')} <span>Your enquiry opens in <strong>WhatsApp</strong> with all details pre-filled — please press <strong>Send</strong> there. Nothing is sent automatically.</span></p>
   </div>
 </form>`;
 
@@ -430,7 +430,7 @@ const quoteForm = () => `
   ${formStatus()}
   <div class="form-actions">
     <button type="submit" class="btn btn--wa btn--lg">${WHATSAPP_ICON}<span>Request Quote on WhatsApp</span></button>
-    <p class="form-note">${icon('info')} Your request opens in <strong>WhatsApp</strong> fully formatted — please press <strong>Send</strong> there to reach us.</p>
+    <p class="form-note">${icon('info')} <span>Your request opens in <strong>WhatsApp</strong> fully formatted — please press <strong>Send</strong> there to reach us.</span></p>
   </div>
 </form>`;
 
@@ -454,7 +454,7 @@ const siteVisitForm = () => `
   ${formStatus()}
   <div class="form-actions">
     <button type="submit" class="btn btn--wa btn--lg">${WHATSAPP_ICON}<span>Request Site Visit on WhatsApp</span></button>
-    <p class="form-note">${icon('info')} Your request opens in <strong>WhatsApp</strong> pre-formatted — please press <strong>Send</strong> there. We will confirm the slot with you.</p>
+    <p class="form-note">${icon('info')} <span>Your request opens in <strong>WhatsApp</strong> pre-formatted — please press <strong>Send</strong> there. We will confirm the slot with you.</span></p>
   </div>
 </form>`;
 
@@ -985,11 +985,13 @@ const buildSiteVisit = () => {
     </div>
   </section>`;
 
-  write('request-site-visit.html', page({
+  const siteVisitPageHtml = page({
     path: '/request-site-visit.html', title: 'Request a Site Visit | Keerthi Networks and Security Solution',
     description: 'Book a site assessment in Theni, Bodinayakanur or nearby areas for CCTV, networking, intercom, biometric access control or fire safety requirements.',
     content, crumbs: [{ label: 'Request a Site Visit' }], activeId: '', pageType: 'site-visit'
-  }));
+  });
+  write('request-site-visit.html', siteVisitPageHtml);
+  write('site-visit.html', siteVisitPageHtml);
 };
 
 const buildLegal = () => {
@@ -1136,6 +1138,9 @@ var SITE_CONFIG = {
     businessHours: ${JSON.stringify(site.businessHours)},
 
     googleMapsUrl: ${JSON.stringify(site.googleMapsUrl)},
+
+    /* Social media profile links (null values indicate unconfigured profiles) */
+    socialLinks: ${JSON.stringify(site.socialLinks)},
 
     /* Replace with real IDs before enabling analytics. */
     gaMeasurementId: ${JSON.stringify(site.gaMeasurementId)},

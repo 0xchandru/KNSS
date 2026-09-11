@@ -24,7 +24,10 @@ var SITE_CONFIG = {
 
     businessHours: "Mon – Sat: 9:00 AM – 7:30 PM",
 
-    googleMapsUrl: "GOOGLE_MAPS_URL_HERE",
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Keerthi+Networks+and+Security+Solution%2C+No.+159%2C+Karuppasamy+Koil+Street%2C+Dharmathupatti%2C+Melachokkanathapuram%2C+Bodinayakanur%2C+Theni+625582%2C+Tamil+Nadu",
+
+    /* Social media profile links (null values indicate unconfigured profiles) */
+    socialLinks: {"whatsapp":"https://wa.me/916381551316","facebook":null,"instagram":null,"youtube":null,"linkedin":null,"twitter":null},
 
     /* Replace with real IDs before enabling analytics. */
     gaMeasurementId: "GA_MEASUREMENT_ID",
