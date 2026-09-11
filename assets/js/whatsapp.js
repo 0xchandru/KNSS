@@ -9,6 +9,20 @@
 
   var PLACEHOLDER = 'WHATSAPP_NUMBER_HERE';
 
+  /* Tamil/English runtime message helper (KNSS_I18N may not exist yet) */
+  function T(id, fallback, params) {
+    if (window.KNSS_I18N && typeof window.KNSS_I18N.t === 'function') {
+      return window.KNSS_I18N.t(id, fallback, params);
+    }
+    var out = fallback;
+    if (params) {
+      Object.keys(params).forEach(function (k) {
+        out = out.split('{' + k + '}').join(String(params[k]));
+      });
+    }
+    return out;
+  }
+
   function digits(value) {
     return String(value || '').replace(/\D+/g, '');
   }
@@ -59,13 +73,13 @@
       push(label + ': ' + v);
     }
 
-    push('Hello ' + business + ',');
+    push(T('wa.greeting', 'Hello {b},', { b: business }));
     push('');
 
     if (data.intro) {
       push(data.intro);
     } else {
-      push('I found your website and would like to know more about your services.');
+      push(T('wa.generalIntro', 'I found your website and would like to know more about your services.'));
     }
 
     (data.sections || []).forEach(function (section) {
@@ -80,16 +94,16 @@
 
     if (data.requirement && String(data.requirement).trim() !== '') {
       push('');
-      push('REQUIREMENT');
+      push(T('wa.section.requirement', 'REQUIREMENT'));
       push(String(data.requirement).trim());
     }
 
     push('');
-    push('Source: ' + (data.source || 'Website'));
+    push(T('wa.source', 'Source:') + ' ' + (data.source || T('wa.src.website', 'Website')));
     push('');
-    push('Please contact me regarding this requirement.');
+    push(T('wa.closing', 'Please contact me regarding this requirement.'));
     push('');
-    push('Thank you.');
+    push(T('wa.thanks', 'Thank you.'));
 
     return lines.join('\n');
   }
@@ -100,16 +114,16 @@
     var business = cfg.businessName || 'Keerthi Networks and Security Solution';
     if (product) {
       return (
-        'Hello ' + business + ',\n\n' +
-        'I am interested in your ' + product + ' solutions.\n\n' +
-        'I found your website and would like more information.\n\n' +
-        'Thank you.'
+        T('wa.greeting', 'Hello {b},', { b: business }) + '\n\n' +
+        T('wa.productIntro', 'I am interested in your {product} solutions.', { product: product }) + '\n\n' +
+        T('wa.generalIntroShort', 'I found your website and would like more information.') + '\n\n' +
+        T('wa.thanks', 'Thank you.')
       );
     }
     return (
-      'Hello ' + business + ',\n\n' +
-      'I found your website and would like to know more about your services.\n\n' +
-      'Thank you.'
+      T('wa.greeting', 'Hello {b},', { b: business }) + '\n\n' +
+      T('wa.generalIntro', 'I found your website and would like to know more about your services.') + '\n\n' +
+      T('wa.thanks', 'Thank you.')
     );
   }
 
@@ -131,7 +145,7 @@
         btn.setAttribute('data-wa-unconfigured', 'true');
         if (btn.id === 'floatingWhatsApp') {
           btn.setAttribute('aria-disabled', 'true');
-          btn.setAttribute('title', 'WhatsApp number is being updated — please use email for now');
+          btn.setAttribute('title', T('wa.unconfiguredTitle', 'WhatsApp number is being updated — please use email for now'));
         }
       }
 
@@ -140,8 +154,7 @@
           event.preventDefault();
           if (typeof window.showNotice === 'function') {
             window.showNotice(
-              'Our WhatsApp number is being updated. Please reach us by email at ' +
-              ((window.SITE_CONFIG || {}).email || '') + ' — the chat option will be live shortly.',
+              T('toast.waUpdating', 'Our WhatsApp number is being updated. Please reach us by email at {email} — the chat option will be live shortly.', { email: (window.SITE_CONFIG || {}).email || '' }),
               'info'
             );
           }

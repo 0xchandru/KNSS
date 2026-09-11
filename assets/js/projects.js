@@ -4,6 +4,14 @@
 (function () {
   'use strict';
 
+  /* Tamil/English runtime label helper */
+  function lbl(id, fallback) {
+    if (window.KNSS_I18N && typeof window.KNSS_I18N.t === 'function') {
+      return window.KNSS_I18N.t(id, fallback);
+    }
+    return fallback;
+  }
+
   /* ---------------- Filters ---------------- */
 
   function initProjectFilters() {
@@ -42,8 +50,18 @@
         card.classList.toggle('is-hidden', !show);
         if (show) visible++;
       });
-      if (countEl) countEl.textContent = 'Showing ' + visible + ' of ' + cards.length + ' projects';
-      if (emptyEl) emptyEl.hidden = visible !== 0;
+      if (countEl) countEl.textContent = (window.KNSS_I18N && window.KNSS_I18N.t)
+        ? window.KNSS_I18N.t('projects.showing', 'Showing {n} of {t} projects', { n: visible, t: cards.length })
+        : 'Showing ' + visible + ' of ' + cards.length + ' projects';
+      if (emptyEl) {
+        if (visible === 0) {
+          emptyEl.removeAttribute('hidden');
+          emptyEl.style.display = 'grid';
+        } else {
+          emptyEl.setAttribute('hidden', '');
+          emptyEl.style.display = 'none';
+        }
+      }
     }
 
     apply();
@@ -63,15 +81,15 @@
     lightbox.hidden = true;
     lightbox.setAttribute('role', 'dialog');
     lightbox.setAttribute('aria-modal', 'true');
-    lightbox.setAttribute('aria-label', 'Project photo viewer');
+    lightbox.setAttribute('aria-label', lbl('projects.viewer','Project photo viewer'));
     lightbox.innerHTML =
       '<figure class="lightbox-figure">' +
       '  <img alt="">' +
       '  <figcaption class="lightbox-caption"><strong></strong><span></span></figcaption>' +
       '</figure>' +
-      '<button type="button" class="lightbox-btn lightbox-close" aria-label="Close viewer">×</button>' +
-      '<button type="button" class="lightbox-btn lightbox-prev" aria-label="Previous photo">‹</button>' +
-      '<button type="button" class="lightbox-btn lightbox-next" aria-label="Next photo">›</button>';
+      '<button type="button" class="lightbox-btn lightbox-close" aria-label="' + lbl('projects.closeViewer','Close viewer') + '">×</button>' +
+      '<button type="button" class="lightbox-btn lightbox-prev" aria-label="' + lbl('projects.prevPhoto','Previous photo') + '">‹</button>' +
+      '<button type="button" class="lightbox-btn lightbox-next" aria-label="' + lbl('projects.nextPhoto','Next photo') + '">›</button>';
     document.body.appendChild(lightbox);
 
     var img = lightbox.querySelector('img');

@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  var mqDesktop = window.matchMedia ? window.matchMedia('(min-width: 1081px)') : { matches: true, addEventListener: function () {} };
+  var mqDesktop = window.matchMedia ? window.matchMedia('(min-width: 1221px)') : { matches: true, addEventListener: function () {} };
   var header, navToggle, navClose, primaryNav, backdrop, backToTop;
 
   function bodyIs(page) {
@@ -14,14 +14,22 @@
 
   /* ---------- Sticky header state ---------- */
   function initStickyHeader() {
+    var ticking = false;
     var onScroll = function () {
-      var y = window.scrollY || window.pageYOffset;
-      header.classList.toggle('is-scrolled', y > 24);
-      if (backToTop) {
-        var visible = y > 640;
-        backToTop.classList.toggle('is-visible', visible);
-        backToTop.hidden = false;
-        backToTop.setAttribute('tabindex', visible ? '0' : '-1');
+      if (document.body.classList.contains('nav-open')) return;
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          var y = window.scrollY || window.pageYOffset;
+          header.classList.toggle('is-scrolled', y > 40);
+          if (backToTop) {
+            var visible = y > 600;
+            backToTop.classList.toggle('is-visible', visible);
+            backToTop.hidden = false;
+            backToTop.setAttribute('tabindex', visible ? '0' : '-1');
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -31,15 +39,22 @@
   /* ---------- Mobile drawer ---------- */
   function openDrawer() {
     document.body.classList.add('nav-open');
+    document.documentElement.classList.add('nav-open');
     navToggle.setAttribute('aria-expanded', 'true');
     navToggle.setAttribute('aria-label', 'Close menu');
-    var first = primaryNav.querySelector('a, button');
-    if (first) first.focus();
+    if (navClose) {
+      try {
+        navClose.focus({ preventScroll: true });
+      } catch (e) {
+        navClose.focus();
+      }
+    }
   }
 
   function closeDrawer(restoreFocus) {
     if (!document.body.classList.contains('nav-open')) return;
     document.body.classList.remove('nav-open');
+    document.documentElement.classList.remove('nav-open');
     navToggle.setAttribute('aria-expanded', 'false');
     navToggle.setAttribute('aria-label', 'Open menu');
     closeAllDropdowns();
@@ -47,15 +62,28 @@
   }
 
   function initDrawer() {
-    navToggle.addEventListener('click', function () {
+    if (!navToggle || !primaryNav) return;
+    navToggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
       if (document.body.classList.contains('nav-open')) closeDrawer(false);
       else openDrawer();
     });
-    navClose.addEventListener('click', function () { closeDrawer(true); });
-    backdrop.addEventListener('click', function () { closeDrawer(false); });
+    if (navClose) {
+      navClose.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        closeDrawer(true);
+      });
+    }
+    if (backdrop) {
+      backdrop.addEventListener('click', function () { closeDrawer(false); });
+    }
 
     /* Close after tapping a real link inside the drawer */
-    primaryNav.querySelectorAll('a[href^="/"], a[href^="http"]').forEach(function (link) {
+    primaryNav.querySelectorAll('a[href]').forEach(function (link) {
+      var href = link.getAttribute('href') || '';
+      if (href.charAt(0) === '#') return; /* ignore hash-only links */
       link.addEventListener('click', function () { closeDrawer(false); });
     });
 
@@ -99,17 +127,23 @@
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
 
-    /* Desktop: open on hover as well */
-    mqDesktop.addEventListener('change', function () {});
+    /* Desktop: open on hover with graceful debounce so moving to dropdown doesn't close it */
+    var closeTimer = null;
     wrapper.addEventListener('mouseenter', function () {
       if (!mqDesktop.matches) return;
+      if (closeTimer) {
+        clearTimeout(closeTimer);
+        closeTimer = null;
+      }
       wrapper.classList.add('is-open');
       toggle.setAttribute('aria-expanded', 'true');
     });
     wrapper.addEventListener('mouseleave', function () {
       if (!mqDesktop.matches) return;
-      wrapper.classList.remove('is-open');
-      toggle.setAttribute('aria-expanded', 'false');
+      closeTimer = setTimeout(function () {
+        wrapper.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }, 220);
     });
 
     document.addEventListener('click', function (event) {
@@ -126,25 +160,58 @@
 
   /* ---------- Active navigation state ---------- */
   function initActiveNav() {
-    var map = {
-      'index.html': 'home',
-      '/': 'home',
-      'about-us.html': 'about',
-      'industries.html': 'industries',
-      'projects.html': 'projects',
-      'why-choose-us.html': 'why',
-      'contact-us.html': 'contact'
-    };
-    var page = document.body.getAttribute('data-page') || '';
-    if (page.indexOf('/solutions/') === 0) {
-      var el = document.querySelector('[data-nav="solutions"]');
-      if (el) el.classList.add('is-active');
-      return;
+    var raw = (document.body.getAttribute('data-page') || window.location.pathname || '').trim();
+    var clean = raw.split('?')[0].split('#')[0].replace(/^\/+|\/+$/g, '');
+    if (!clean) clean = 'home';
+
+    var activeNav = '';
+    if (clean === 'home' || clean === 'index.html') {
+      activeNav = 'home';
+    } else if (clean.indexOf('solutions') !== -1) {
+      activeNav = 'solutions';
+    } else if (clean.indexOf('about') !== -1) {
+      activeNav = 'about';
+    } else if (clean.indexOf('industries') !== -1) {
+      activeNav = 'industries';
+    } else if (clean.indexOf('projects') !== -1) {
+      activeNav = 'projects';
+    } else if (clean.indexOf('why') !== -1) {
+      activeNav = 'why';
+    } else if (clean.indexOf('contact') !== -1) {
+      activeNav = 'contact';
+    } else if (clean.indexOf('faq') !== -1) {
+      activeNav = 'faq';
     }
-    var key = map[page];
-    if (!key) return;
-    var link = document.querySelector('[data-nav="' + key + '"]');
-    if (link) link.classList.add('is-active');
+
+    if (activeNav) {
+      var links = document.querySelectorAll('.nav-link');
+      for (var i = 0; i < links.length; i++) {
+        if (links[i].getAttribute('data-nav') === activeNav) {
+          links[i].classList.add('is-active');
+          links[i].setAttribute('aria-current', 'page');
+        }
+      }
+    }
+
+    var allNavLinks = document.querySelectorAll('.nav-link:not(.dropdown-toggle)');
+    for (var j = 0; j < allNavLinks.length; j++) {
+      allNavLinks[j].addEventListener('click', function () {
+        for (var k = 0; k < allNavLinks.length; k++) {
+          allNavLinks[k].classList.remove('is-active');
+          allNavLinks[k].removeAttribute('aria-current');
+        }
+        this.classList.add('is-active');
+        this.setAttribute('aria-current', 'page');
+      });
+    }
+  }
+
+  /* ---------- Dynamic Header Spacing & Responsive Collapse ---------- */
+  function checkHeaderCollapsible() {
+    // Breakpoints are handled cleanly and consistently via CSS media queries for both EN and TA
+    if (document.body.classList.contains('header-compact')) {
+      document.body.classList.remove('header-compact');
+    }
   }
 
   function initNavigation() {
@@ -158,8 +225,15 @@
 
     initStickyHeader();
     initActiveNav();
-    if (navToggle && primaryNav && backdrop && navClose) initDrawer();
+    if (navToggle && primaryNav) initDrawer();
     initDropdown();
+
+    checkHeaderCollapsible();
+    window.addEventListener('resize', checkHeaderCollapsible, { passive: true });
+    window.addEventListener('orientationchange', checkHeaderCollapsible, { passive: true });
+    document.addEventListener('knss:langchange', function () {
+      window.requestAnimationFrame(checkHeaderCollapsible);
+    });
 
     if (backToTop) {
       backToTop.addEventListener('click', function () {

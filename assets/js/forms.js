@@ -16,6 +16,20 @@
     if (typeof window.trackEvent === 'function') window.trackEvent(name, params);
   }
 
+  /* Tamil/English runtime message helper */
+  function T(id, fallback, params) {
+    if (window.KNSS_I18N && typeof window.KNSS_I18N.t === 'function') {
+      return window.KNSS_I18N.t(id, fallback, params);
+    }
+    var out = fallback;
+    if (params) {
+      Object.keys(params).forEach(function (k) {
+        out = out.split('{' + k + '}').join(String(params[k]));
+      });
+    }
+    return out;
+  }
+
   /* ---------- helpers ---------- */
 
   function formOf(el) { return el.closest('form'); }
@@ -47,27 +61,27 @@
     var value = (input.value || '').trim();
 
     if (input.required && value === '') {
-      setError(input, 'This field is required.');
+      setError(input, T('validation.required', 'This field is required.'));
       return false;
     }
 
     if (input.type === 'tel' && value !== '') {
       if (!PHONE_RE.test(value.replace(/[\s\-().]/g, ''))) {
-        setError(input, 'Please enter a valid 10-digit mobile number (with optional +91).');
+        setError(input, T('validation.phone', 'Please enter a valid 10-digit mobile number (with optional +91).'));
         return false;
       }
     }
 
     if (input.type === 'email' && value !== '') {
       if (!EMAIL_RE.test(value)) {
-        setError(input, 'Please enter a valid email address.');
+        setError(input, T('validation.email', 'Please enter a valid email address.'));
         return false;
       }
     }
 
     if ((input.name === 'pin') && value !== '') {
       if (!PIN_RE.test(value)) {
-        setError(input, 'PIN code must be exactly 6 digits.');
+        setError(input, T('validation.pin', 'PIN code must be exactly 6 digits.'));
         return false;
       }
     }
@@ -77,7 +91,7 @@
       var today = new Date();
       today.setHours(0, 0, 0, 0);
       if (chosen < today) {
-        setError(input, 'Please choose today or a future date.');
+        setError(input, T('validation.date', 'Please choose today or a future date.'));
         return false;
       }
     }
@@ -119,54 +133,54 @@
 
   function contactMessage(data, sourcePage) {
     return KNSS().buildWhatsAppMessage({
-      intro: 'I would like to enquire about your services.',
+      intro: T('wa.contactIntro', 'I would like to enquire about your services.'),
       sections: [
-        { heading: 'CUSTOMER DETAILS', fields: [
-          ['Name', data.name], ['Phone', data.phone], ['Email', data.email],
-          ['Company', data.company], ['Location', data.location]
+        { heading: T('wa.section.customer', 'CUSTOMER DETAILS'), fields: [
+          [T('wa.label.name', 'Name'), data.name], [T('wa.label.phone', 'Phone'), data.phone], [T('wa.label.email', 'Email'), data.email],
+          [T('wa.label.company', 'Company'), data.company], [T('wa.label.location', 'Location'), data.location]
         ] },
-        { heading: 'SERVICE REQUIRED', fields: [['Service', data.service]] }
+        { heading: T('wa.section.service', 'SERVICE REQUIRED'), fields: [[T('wa.label.service', 'Service'), data.service]] }
       ],
       requirement: data.message,
-      source: 'Contact Form — ' + sourcePage
+      source: T('wa.src.contact', 'Contact Form') + ' — ' + sourcePage
     });
   }
 
   function quoteMessage(data, sourcePage) {
     return KNSS().buildWhatsAppMessage({
-      intro: 'I would like to request a quotation.',
+      intro: T('wa.quoteIntro', 'I would like to request a quotation.'),
       sections: [
-        { heading: 'CUSTOMER DETAILS', fields: [
-          ['Name', data.name], ['Phone', data.phone], ['Email', data.email], ['Company', data.company]
+        { heading: T('wa.section.customer', 'CUSTOMER DETAILS'), fields: [
+          [T('wa.label.name', 'Name'), data.name], [T('wa.label.phone', 'Phone'), data.phone], [T('wa.label.email', 'Email'), data.email], [T('wa.label.company', 'Company'), data.company]
         ] },
-        { heading: 'LOCATION', fields: [
-          ['Address', data.address], ['City', data.city], ['PIN Code', data.pin]
+        { heading: T('wa.section.location', 'LOCATION'), fields: [
+          [T('wa.label.address', 'Address'), data.address], [T('wa.label.city', 'City'), data.city], [T('wa.label.pin', 'PIN Code'), data.pin]
         ] },
-        { heading: 'SERVICE REQUIRED', fields: [['Service', data.service]] },
-        { heading: 'PROPERTY DETAILS', fields: [
-          ['Property', data.property], ['Approximate Area', data.area],
-          ['Floors', data.floors], ['Users/Employees', data.users],
-          ['Existing System', data.existing]
+        { heading: T('wa.section.service', 'SERVICE REQUIRED'), fields: [[T('wa.label.service', 'Service'), data.service]] },
+        { heading: T('wa.section.property', 'PROPERTY DETAILS'), fields: [
+          [T('wa.label.property', 'Property'), data.property], [T('wa.label.area', 'Approximate Area'), data.area],
+          [T('wa.label.floors', 'Floors'), data.floors], [T('wa.label.users', 'Users/Employees'), data.users],
+          [T('wa.label.existing', 'Existing System'), data.existing]
         ] }
       ],
       requirement: data.message,
-      source: 'Website Quote Request — ' + sourcePage
+      source: T('wa.src.quote', 'Website Quote Request') + ' — ' + sourcePage
     });
   }
 
   function siteVisitMessage(data, sourcePage) {
     return KNSS().buildWhatsAppMessage({
-      intro: 'I would like to request a site visit.',
+      intro: T('wa.visitIntro', 'I would like to request a site visit.'),
       sections: [
-        { heading: 'CONTACT DETAILS', fields: [
-          ['Name', data.name], ['Phone', data.phone], ['Email', data.email], ['Location', data.location]
+        { heading: T('wa.section.contact', 'CONTACT DETAILS'), fields: [
+          [T('wa.label.name', 'Name'), data.name], [T('wa.label.phone', 'Phone'), data.phone], [T('wa.label.email', 'Email'), data.email], [T('wa.label.location', 'Location'), data.location]
         ] },
-        { heading: 'VISIT REQUEST', fields: [
-          ['Service', data.service], ['Preferred Date', data.date], ['Preferred Time', data.time]
+        { heading: T('wa.section.visit', 'VISIT REQUEST'), fields: [
+          [T('wa.label.service', 'Service'), data.service], [T('wa.label.date', 'Preferred Date'), data.date], [T('wa.label.time', 'Preferred Time'), data.time]
         ] }
       ],
       requirement: data.message,
-      source: 'Site Visit Request — ' + sourcePage
+      source: T('wa.src.visit', 'Site Visit Request') + ' — ' + sourcePage
     });
   }
 
@@ -195,7 +209,7 @@
       var done = requiredEls.filter(function (el) { return (el.value || '').trim() !== ''; }).length;
       var pct = requiredEls.length ? Math.round((done / requiredEls.length) * 100) : 0;
       fill.style.width = pct + '%';
-      label.textContent = pct + '% complete';
+      label.textContent = T('form.progress', '{n}% complete', { n: pct });
     }
     form.addEventListener('input', update);
     form.addEventListener('change', update);
@@ -252,7 +266,7 @@
         var firstInvalid = validateForm(form);
         if (firstInvalid) {
           showStatus(form, 'error',
-            '<strong>Please check the highlighted fields.</strong><br>Some required information is missing or needs correction.');
+            T('form.fixErrors', '<strong>Please check the highlighted fields.</strong><br>Some required information is missing or needs correction.'));
           firstInvalid.focus({ preventScroll: true });
           if (typeof firstInvalid.scrollIntoView === 'function') firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
           return;
@@ -269,7 +283,7 @@
           submitBtn.setAttribute('aria-busy', 'true');
           submitBtn.style.opacity = '0.7';
           var span = submitBtn.querySelector('span');
-          if (span) { span.dataset.original = span.textContent; span.textContent = 'Opening WhatsApp…'; }
+          if (span) { span.dataset.original = span.textContent; span.textContent = T('form.opening', 'Opening WhatsApp…'); }
         }
 
         var opened = KNSS().openWhatsApp(message);
@@ -285,11 +299,11 @@
           if (opened) {
             track(TRACK_NAMES[type][1], { page: sourcePage, service: data.service || '' });
             showStatus(form, 'success',
-              '<strong>Your enquiry message is ready in WhatsApp. Please press Send to submit it.</strong><br>' +
-              'Nothing is sent automatically — WhatsApp opens with your details pre-filled, and your message reaches us only after you press Send.' +
+              T('form.readyTitle', '<strong>Your enquiry message is ready in WhatsApp. Please press Send to submit it.</strong>') + '<br>' +
+              T('form.readyBody', 'Nothing is sent automatically — WhatsApp opens with your details pre-filled, and your message reaches us only after you press Send.') +
               '<div class="status-actions">' +
-              '<button type="button" class="btn btn--wa btn--sm" data-reopen-wa>Open WhatsApp Again</button>' +
-              '<span class="small-muted">If WhatsApp did not open, please allow pop-ups for this site.</span>' +
+              '<button type="button" class="btn btn--wa btn--sm" data-reopen-wa>' + T('form.reopen', 'Open WhatsApp Again') + '</button>' +
+              '<span class="small-muted">' + T('form.popupNote', 'If WhatsApp did not open, please allow pop-ups for this site.') + '</span>' +
               '</div>');
             var reopen = form.querySelector('[data-reopen-wa]');
             if (reopen) {
@@ -299,8 +313,7 @@
             }
           } else {
             showStatus(form, 'error',
-              '<strong>WhatsApp is not configured yet.</strong><br>' +
-              'Please email your requirement to ' + ((window.SITE_CONFIG || {}).email || '') + ' — we will respond personally.');
+              T('form.waUnconfigured', '<strong>WhatsApp is not configured yet.</strong><br>Please email your requirement to {email} — we will respond personally.', { email: (window.SITE_CONFIG || {}).email || '' }));
           }
         }, 700);
       });

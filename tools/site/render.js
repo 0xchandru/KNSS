@@ -95,6 +95,14 @@ export const iconSize = (name) => {
 export const WHATSAPP_ICON =
   '<svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>';
 
+export const SOCIAL_ICONS = {
+  facebook: '<svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>',
+  instagram: '<svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>',
+  youtube: '<svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>',
+  linkedin: '<svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>',
+  twitter: '<svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>'
+};
+
 /* ---------- logo ---------- */
 
 export const logoMark = (cls = 'logo-mark') => `
@@ -115,10 +123,26 @@ export const logo = (href = '/', cls = '') => `
 <a href="${href}" class="brand ${cls}" aria-label="Keerthi Networks and Security Solution — Home">
   ${logoMark()}
   <span class="brand-text">
-    <span class="brand-name">Keerthi Networks</span>
-    <span class="brand-sub">&amp; Security Solution</span>
+    <span class="brand-name" lang="en">Keerthi Networks</span>
+    <span class="brand-sub" lang="en">&amp; Security Solution</span>
   </span>
 </a>`;
+
+export const preloader = () => `
+<div class="site-preloader" id="sitePreloader" aria-hidden="true">
+  <div class="preloader-inner">
+    <div class="preloader-shield">
+      ${logoMark()}
+    </div>
+    <div class="preloader-brand-title">
+      <span lang="en">Keerthi Networks</span>
+      <small lang="en">Security Solutions</small>
+    </div>
+    <div class="preloader-bar" role="progressbar" aria-label="Loading site">
+      <div class="preloader-progress"></div>
+    </div>
+  </div>
+</div>`;
 
 /* ---------- small reusable blocks ---------- */
 
@@ -218,65 +242,121 @@ const SOLUTION_ICONS = {
   'fire-safety': 'fire'
 };
 
+/* ---------- language toggle (EN / த pill switch) ---------- */
+
+export const langToggle = (variant = '') => `
+<div class="lang-toggle${variant ? ' ' + variant : ''}" role="group" aria-label="Language / மொழி" data-lang-toggle>
+  <button type="button" class="lang-btn is-active" data-lang-option="en" aria-pressed="true" lang="en" title="English">EN</button>
+  <button type="button" class="lang-btn" data-lang-option="ta" aria-pressed="false" lang="ta" title="தமிழ்">த</button>
+</div>`;
+
 export const header = (activeId = '') => {
   const navItems = NAV.map((n) => {
+    const isActive = (n.id === activeId);
     if (n.dropdown) {
       const items = site.solutionOrder
-        .map((slug) => `<li><a href="/solutions/${slug}.html" data-nav="${slug}">${icon(SOLUTION_ICONS[slug])}<span class="dd-item-text"><span class="dd-item-name">${SOLUTION_NAMES[slug]}</span><span class="dd-item-desc">${esc(SOLUTION_MENU[slug])}</span></span></a></li>`)
+        .map((slug) => `<li><a href="/solutions/${slug}.html" data-nav="${slug}">${icon(SOLUTION_ICONS[slug])}<span class="dd-item-text"><span class="dd-item-name">${esc(SOLUTION_NAMES[slug])}</span><span class="dd-item-desc">${esc(SOLUTION_MENU[slug])}</span></span></a></li>`)
         .join('');
       return `<li class="has-dropdown">
-        <button type="button" class="nav-link dropdown-toggle" id="solutionsToggle" aria-expanded="false" aria-controls="solutionsMenu" data-nav="${n.id}"><span>${n.label}</span>${icon('chevron-down', 'dd-chevron')}</button>
+        <button type="button" class="nav-link dropdown-toggle${isActive ? ' is-active' : ''}" id="solutionsToggle" aria-expanded="false" aria-controls="solutionsMenu" data-nav="${n.id}"><span>${n.label}</span>${icon('chevron-down', 'dd-chevron')}</button>
         <ul class="dropdown" id="solutionsMenu" aria-label="Solutions">
           ${items}
           <li class="dropdown-footer"><a href="/industries.html">Not sure what you need? ${icon('arrow-right')}</a></li>
         </ul>
       </li>`;
     }
-    return `<li><a class="nav-link" href="${n.href}" data-nav="${n.id}">${n.label}</a></li>`;
+    return `<li><a class="nav-link${isActive ? ' is-active' : ''}" href="${n.href}" data-nav="${n.id}"${isActive ? ' aria-current="page"' : ''}>${n.label}</a></li>`;
   }).join('');
 
   const phoneLink = site.phoneHref
     ? `<a class="icon-btn" data-tel href="${site.phoneHref}" aria-label="Call ${esc(site.businessName)}" data-track="phone_click">${icon('phone-call')}</a>`
     : '';
 
+  const phoneDisplay = (site.phoneDisplay && site.phoneDisplay !== 'PHONE_NUMBER_HERE')
+    ? site.phoneDisplay
+    : '+91 94894 48999';
+  const phoneHref = site.phoneHref || 'tel:+919489448999';
+
+  const socialMeta = {
+    whatsapp: { cls: 'topbar-social--wa', title: 'WhatsApp', label: 'Chat on WhatsApp', icon: WHATSAPP_ICON, isWa: true },
+    facebook: { cls: 'topbar-social--fb', title: 'Facebook', label: 'Follow KNSS on Facebook', icon: SOCIAL_ICONS.facebook },
+    instagram: { cls: 'topbar-social--ig', title: 'Instagram', label: 'Follow KNSS on Instagram', icon: SOCIAL_ICONS.instagram },
+    youtube: { cls: 'topbar-social--yt', title: 'YouTube', label: 'Watch KNSS on YouTube', icon: SOCIAL_ICONS.youtube },
+    linkedin: { cls: 'topbar-social--in', title: 'LinkedIn', label: 'Connect on LinkedIn', icon: SOCIAL_ICONS.linkedin },
+    twitter: { cls: 'topbar-social--tw', title: 'Twitter / X', label: 'Follow KNSS on Twitter / X', icon: SOCIAL_ICONS.twitter }
+  };
+
+  const activeSocials = Object.entries(site.socialLinks || {})
+    .filter(([_, u]) => u && typeof u === 'string' && u.trim().length > 0);
+
+  const topbarRightHtml = activeSocials.length > 0 ? `
+      <div class="topbar-right">
+        <span class="topbar-social-label">Follow Us:</span>
+        <div class="topbar-socials">
+          ${activeSocials.map(([key, href]) => {
+    const m = socialMeta[key] || { cls: '', title: key, label: key, icon: P.external };
+    const waAttr = m.isWa ? ' data-wa' : '';
+    return `<a href="${esc(href)}" target="_blank" rel="noopener noreferrer" class="topbar-social ${m.cls}" aria-label="${esc(m.label)}" title="${esc(m.title)}"${waAttr}>${m.icon}</a>`;
+  }).join('')}
+        </div>
+      </div>` : '';
+
   return `
 <a class="skip-link" href="#main">Skip to main content</a>
-<header class="site-header" id="siteHeader">
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <ul class="topbar-info">
-        ${phoneLink ? `<li>${phoneLink}<span class="topbar-text">${esc(site.phoneDisplay)}</span></li>` : ''}
-        <li><a href="mailto:${esc(site.email)}" class="topbar-mail" aria-label="Email us">${icon('mail')}<span class="topbar-text">${esc(site.email)}</span></a></li>
-        <li class="topbar-loc">${icon('map-pin')}<span class="topbar-text">${esc(site.addressShort)}</span></li>
-      </ul>
-      <ul class="topbar-extra">
-        <li class="topbar-hours">${icon('clock')}<span class="topbar-text">${esc(site.businessHours)}</span></li>
-        <li><a href="#" class="topbar-wa" data-wa aria-label="Chat on WhatsApp" data-track="whatsapp_click">${WHATSAPP_ICON}<span class="topbar-text">WhatsApp</span></a></li>
-      </ul>
+<div class="topbar">
+  <div class="container topbar-inner">
+    <div class="topbar-left">
+      <a href="mailto:${esc(site.email)}" class="topbar-item topbar-email" aria-label="Email: ${esc(site.email)}">${icon('mail')}<span lang="en">${esc(site.email)}</span></a>
+      <a href="${phoneHref}" class="topbar-item topbar-phone" data-tel aria-label="Call: ${esc(phoneDisplay)}">${icon('phone-call')}<span lang="en">${esc(phoneDisplay)}</span></a>
+      <span class="topbar-item topbar-loc" title="${esc(site.addressShort)}">${icon('map-pin')}<span>${esc(site.addressShort)}</span></span>
     </div>
+${topbarRightHtml}
   </div>
+</div>
+<header class="site-header" id="siteHeader">
   <div class="navbar">
     <div class="container navbar-inner">
       ${logo()}
       <nav class="primary-nav" id="primaryNav" aria-label="Main navigation">
         <div class="primary-nav-head">
-          ${logoMark('logo-mark logo-mark--nav')}
-          <button type="button" class="nav-close" id="navClose" aria-label="Close menu">${icon('x')}</button>
+          <div class="primary-nav-brand">
+            ${logoMark('logo-mark logo-mark--nav')}
+            <span class="pnav-title">
+              <span class="pnav-name" lang="en">Keerthi Networks</span>
+              <span class="pnav-sub" lang="en">&amp; Security Solution</span>
+            </span>
+          </div>
+          <div class="primary-nav-head-actions">
+            ${langToggle('lang-toggle--drawer')}
+            <button type="button" class="nav-close" id="navClose" aria-label="Close menu">${icon('x')}</button>
+          </div>
         </div>
-        <ul class="nav-list">${navItems}</ul>
-        <div class="nav-cta-group">
-          <a href="/request-site-visit.html" class="btn btn--ghost-dark btn--sm" data-track="site_visit_click">Request Site Visit</a>
-          <a href="/request-a-quote.html" class="btn btn--primary btn--sm" data-track="quote_click">Get Free Quote</a>
-          <a href="#" class="btn btn--wa btn--sm" data-wa data-track="whatsapp_click">${WHATSAPP_ICON}<span>WhatsApp Us</span></a>
+        <div class="primary-nav-body">
+          <ul class="nav-list">${navItems}</ul>
         </div>
-        <div class="nav-contact-mini">
-          <a href="mailto:${esc(site.email)}">${icon('mail')}<span>${esc(site.email)}</span></a>
-          <span>${icon('map-pin')}<span>${esc(site.addressShort)}</span></span>
+        <div class="primary-nav-footer">
+          <div class="nav-cta-group">
+            <a href="/request-a-quote.html" class="btn btn--primary btn--drawer-quote" data-track="quote_click">
+              <span>Get Free Quote</span>${icon('arrow-right')}
+            </a>
+            <div class="nav-cta-row">
+              <a href="/request-site-visit.html" class="btn btn--ghost-dark btn--sm" data-track="site_visit_click">
+                ${icon('calendar')}<span>Site Visit</span>
+              </a>
+              <a href="#" class="btn btn--wa btn--sm" data-wa data-track="whatsapp_click">
+                ${WHATSAPP_ICON}<span>WhatsApp</span>
+              </a>
+            </div>
+          </div>
+          <div class="nav-contact-mini">
+            <a href="${phoneHref}" data-tel>${icon('phone-call')}<span>${esc(phoneDisplay)}</span></a>
+            <a href="mailto:${esc(site.email)}">${icon('mail')}<span>${esc(site.email)}</span></a>
+          </div>
         </div>
       </nav>
       <div class="navbar-actions">
+        ${langToggle('lang-toggle--nav')}
         ${phoneLink}
-        <a href="#" class="icon-btn icon-btn--wa" data-wa aria-label="Chat on WhatsApp" data-track="whatsapp_click">${WHATSAPP_ICON}</a>
         <a href="/request-a-quote.html" class="btn btn--primary navbar-quote" data-track="quote_click">Get Free Quote</a>
         <button type="button" class="hamburger" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Open menu">
           <span class="hamburger-box"><span class="hamburger-inner"></span></span>
@@ -284,7 +364,8 @@ export const header = (activeId = '') => {
       </div>
     </div>
   </div>
-</header>`;
+</header>
+<div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>`;
 };
 
 /* ---------- footer ---------- */
@@ -326,8 +407,8 @@ export const footer = () => `
         <h3>Contact</h3>
         <ul>
           <li>${icon('map-pin')}<address>${site.address.line1}<br>${site.address.line2}<br>${site.address.line3}<br>${site.address.line4}</address></li>
-          <li><a href="mailto:${esc(site.email)}">${icon('mail')}<span>${esc(site.email)}</span></a></li>
-          ${site.phoneHref ? `<li><a href="${site.phoneHref}" data-track="phone_click">${icon('phone-call')}<span>${esc(site.phoneDisplay)}</span></a></li>` : `<li><span class="footer-muted">${icon('phone-call')}<span>Phone: available shortly — please use WhatsApp or email</span></span></li>`}
+          <li><a href="mailto:${esc(site.email)}">${icon('mail')}<span lang="en">${esc(site.email)}</span></a></li>
+          ${site.phoneHref ? `<li><a href="${site.phoneHref}" data-track="phone_click">${icon('phone-call')}<span lang="en">${esc(phoneDisplay)}</span></a></li>` : `<li><span class="footer-muted">${icon('phone-call')}<span>Phone: available shortly — please use WhatsApp or email</span></span></li>`}
           <li><a href="#" data-wa data-track="whatsapp_click">${WHATSAPP_ICON}<span>Chat on WhatsApp</span></a></li>
         </ul>
       </div>
@@ -335,7 +416,8 @@ export const footer = () => `
   </div>
   <div class="footer-bottom">
     <div class="container footer-bottom-inner">
-      <p>© ${site.year} ${esc(site.businessName)}. All Rights Reserved.</p>
+      <p class="footer-copy">© <span id="year"></span> ${esc(site.businessName)}. All Rights Reserved.</p>
+      <p class="footer-powered">Powered By <a href="https://billionbiz.in" target="_blank" rel="noopener noreferrer">BillionBiz</a></p>
       <ul class="footer-legal">
         <li><a href="/privacy-policy.html">Privacy Policy</a></li>
         <li><a href="/terms-and-conditions.html">Terms &amp; Conditions</a></li>
@@ -424,9 +506,9 @@ export const breadcrumbs = (crumbs) => `
     <ol class="breadcrumbs-list">
       <li><a href="/"><span aria-hidden="true">⌂</span> Home</a><span class="bc-sep" aria-hidden="true">›</span></li>
       ${crumbs.map((c, i) => {
-        const last = i === crumbs.length - 1;
-        return `<li ${last ? 'aria-current="page"' : ''}>${c.href && !last ? `<a href="${c.href}">${esc(c.label)}</a>` : `<span>${esc(c.label)}</span>`}${last ? '' : '<span class="bc-sep" aria-hidden="true">›</span>'}</li>`;
-      }).join('')}
+  const last = i === crumbs.length - 1;
+  return `<li ${last ? 'aria-current="page"' : ''}>${c.href && !last ? `<a href="${c.href}">${esc(c.label)}</a>` : `<span>${esc(c.label)}</span>`}${last ? '' : '<span class="bc-sep" aria-hidden="true">›</span>'}</li>`;
+}).join('')}
     </ol>
   </div>
 </nav>`;
@@ -479,15 +561,16 @@ export function page({
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700&display=swap"></noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@300;400;500;600;700;900&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@300;400;500;600;700;900&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="stylesheet" href="/assets/css/pages.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
-  <script>document.documentElement.classList.add('js');</script>
+  <script>document.documentElement.classList.add('js');try{if(localStorage.getItem('knss-lang')==='ta'){document.documentElement.lang='ta';document.documentElement.classList.add('lang-ta');}}catch(e){}try{if(sessionStorage.getItem('knss_preloaded')){document.documentElement.classList.add('preloader-done');}}catch(e){}</script>
   ${ld.map(jsonLdTag).join('\n  ')}
 </head>
 <body data-page="${esc(path)}" data-page-type="${esc(pageType)}" ${waProduct ? `data-wa-product="${esc(waProduct)}"` : ''} class="${esc(bodyClass)}">
+${preloader()}
 ${header(activeId)}
 <main id="main">
 ${crumbs ? breadcrumbs(crumbs) : ''}
@@ -496,6 +579,8 @@ ${content}
 ${footer()}
 ${floats()}
 <script src="/assets/js/config.js" defer></script>
+<script src="/assets/js/i18n-data.js"></script>
+<script src="/assets/js/i18n.js"></script>
 <script src="/assets/js/whatsapp.js" defer></script>
 <script src="/assets/js/navigation.js" defer></script>
 <script src="/assets/js/animations.js" defer></script>
@@ -508,12 +593,12 @@ ${floats()}
 </html>`;
 }
 
-/* solution display names (shared) */
+/* solution display names (shared) — raw text; ALWAYS insert via esc() */
 export const SOLUTION_NAMES = {
   'cctv-surveillance': 'CCTV Surveillance',
   'intercom-systems': 'Intercom Systems',
   'networking-solutions': 'Networking Solutions',
-  'biometric-access-control': 'Biometric &amp; Access Control',
+  'biometric-access-control': 'Biometric & Access Control',
   'fire-safety': 'Fire Safety Solutions'
 };
 

@@ -20,11 +20,28 @@ const ROOT = path.resolve(import.meta.dirname, '../..');
 const write = (rel, html) => {
   const file = path.join(ROOT, rel);
   fs.mkdirSync(path.dirname(file), { recursive: true });
+  /* GitHub Pages serves project sites from a sub-path (e.g. /KNSS/).
+     Rewrite root-absolute internal URLs ("/assets/...", "/about-us.html")
+     to depth-correct relative URLs so the site works at ANY base path. */
+  const depth = rel.split('/').length - 1;
+  const prefix = depth === 0 ? './' : '../'.repeat(depth);
+  html = html.replace(/(href|src)="\/(?!\/)([^"]*)"/g, (_m, attr, p) => `${attr}="${prefix}${p}"`);
   fs.writeFileSync(file, html.trim() + '\n', 'utf8');
   console.log('✓', rel);
 };
 
 const solImg = (name) => `/assets/images/solutions/${name}.jpg`;
+
+/* Category chips on project cards — correct acronym casing (never title-case
+   programmatically; "cctv" would become "Cctv"). */
+const PROJECT_CATEGORY_LABELS = {
+  'cctv': 'CCTV',
+  'networking': 'Networking',
+  'biometric': 'Biometric',
+  'intercom': 'Intercom',
+  'fire-safety': 'Fire Safety'
+};
+const projectCategoryLabel = (c) => PROJECT_CATEGORY_LABELS[c] || c;
 
 /* ============================================================
    SHARED SECTION BUILDERS
@@ -78,21 +95,24 @@ const trustHighlights = () => `
     <div class="trust-grid">
       ${home.trustHighlights.map((t) => `
       <div class="trust-item reveal">
-        ${iconBox(t.icon)}
-        <div><h3>${esc(t.title)}</h3><p>${esc(t.text)}</p></div>
+        ${iconBox(t.icon, 'trust-icon')}
+        <div class="trust-body"><h3>${esc(t.title)}</h3><p>${esc(t.text)}</p></div>
       </div>`).join('')}
     </div>
   </div>
 </section>`;
 
 const aboutSection = () => `
-<section class="section section--white" aria-labelledby="homeAboutTitle">
+<section class="section section--white about-home-section" aria-labelledby="homeAboutTitle">
   <div class="container split">
     <div class="split-media reveal">
-      <figure class="frame frame--offset">
-        <img src="/assets/images/about-team.jpg" alt="Keerthi Networks technicians reviewing an installation plan with CCTV equipment on site" loading="lazy" width="1536" height="1024">
-      </figure>
-      <div class="frame-badge">${icon('shield-check')}<span><strong>Protect. Connect. Secure.</strong><em>Our promise on every project</em></span></div>
+      <div class="media-frame-wrap">
+        <figure class="frame frame--offset">
+          <img src="/assets/images/about-team.jpg" alt="Keerthi Networks technicians reviewing an installation plan with CCTV equipment on site" loading="lazy" decoding="async" width="1536" height="1024">
+        </figure>
+        <div class="frame-badge frame-badge--bottom">${icon('shield-check')}<span><strong>Protect. Connect. Secure.</strong><em>Our promise on every project</em></span></div>
+        <div class="frame-badge frame-badge--top">${icon('award')}<span><strong>100% Quality Hardware</strong><em>Genuine OEM Components</em></span></div>
+      </div>
     </div>
     <div class="split-copy">
       <div class="section-head align-left reveal">
@@ -101,10 +121,27 @@ const aboutSection = () => `
       </div>
       <p class="reveal">Keerthi Networks and Security Solution is a security technology and infrastructure company based in Bodinayakanur, Theni district. We design, install and maintain the systems that keep properties safe and connected — CCTV surveillance, intercom and video door phones, computer networks, biometric attendance and access control, and fire safety equipment.</p>
       <p class="reveal">Because security and networking work best when they are planned together, you get one accountable partner instead of five different vendors — clearer coordination, neater installation and faster support.</p>
+      <div class="about-highlights-grid reveal">
+        <div class="about-hl-card">
+          <span class="about-hl-num">5+</span>
+          <span class="about-hl-label">Core Specialisations</span>
+          <span class="about-hl-desc">CCTV, Intercom, Networks, Biometrics &amp; Fire</span>
+        </div>
+        <div class="about-hl-card">
+          <span class="about-hl-num">100%</span>
+          <span class="about-hl-label">Transparent Quotations</span>
+          <span class="about-hl-desc">Itemised parts &amp; labour, no hidden margins</span>
+        </div>
+        <div class="about-hl-card">
+          <span class="about-hl-num">1</span>
+          <span class="about-hl-label">Accountable Partner</span>
+          <span class="about-hl-desc">From initial site survey to long-term AMC</span>
+        </div>
+      </div>
       ${checkList(['One partner for security, communication and networking', 'Site-based system design — no guesswork', 'Neat, professional installation by trained technicians', 'Itemised quotations and honest recommendations'], 'reveal')}
       <div class="split-actions reveal">
-        <a href="/about-us.html" class="btn btn--ghost-dark">More About Us ${icon('arrow-right')}</a>
-        <a href="/why-choose-us.html" class="link-arrow">Why choose us ${icon('arrow-right')}</a>
+        <a href="/about-us.html" class="btn btn--primary">Discover Our Story ${icon('arrow-right')}</a>
+        <a href="/why-choose-us.html" class="btn btn--ghost-dark">Why choose us ${icon('arrow-right')}</a>
       </div>
     </div>
   </div>
@@ -222,7 +259,7 @@ const featuredProjects = () => `
     <div class="mini-project-grid">
       ${projects.projects.slice(0, 4).map((p) => `
       <article class="mini-project reveal">
-        <div class="mini-project-media"><img src="${solImg(p.image)}" alt="Representative photo of a ${esc(p.category.replace('-', ' '))} installation" loading="lazy" width="768" height="512"><span class="tag tag--accent">${esc(p.category.replace('-', ' ').replace(/\b\w/g, (c) => c.toUpperCase()))}</span></div>
+        <div class="mini-project-media"><img src="${solImg(p.image)}" alt="Representative photo of a ${esc(p.category.replace('-', ' '))} installation" loading="lazy" width="768" height="512"><span class="tag tag--accent">${esc(projectCategoryLabel(p.category))}</span></div>
         <div class="mini-project-body">
           <h3>${esc(p.title)}</h3>
           <p class="mini-project-meta">${icon('map-pin')} ${esc(p.location)} · ${esc(p.industry[0].toUpperCase() + p.industry.slice(1))}</p>
@@ -726,7 +763,7 @@ const buildProjects = () => {
           <button type="button" class="project-card-media" data-lightbox="${i}" aria-label="View larger photo — ${esc(p.title)}" data-track="project_view">
             <img src="${solImg(p.image)}" alt="Representative photo of a ${esc(p.category.replace('-', ' '))} installation — ${esc(p.title)}" loading="lazy" width="768" height="512">
             <span class="project-card-zoom">${icon('search')}</span>
-            <span class="tag tag--accent project-card-tag">${esc(p.category.replace('-', ' ').replace(/\b\w/g, (c) => c.toUpperCase()))}</span>
+            <span class="tag tag--accent project-card-tag">${esc(projectCategoryLabel(p.category))}</span>
           </button>
           <div class="project-card-body">
             <h3>${esc(p.title)}</h3>
@@ -736,7 +773,7 @@ const buildProjects = () => {
           </div>
         </article>`).join('')}
       </div>
-      <div class="empty-state" id="projectsEmpty" hidden>
+      <div class="empty-state" id="projectsEmpty" hidden style="display: none;">
         ${icon('search')}
         <h2>No projects match this combination</h2>
         <p>Try a different filter combination, or ask us directly about work similar to your requirement.</p>
@@ -860,7 +897,7 @@ const buildContact = () => {
         </div>
         <div class="contact-card reveal">
           <h2>${icon('clock')} Business Hours</h2>
-          <p class="contact-muted">${esc(site.businessHours)}</p>
+          <p class="contact-muted">${site.businessHours && site.businessHours !== 'BUSINESS_HOURS_HERE' ? esc(site.businessHours) : 'Mon – Sat: 9:00 AM – 7:30 PM<br><span class="small-muted">Sunday by appointment</span>'}</p>
         </div>
         <div class="contact-card reveal">
           <h2>${icon('doc')} Business Registration</h2>
@@ -937,7 +974,7 @@ const buildSiteVisit = () => {
         </div>
         <div class="side-card side-card--tint reveal">
           <h2>${icon('calendar')} Visiting Hours</h2>
-          <p>${esc(site.businessHours)}</p>
+          <p>${site.businessHours && site.businessHours !== 'BUSINESS_HOURS_HERE' ? esc(site.businessHours) : 'Monday – Saturday (9:00 AM – 7:00 PM)'}</p>
           <p class="small-muted">Date and time are requests — we confirm by WhatsApp before setting out.</p>
         </div>
       </div>
@@ -1052,16 +1089,16 @@ Sitemap: ${url('/sitemap.xml')}
     name: site.businessName,
     short_name: 'KNSS',
     description: 'CCTV, Intercom, Networking, Biometric, Access Control & Fire Safety solutions in Theni, Tamil Nadu.',
-    start_url: '/',
-    scope: '/',
+    start_url: './',
+    scope: './',
     display: 'standalone',
     background_color: '#0B1F3A',
     theme_color: '#0B1F3A',
     lang: 'en-IN',
     icons: [
-      { src: '/assets/icons/icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
-      { src: '/assets/icons/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
-      { src: '/assets/icons/favicon.svg', sizes: 'any', type: 'image/svg+xml' }
+      { src: 'assets/icons/icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
+      { src: 'assets/icons/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
+      { src: 'assets/icons/favicon.svg', sizes: 'any', type: 'image/svg+xml' }
     ]
   }, null, 2) + '\n');
 };
@@ -1108,10 +1145,49 @@ var SITE_CONFIG = {
 };
 
 /* ============================================================
+   i18n DATA (Tamil dictionary → assets/js/i18n-data.js)
+   Merged from tools/site/i18n/*.json — exact-English string map
+   plus runtime message IDs and per-page titles.
+   ============================================================ */
+
+const buildI18n = () => {
+  const dir = path.join(import.meta.dirname, 'i18n');
+  const files = ['ta-ui.json', 'ta-solutions.json', 'ta-legal.json', 'ta-extra.json'];
+  const strings = {};
+  const runtime = {};
+  const attrs = {};
+  const meta = {};
+  for (const f of files) {
+    const data = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
+    Object.assign(strings, data.strings || {});
+    Object.assign(runtime, data.runtime || {});
+    Object.assign(attrs, data.attrs || {});
+    Object.assign(meta, data.meta || {});
+  }
+  const js = `/* ============================================================
+   I18N DATA — Tamil dictionary for the EN / த language toggle.
+   Generated by tools/site/build.js from tools/site/i18n/*.json.
+   Do not edit by hand — update the JSON sources and re-run
+   "node tools/site/build.js". Declared with "var" so the data is
+   reachable as window.KNSS_I18N_DATA from every other script.
+   ============================================================ */
+var KNSS_I18N_DATA = {
+    lang: 'ta',
+    strings: ${JSON.stringify(strings)},
+    runtime: ${JSON.stringify(runtime)},
+    attrs: ${JSON.stringify(attrs)},
+    meta: ${JSON.stringify(meta)}
+};
+`;
+  write('assets/js/i18n-data.js', js);
+};
+
+/* ============================================================
    RUN
    ============================================================ */
 
 buildConfig();
+buildI18n();
 buildHome();
 buildAbout();
 for (const slug of site.solutionOrder) buildSolution(slug);

@@ -32,9 +32,91 @@
     }
   }
 
+  /* ---------- Footer year ---------- */
+  function initYear() {
+    var el = document.getElementById('year');
+    if (el) el.textContent = String(new Date().getFullYear());
+  }
+
+  /* ---------- Preloader ---------- */
+  function initPreloader() {
+    var preloader = document.getElementById('sitePreloader');
+    if (!preloader) return;
+
+    var isDone = false;
+    try { isDone = !!sessionStorage.getItem('knss_preloaded'); } catch (e) {}
+
+    function dismiss(instant) {
+      try { sessionStorage.setItem('knss_preloaded', '1'); } catch (e) {}
+      document.documentElement.classList.add('preloader-done');
+      if (instant) {
+        preloader.classList.add('is-loaded');
+        preloader.style.display = 'none';
+        if (preloader.parentNode) preloader.parentNode.removeChild(preloader);
+        return;
+      }
+      preloader.classList.add('is-loaded');
+      window.setTimeout(function () {
+        if (preloader.parentNode) preloader.parentNode.removeChild(preloader);
+      }, 350);
+    }
+
+    if (isDone) {
+      dismiss(true);
+      return;
+    }
+
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      window.setTimeout(function () { dismiss(false); }, 100);
+    } else {
+      document.addEventListener('DOMContentLoaded', function () {
+        window.setTimeout(function () { dismiss(false); }, 80);
+      });
+      window.addEventListener('load', function () {
+        dismiss(false);
+      });
+      /* Safety fallback */
+      window.setTimeout(function () { dismiss(false); }, 500);
+    }
+  }
+
+  /* Handle Back/Forward Cache (bfcache) navigation */
+  window.addEventListener('pageshow', function () {
+    try { sessionStorage.setItem('knss_preloaded', '1'); } catch (e) {}
+    document.documentElement.classList.add('preloader-done');
+    var p = document.getElementById('sitePreloader');
+    if (p) {
+      p.classList.add('is-loaded');
+      p.style.display = 'none';
+      if (p.parentNode) p.parentNode.removeChild(p);
+    }
+  });
+
+  /* ---------- Image Skeletons & Lazy Loading ---------- */
+  function initImageSkeletons() {
+    var images = document.querySelectorAll('img[loading="lazy"]');
+    images.forEach(function (img) {
+      function markLoaded() {
+        img.classList.add('img-loaded');
+        var parent = img.closest('figure, .mini-project-media, .page-hero-frame, .project-card-media, .frame, .sol-card-media');
+        if (parent) parent.classList.add('is-loaded');
+      }
+      if (img.complete && img.naturalWidth > 0) {
+        markLoaded();
+      } else {
+        img.addEventListener('load', markLoaded);
+        img.addEventListener('error', markLoaded);
+      }
+    });
+  }
+
   /* ---------- Boot ---------- */
   function init() {
+    initPreloader();
+    initImageSkeletons();
     window.showNotice = showNotice;
+
+    initYear();
 
     if (window.KNSS_NAV) window.KNSS_NAV.initNavigation();
     if (window.KNSS_ANIMATIONS) window.KNSS_ANIMATIONS.initAnimations();
@@ -51,7 +133,9 @@
     document.querySelectorAll('[data-call-unconfigured]').forEach(function (el) {
       el.addEventListener('click', function (event) {
         event.preventDefault();
-        showNotice('Our phone number is being updated. Please reach us on WhatsApp or email — both are answered personally.', 'info');
+        showNotice(window.KNSS_I18N && window.KNSS_I18N.t
+          ? window.KNSS_I18N.t('toast.callUpdating', 'Our phone number is being updated. Please reach us on WhatsApp or email — both are answered personally.')
+          : 'Our phone number is being updated. Please reach us on WhatsApp or email — both are answered personally.', 'info');
       });
     });
   }
