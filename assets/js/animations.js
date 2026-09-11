@@ -20,12 +20,24 @@
         entry.target.classList.add('is-visible');
         observer.unobserve(entry.target);
       });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    }, { rootMargin: '120px 0px 120px 0px', threshold: 0.02 });
 
     targets.forEach(function (el) {
-      /* Elements already in the first viewport appear without delay */
-      observer.observe(el);
+      var rect = el.getBoundingClientRect();
+      if (rect.top < (window.innerHeight || 800) + 160 && rect.bottom > -80) {
+        el.classList.add('is-visible');
+      } else {
+        observer.observe(el);
+      }
     });
+
+    /* Activate animation hide only for unrevealed offscreen elements */
+    document.documentElement.classList.add('animations-ready');
+
+    /* Safety fallback */
+    window.setTimeout(function () {
+      targets.forEach(function (el) { el.classList.add('is-visible'); });
+    }, 450);
   }
 
   window.KNSS_ANIMATIONS = { initAnimations: initAnimations };

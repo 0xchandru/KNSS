@@ -2,10 +2,25 @@
 .DS_Store
 Thumbs.db
 *.swp
+*.swo
+*~
+.idea/
+.vscode/
 
 # Local tooling (the site itself has zero dependencies)
 node_modules/
 .tools/
 
-# Logs
+# Logs & temporary files
 *.log
+*.tmp
+scratch/
+
+# Agent skills and customizations
+Skills/
+.agents/
+
+# Environment variables
+.env
+.env.local
+.env.*.local

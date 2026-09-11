@@ -98,7 +98,7 @@
     images.forEach(function (img) {
       function markLoaded() {
         img.classList.add('img-loaded');
-        var parent = img.closest('figure, .mini-project-media, .page-hero-frame, .project-card-media, .frame, .sol-card-media');
+        var parent = img.closest('figure, .mini-project-media, .page-hero-frame, .project-card-media, .frame');
         if (parent) parent.classList.add('is-loaded');
       }
       if (img.complete && img.naturalWidth > 0) {

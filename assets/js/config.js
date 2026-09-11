@@ -10,11 +10,11 @@ var SITE_CONFIG = {
     businessName: "Keerthi Networks and Security Solution",
 
     /* Client to provide verified phone number (currently unverified). */
-    phone: "PHONE_NUMBER_HERE",
-    phoneHref: "",
+    phone: "+91 63815 51316",
+    phoneHref: "tel:+916381551316",
 
     /* Client to provide verified WhatsApp number (currently unverified). */
-    whatsapp: "WHATSAPP_NUMBER_HERE",
+    whatsapp: "916381551316",
 
     email: "knsschennai@gmail.com",
 
@@ -22,7 +22,7 @@ var SITE_CONFIG = {
 
     gstin: "33JIDPK6358B1ZC",
 
-    businessHours: "BUSINESS_HOURS_HERE",
+    businessHours: "Mon – Sat: 9:00 AM – 7:30 PM",
 
     googleMapsUrl: "GOOGLE_MAPS_URL_HERE",
 

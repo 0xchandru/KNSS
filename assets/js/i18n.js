@@ -214,7 +214,14 @@
     });
 
     var saved = 'en';
-    try { saved = localStorage.getItem(STORAGE_KEY) || 'en'; } catch (e) { /* private mode */ }
+    try {
+      var param = new URLSearchParams(window.location.search).get('lang');
+      if (param === 'ta' || param === 'en') {
+        saved = param;
+      } else {
+        saved = localStorage.getItem(STORAGE_KEY) || 'en';
+      }
+    } catch (e) { /* private mode */ }
     if (saved === 'ta') {
       setLang('ta', { force: true });
     } else {

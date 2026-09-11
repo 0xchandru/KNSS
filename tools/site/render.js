@@ -5,6 +5,9 @@ import site from './content/site.json' with { type: 'json' };
 
 export { site };
 
+export const phoneDisplay = site.phoneDisplay || '';
+export const phoneHref = site.phoneHref || '';
+
 /* ---------- utilities ---------- */
 
 export const esc = (s = '') =>
@@ -268,14 +271,6 @@ export const header = (activeId = '') => {
     return `<li><a class="nav-link${isActive ? ' is-active' : ''}" href="${n.href}" data-nav="${n.id}"${isActive ? ' aria-current="page"' : ''}>${n.label}</a></li>`;
   }).join('');
 
-  const phoneLink = site.phoneHref
-    ? `<a class="icon-btn" data-tel href="${site.phoneHref}" aria-label="Call ${esc(site.businessName)}" data-track="phone_click">${icon('phone-call')}</a>`
-    : '';
-
-  const phoneDisplay = (site.phoneDisplay && site.phoneDisplay !== 'PHONE_NUMBER_HERE')
-    ? site.phoneDisplay
-    : '+91 94894 48999';
-  const phoneHref = site.phoneHref || 'tel:+919489448999';
 
   const socialMeta = {
     whatsapp: { cls: 'topbar-social--wa', title: 'WhatsApp', label: 'Chat on WhatsApp', icon: WHATSAPP_ICON, isWa: true },
@@ -289,28 +284,54 @@ export const header = (activeId = '') => {
   const activeSocials = Object.entries(site.socialLinks || {})
     .filter(([_, u]) => u && typeof u === 'string' && u.trim().length > 0);
 
-  const topbarRightHtml = activeSocials.length > 0 ? `
-      <div class="topbar-right">
-        <span class="topbar-social-label">Follow Us:</span>
-        <div class="topbar-socials">
-          ${activeSocials.map(([key, href]) => {
-    const m = socialMeta[key] || { cls: '', title: key, label: key, icon: P.external };
-    const waAttr = m.isWa ? ' data-wa' : '';
-    return `<a href="${esc(href)}" target="_blank" rel="noopener noreferrer" class="topbar-social ${m.cls}" aria-label="${esc(m.label)}" title="${esc(m.title)}"${waAttr}>${m.icon}</a>`;
-  }).join('')}
-        </div>
-      </div>` : '';
-
   return `
 <a class="skip-link" href="#main">Skip to main content</a>
 <div class="topbar">
   <div class="container topbar-inner">
     <div class="topbar-left">
-      <a href="mailto:${esc(site.email)}" class="topbar-item topbar-email" aria-label="Email: ${esc(site.email)}">${icon('mail')}<span lang="en">${esc(site.email)}</span></a>
-      <a href="${phoneHref}" class="topbar-item topbar-phone" data-tel aria-label="Call: ${esc(phoneDisplay)}">${icon('phone-call')}<span lang="en">${esc(phoneDisplay)}</span></a>
-      <span class="topbar-item topbar-loc" title="${esc(site.addressShort)}">${icon('map-pin')}<span>${esc(site.addressShort)}</span></span>
+      <span class="topbar-item topbar-loc" title="Service Coverage Area">
+        ${icon('map-pin')}
+        <span>Serving Theni, Cumbum &amp; Tamil Nadu</span>
+      </span>
+      <span class="topbar-sep" aria-hidden="true"></span>
+      <span class="topbar-item topbar-hours" title="Official Business Hours">
+        ${icon('clock')}
+        <span>${esc(site.businessHours)}</span>
+      </span>
     </div>
-${topbarRightHtml}
+    <div class="topbar-right">
+      <a href="${phoneHref}" class="topbar-item topbar-phone" data-tel aria-label="Call: ${esc(phoneDisplay)}">
+        ${icon('phone-call')}
+        <span lang="en">${esc(phoneDisplay)}</span>
+      </a>
+      <span class="topbar-sep" aria-hidden="true"></span>
+      <a href="https://wa.me/${esc(site.whatsapp)}" target="_blank" rel="noopener noreferrer" class="topbar-wa-pill" data-wa aria-label="Chat on WhatsApp">
+        ${WHATSAPP_ICON}
+        <span>WhatsApp</span>
+      </a>
+      <span class="topbar-sep" aria-hidden="true"></span>
+      <a href="/request-site-visit.html" class="topbar-cta-pill" data-track="topbar_visit_click">
+        <span class="topbar-pulse" aria-hidden="true"></span>
+        <span>Book Site Visit</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="topbar-link-arrow" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="topbar-mobile">
+      <a href="${phoneHref}" class="topbar-mob-item" data-tel aria-label="Call: ${esc(phoneDisplay)}">
+        ${icon('phone-call')}
+        <span lang="en">${esc(phoneDisplay)}</span>
+      </a>
+      <span class="topbar-sep" aria-hidden="true"></span>
+      <a href="https://wa.me/${esc(site.whatsapp)}" target="_blank" rel="noopener noreferrer" class="topbar-mob-item topbar-mob-wa" data-wa aria-label="Chat on WhatsApp">
+        ${WHATSAPP_ICON}
+        <span>WhatsApp</span>
+      </a>
+      <span class="topbar-sep" aria-hidden="true"></span>
+      <a href="/request-site-visit.html" class="topbar-mob-item topbar-mob-cta" data-track="topbar_mobile_visit">
+        <span class="topbar-pulse" aria-hidden="true"></span>
+        <span>Site Visit</span>
+      </a>
+    </div>
   </div>
 </div>
 <header class="site-header" id="siteHeader">
@@ -356,7 +377,6 @@ ${topbarRightHtml}
       </nav>
       <div class="navbar-actions">
         ${langToggle('lang-toggle--nav')}
-        ${phoneLink}
         <a href="/request-a-quote.html" class="btn btn--primary navbar-quote" data-track="quote_click">Get Free Quote</a>
         <button type="button" class="hamburger" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Open menu">
           <span class="hamburger-box"><span class="hamburger-inner"></span></span>
@@ -566,7 +586,7 @@ export function page({
   <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="stylesheet" href="/assets/css/pages.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
-  <script>document.documentElement.classList.add('js');try{if(localStorage.getItem('knss-lang')==='ta'){document.documentElement.lang='ta';document.documentElement.classList.add('lang-ta');}}catch(e){}try{if(sessionStorage.getItem('knss_preloaded')){document.documentElement.classList.add('preloader-done');}}catch(e){}</script>
+  <script>document.documentElement.classList.add('js');try{var _p=new URLSearchParams(window.location.search).get('lang');if(_p==='ta'||(!_p&&localStorage.getItem('knss-lang')==='ta')){document.documentElement.lang='ta';document.documentElement.classList.add('lang-ta');}}catch(e){}try{if(sessionStorage.getItem('knss_preloaded')){document.documentElement.classList.add('preloader-done');}}catch(e){}</script>
   ${ld.map(jsonLdTag).join('\n  ')}
 </head>
 <body data-page="${esc(path)}" data-page-type="${esc(pageType)}" ${waProduct ? `data-wa-product="${esc(waProduct)}"` : ''} class="${esc(bodyClass)}">

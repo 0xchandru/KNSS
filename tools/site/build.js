@@ -161,7 +161,9 @@ const solutionsSection = () => `
         return `
       <article class="sol-card reveal">
         <a class="sol-card-media" href="/solutions/${slug}.html" aria-label="${esc(s.name)} — explore solution">
-          <img src="${solImg(s.image)}" alt="${esc(s.name)} solution by Keerthi Networks" loading="lazy" width="768" height="512">
+          <div class="sol-card-media-frame">
+            <img src="${solImg(s.image)}" alt="${esc(s.name)} solution by Keerthi Networks" width="768" height="512">
+          </div>
           <span class="sol-card-icon">${icon({ 'cctv-surveillance': 'camera', 'intercom-systems': 'intercom', 'networking-solutions': 'network', 'biometric-access-control': 'fingerprint', 'fire-safety': 'fire' }[slug])}</span>
         </a>
         <div class="sol-card-body">
@@ -316,7 +318,7 @@ const pageHero = ({ eyebrow, title, lead, waProduct = '', ctas = true, image = '
         ${visitCta({ cls: 'btn btn--outline-light', track: 'site_visit_click' })}
       </div>` : ''}
     </div>
-    ${image ? `<div class="page-hero-media reveal"><figure class="page-hero-frame"><img src="${solImg(image)}" alt="${esc(imageAlt)}" width="768" height="512" loading="lazy"></figure></div>` : ''}
+    ${image ? `<div class="page-hero-media reveal"><figure class="page-hero-frame"><img src="${solImg(image)}" alt="${esc(imageAlt)}" width="768" height="512" loading="eager" fetchpriority="high"></figure></div>` : ''}
   </div>
 </section>`;
 
@@ -779,7 +781,6 @@ const buildProjects = () => {
         <p>Try a different filter combination, or ask us directly about work similar to your requirement.</p>
         ${waCta('', { cls: 'btn btn--wa', label: 'Ask on WhatsApp' })}
       </div>
-      <p class="project-note reveal">${icon('info')} ${esc(projects.note)}</p>
     </div>
   </section>
   ${ctaBand({ title: 'Want Work Like This at Your Property?', text: 'Tell us what you need — we will survey, design and install it with the same care.' })}`;
@@ -897,7 +898,7 @@ const buildContact = () => {
         </div>
         <div class="contact-card reveal">
           <h2>${icon('clock')} Business Hours</h2>
-          <p class="contact-muted">${site.businessHours && site.businessHours !== 'BUSINESS_HOURS_HERE' ? esc(site.businessHours) : 'Mon – Sat: 9:00 AM – 7:30 PM<br><span class="small-muted">Sunday by appointment</span>'}</p>
+          <p class="contact-muted">${esc(site.businessHours || '')}</p>
         </div>
         <div class="contact-card reveal">
           <h2>${icon('doc')} Business Registration</h2>
@@ -974,7 +975,7 @@ const buildSiteVisit = () => {
         </div>
         <div class="side-card side-card--tint reveal">
           <h2>${icon('calendar')} Visiting Hours</h2>
-          <p>${site.businessHours && site.businessHours !== 'BUSINESS_HOURS_HERE' ? esc(site.businessHours) : 'Monday – Saturday (9:00 AM – 7:00 PM)'}</p>
+          <p>${esc(site.businessHours || '')}</p>
           <p class="small-muted">Date and time are requests — we confirm by WhatsApp before setting out.</p>
         </div>
       </div>
