@@ -55,13 +55,7 @@ Built with **pure HTML5 + CSS3 + vanilla JavaScript** — zero frameworks, zero 
 ├── robots.txt                    Production crawler rules & sitemap reference
 ├── sitemap.xml                   XML Sitemap with hreflang (en-IN, ta-IN, x-default)
 ├── site.webmanifest              PWA / mobile web manifest
-├── .htaccess                     Apache / LiteSpeed / cPanel production configuration
-├── _redirects                    Netlify & Cloudflare Pages redirects
-├── _headers                      Netlify & Cloudflare Pages security & caching headers
-├── vercel.json                   Vercel deployment configuration
-├── .nojekyll                     GitHub Pages Jekyll bypass
-├── package.json                  Zero-dependency build and preview scripts
-└── tools/site/                   Optional templating & build tooling (Node ≥ 18)
+└── tools/site/                   Optional source templating tooling (Node ≥ 18)
     ├── render.js                 Shared components, icons, headers, footers & SEO meta
     ├── build.js                  Static site compiler
     ├── content/*.json            Content JSON (site, home, about, solutions, faq...)
@@ -70,46 +64,14 @@ Built with **pure HTML5 + CSS3 + vanilla JavaScript** — zero frameworks, zero 
 
 ---
 
-## Production Deployment Guides
+## Static Hosting Instructions
 
-The website is ready to deploy immediately to any static hosting provider or web server:
+The website is a **100% pure static website** (pure HTML5, CSS3, and vanilla JS) — no Node.js runtime, no backend, and no build dependencies required to deploy. You can upload it directly to any web hosting service:
 
-### 1. cPanel / Apache / Shared Hosting (Hostinger, Bluehost, GoDaddy, etc.)
-1. Compress the contents of this folder into a `.zip` file (exclude `.git` if you prefer).
-2. In your hosting cPanel, open **File Manager** and navigate to `public_html/`.
-3. Upload and extract the zip file.
-4. The included `.htaccess` file automatically configures:
-   - GZIP / Deflate compression for all text, HTML, CSS, JS, and SVG.
-   - High-speed browser caching for images, CSS, JS, and fonts.
-   - Security headers (`X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`).
-   - Clean URLs (e.g. `/about-us` resolves to `/about-us.html`).
-   - Custom 404 handling via `/404.html`.
-   - Protection blocking direct access to `/tools/` and `.git`.
-
-### 2. Netlify
-- **Option A (Drag & Drop)**: Drag the project folder directly into [Netlify Drop](https://app.netlify.com/drop).
-- **Option B (Git)**: Connect your Git repository.
-  - Build command: `npm run build` (or leave empty; pages are pre-built).
-  - Publish directory: `.`
-- The included `_redirects` and `_headers` files are automatically applied.
-
-### 3. Vercel
-- Import the Git repository in your Vercel Dashboard.
-- Framework Preset: **Other**.
-- Root Directory: `./`.
-- The included `vercel.json` provides clean URLs, redirects, and caching headers automatically.
-
-### 4. Cloudflare Pages
-- Connect your Git repository or use Direct Upload.
-- Build command: `npm run build` (or none).
-- Build output directory: `.`.
-- The included `_redirects` and `_headers` files are automatically applied.
-
-### 5. GitHub Pages
-1. Push to your GitHub repository `main` branch.
-2. In repository **Settings** → **Pages**, select **Deploy from a branch** → `main` → `/ (root)`.
-3. The included `.nojekyll` file ensures all static assets and subfolders are served directly without Jekyll filtering.
-4. Custom 404 (`404.html`) is served automatically.
+- **Any Web Hosting / cPanel / Shared Hosting (Hostinger, Bluehost, GoDaddy, etc.)**:
+  Simply upload the HTML files and the `assets/`, `solutions/`, `robots.txt`, `sitemap.xml`, and `site.webmanifest` to your web root (`public_html`).
+- **Netlify / Vercel / Cloudflare Pages / GitHub Pages**:
+  Simply connect your repository or drag-and-drop the files. No build command needed — the static files are ready to serve immediately.
 
 ---
 
@@ -128,12 +90,11 @@ All verified contact details are configured in `tools/site/content/site.json` an
 
 ---
 
-## Local Development & Rebuilding
+## Local Preview & Rebuilding
 
 To preview locally:
 ```bash
-npm run preview
-# or: python3 -m http.server 8080
+python3 -m http.server 8080
 # Opens at: http://localhost:8080
 ```
 
@@ -141,6 +102,6 @@ To update content and recompile:
 ```bash
 # 1. Edit content in tools/site/content/*.json or translations in tools/site/i18n/*.json
 # 2. Rebuild all pages:
-npm run build
+node tools/site/build.js
 ```
-*(Uses native Node.js built-ins — no `npm install` needed!)*
+*(Uses native Node.js built-ins — no npm dependencies or installation needed!)*
