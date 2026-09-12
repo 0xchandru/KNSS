@@ -4,4 +4,4 @@ Disallow: /site-visit.html
 Disallow: /404.html
 Disallow: /tools/
 
-Sitemap: https://keerthinetworks.in/sitemap.xml
+Sitemap: https://www.knss.in/sitemap.xml

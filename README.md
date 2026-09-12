@@ -86,7 +86,7 @@ All verified contact details are configured in `tools/site/content/site.json` an
 - **GSTIN**: `33JIDPK6358B1ZC`
 - **Address**: No. 159, Karuppasamy Koil Street, Dharmathupatti, Melachokkanathapuram, Bodinayakanur, Theni – 625582, Tamil Nadu
 - **Business Hours**: Mon – Sat: 9:00 AM – 7:30 PM
-- **Production URL**: `https://keerthinetworks.in/`
+- **Production URL**: `https://www.knss.in/`
 
 ---
 
