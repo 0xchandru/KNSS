@@ -1,0 +1,21 @@
+# ==============================================================================
+# KNSS — Netlify & Cloudflare Pages Headers
+# ==============================================================================
+
+# Global security headers for all routes
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Immutable caching for static assets
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML pages cache
+/*.html
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/
+  Cache-Control: public, max-age=3600, must-revalidate

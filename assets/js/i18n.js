@@ -66,14 +66,15 @@
 
   /* ---------- DOM walking ---------- */
 
-  var SKIP_TAGS = { SCRIPT: 1, STYLE: 1, NOSCRIPT: 1, SVG: 1, TEXTAREA: 1, CODE: 1 };
+  var SKIP_TEXT_TAGS = { SCRIPT: 1, STYLE: 1, NOSCRIPT: 1, SVG: 1, TEXTAREA: 1, CODE: 1 };
+  var SKIP_ATTR_TAGS = { SCRIPT: 1, STYLE: 1, NOSCRIPT: 1, SVG: 1, CODE: 1 };
 
   function translateTextNodes(root, toTa) {
     var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
       acceptNode: function (node) {
         if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
         var parent = node.parentNode;
-        if (!parent || SKIP_TAGS[parent.nodeName]) return NodeFilter.FILTER_REJECT;
+        if (!parent || SKIP_TEXT_TAGS[parent.nodeName]) return NodeFilter.FILTER_REJECT;
         /* <option> text is handled by translateAttrs (attrs map wins so a
            select option can differ from a nav label with the same text) */
         if (parent.nodeName === 'OPTION') return NodeFilter.FILTER_REJECT;
@@ -112,7 +113,7 @@
     var strings = dict();
 
     Array.prototype.forEach.call(els, function (el) {
-      if (SKIP_TAGS[el.nodeName]) return;
+      if (SKIP_ATTR_TAGS[el.nodeName]) return;
       if (el.closest && el.closest('.lightbox')) return;
 
       ATTR_NAMES.forEach(function (attr) {

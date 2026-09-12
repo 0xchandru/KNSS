@@ -3638,11 +3638,15 @@ a.hero-proof-item:hover {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-sm) var(--space-md);
+  align-items: start;
 }
 
 .field {
-  display: grid;
-  gap: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  position: relative;
+  min-width: 0;
 }
 
 .field--full,
@@ -3656,82 +3660,221 @@ a.hero-proof-item:hover {
 
 .field label,
 .field-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   font-weight: 600;
   font-size: 0.88rem;
-  color: var(--color-primary);
+  color: var(--navy-900);
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+}
+
+.field-label-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 .req {
-  color: var(--color-error);
+  color: #e11d48;
+  font-weight: 700;
+  margin-left: 2px;
 }
 
+.field-optional {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--slate-500);
+  background: var(--slate-100);
+  border: 1px solid var(--slate-200);
+  padding: 0.12rem 0.55rem;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* Control wrapper & icons */
+.field-control-wrap {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  border-radius: var(--radius-md);
+}
+
+.field-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  pointer-events: none;
+  z-index: 2;
+  transition: color var(--t-fast), transform var(--t-fast);
+}
+
+.field-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2;
+}
+
+.field-control-wrap.is-textarea .field-icon {
+  top: 1.15rem;
+  transform: none;
+}
+
+.field-control-wrap:focus-within .field-icon {
+  color: var(--navy-700);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.field-control-wrap.is-textarea:focus-within .field-icon {
+  transform: scale(1.08);
+}
+
+/* Inputs, Selects, and Textareas */
 .field input,
 .field select,
 .field textarea {
   width: 100%;
-  padding: 0.78rem 0.95rem;
-  border: 1.6px solid var(--color-border);
-  border-radius: 10px;
+  min-height: 48px;
+  padding: 0.8rem 1rem;
+  border: 1.5px solid var(--slate-300);
+  border-radius: var(--radius-md);
   font: inherit;
   font-size: 0.95rem;
-  color: var(--color-text);
-  background: #fff;
-  transition: border-color var(--t-fast), box-shadow var(--t-fast);
+  color: var(--navy-950);
+  background-color: var(--slate-50);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  transition: border-color var(--t-fast), background-color var(--t-fast), box-shadow var(--t-fast);
+  box-sizing: border-box;
+}
+
+.field-control-wrap.has-icon input,
+.field-control-wrap.has-icon select {
+  padding-left: 2.75rem;
+}
+
+.field-control-wrap.has-icon textarea {
+  padding-left: 2.75rem;
+  padding-top: 0.95rem;
 }
 
 .field textarea {
   resize: vertical;
-  min-height: 110px;
+  min-height: 120px;
+  line-height: 1.55;
 }
 
+/* Custom Select Dropdown with modern chevron */
+.field select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 1rem) center;
+  padding-right: 2.85rem;
+}
+
+.field select:focus {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23163663' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+}
+
+/* Hover State */
 .field input:hover,
 .field select:hover,
 .field textarea:hover {
-  border-color: #c4d1e4;
+  background-color: #f1f5f9;
+  border-color: #94a3b8;
+  box-shadow: 0 2px 6px rgba(11, 31, 58, 0.06);
 }
 
+/* Focus State */
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
   outline: none;
-  border-color: var(--color-primary-3);
-  box-shadow: 0 0 0 4px rgba(26, 58, 102, 0.12);
+  background-color: #ffffff;
+  border-color: var(--navy-700);
+  box-shadow: 0 0 0 4px rgba(22, 54, 99, 0.12), 0 2px 8px rgba(11, 31, 58, 0.06);
 }
 
+/* Autofill styling */
+.field input:-webkit-autofill,
+.field input:-webkit-autofill:hover {
+  -webkit-text-fill-color: var(--navy-950);
+  -webkit-box-shadow: 0 0 0 1000px #f8fafc inset !important;
+  border-color: var(--slate-300) !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.field input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--navy-950);
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset, 0 0 0 4px rgba(22, 54, 99, 0.12) !important;
+  border-color: var(--navy-700) !important;
+}
+
+/* Placeholders */
 .field input::placeholder,
 .field textarea::placeholder {
-  color: #9aa8bd;
+  color: #94a3b8;
+  opacity: 1;
 }
 
+/* Invalid / Error States */
 .field.is-invalid input,
 .field.is-invalid select,
 .field.is-invalid textarea {
-  border-color: var(--color-error);
+  border-color: #e11d48;
+  background-color: #fff9f9;
+}
+
+.field.is-invalid .field-icon {
+  color: #e11d48;
 }
 
 .field.is-invalid input:focus,
 .field.is-invalid select:focus,
 .field.is-invalid textarea:focus {
-  box-shadow: 0 0 0 4px rgba(194, 59, 63, 0.12);
+  border-color: #e11d48;
+  box-shadow: 0 0 0 4px rgba(225, 29, 72, 0.14), 0 2px 8px rgba(225, 29, 72, 0.06);
 }
 
 .field-error {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  color: var(--color-error);
-  font-size: 0.8rem;
+  color: #e11d48;
+  font-size: 0.81rem;
   font-weight: 500;
+  margin-top: 0.2rem;
 }
 
-.field-error svg {
+.field-error::before {
+  content: "";
+  display: inline-block;
   width: 14px;
   height: 14px;
+  flex-shrink: 0;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='8' x2='12' y2='12'/%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'/%3E%3C/svg%3E") no-repeat 50% 50%;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='8' x2='12' y2='12'/%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'/%3E%3C/svg%3E") no-repeat 50% 50%;
 }
 
 .field-hint {
-  font-size: 0.78rem;
-  color: var(--color-muted);
+  font-size: 0.79rem;
+  color: var(--slate-500);
+  line-height: 1.4;
+  margin-top: 0.2rem;
 }
 
 .radio-row {
@@ -4290,6 +4433,35 @@ html.lang-ta .section-title {
   font-size: clamp(1.45rem, 2.8vw, 2.05rem);
   line-height: 1.3;
   letter-spacing: normal;
+}
+
+/* Card & component headings in Tamil: prevent generic h2 clamp from blowing up cards */
+html.lang-ta .pillar h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+html.lang-ta .contact-card h2,
+html.lang-ta .side-card h2 {
+  font-size: 0.84rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+html.lang-ta .contact-form-wrap .section-title {
+  font-size: clamp(1.25rem, 2.2vw, 1.55rem);
+  line-height: 1.35;
+}
+
+html.lang-ta .legal-block h2,
+html.lang-ta .legal-contact h2 {
+  font-size: 1.22rem;
+  line-height: 1.38;
 }
 
 html.lang-ta h3,

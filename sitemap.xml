@@ -1,105 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://keerthinetworks.in/</loc>
-    <lastmod>2026-09-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-09-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://keerthinetworks.in/"/>
+    <xhtml:link rel="alternate" hreflang="ta-IN" href="https://keerthinetworks.in/?lang=ta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://keerthinetworks.in/"/>
   </url>
   <url>
     <loc>https://keerthinetworks.in/about-us.html</loc>
-    <lastmod>2026-09-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-09-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://keerthinetworks.in/about-us.html"/>
+    <xhtml:link rel="alternate" hreflang="ta-IN" href="https://keerthinetworks.in/about-us.html?lang=ta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://keerthinetworks.in/about-us.html"/>
   </url>
   <url>
     <loc>https://keerthinetworks.in/solutions/cctv-surveillance.html</loc>
-    <lastmod>2026-09-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-09-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://keerthinetworks.in/solutions/cctv-surveillance.html"/>
+    <xhtml:link rel="alternate" hreflang="ta-IN" href="https://keerthinetworks.in/solutions/cctv-surveillance.html?lang=ta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://keerthinetworks.in/solutions/cctv-surveillance.html"/>
   </url>
   <url>
     <loc>https://keerthinetworks.in/solutions/intercom-systems.html</loc>
-    <lastmod>2026-09-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-09-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://keerthinetworks.in/solutions/intercom-systems.html"/>
+    <xhtml:link rel="alternate" hreflang="ta-IN" href="https://keerthinetworks.in/solutions/intercom-systems.html?lang=ta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://keerthinetworks.in/solutions/intercom-systems.html"/>
   </url>
   <url>
     <loc>https://keerthinetworks.in/solutions/networking-solutions.html</loc>
-    <lastmod>2026-09-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-09-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://keerthinetworks.in/solutions/networking-solutions.html"/>
+    <xhtml:link rel="alternate" hreflang="ta-IN" href="https://keerthinetworks.in/solutions/networking-solutions.html?lang=ta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://keerthinetworks.in/solutions/networking-solutions.html"/>
   </url>
   <url>
     <loc>https://keerthinetworks.in/solutions/biometric-access-control.html</loc>
-    <lastmod>2026-09-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-09-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://keerthinetworks.in/solutions/biometric-access-control.html"/>
+    <xhtml:link rel="alternate" hreflang="ta-IN" href="https://keerthinetworks.in/solutions/biometric-access-control.html?lang=ta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://keerthinetworks.in/solutions/biometric-access-control.html"/>
   </url>
   <url>
     <loc>https://keerthinetworks.in/solutions/fire-safety.html</loc>
-    <lastmod>2026-09-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-09-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://keerthinetworks.in/solutions/fire-safety.html"/>
+    <xhtml:link rel="alternate" hreflang="ta-IN" href="https://keerthinetworks.in/solutions/fire-safety.html?lang=ta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://keerthinetworks.in/solutions/fire-safety.html"/>
   </url>
   <url>
     <loc>https://keerthinetworks.in/industries.html</loc>
-    <lastmod>2026-09-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-09-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://keerthinetworks.in/industries.html"/>
+    <xhtml:link rel="alternate" hreflang="ta-IN" href="https://keerthinetworks.in/industries.html?lang=ta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://keerthinetworks.in/industries.html"/>
   </url>
   <url>
     <loc>https://keerthinetworks.in/projects.html</loc>
-    <lastmod>2026-09-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-09-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://keerthinetworks.in/projects.html"/>
+    <xhtml:link rel="alternate" hreflang="ta-IN" href="https://keerthinetworks.in/projects.html?lang=ta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://keerthinetworks.in/projects.html"/>
   </url>
   <url>
     <loc>https://keerthinetworks.in/why-choose-us.html</loc>
-    <lastmod>2026-09-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-09-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://keerthinetworks.in/why-choose-us.html"/>
+    <xhtml:link rel="alternate" hreflang="ta-IN" href="https://keerthinetworks.in/why-choose-us.html?lang=ta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://keerthinetworks.in/why-choose-us.html"/>
   </url>
   <url>
     <loc>https://keerthinetworks.in/faq.html</loc>
-    <lastmod>2026-09-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2026-09-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://keerthinetworks.in/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="ta-IN" href="https://keerthinetworks.in/faq.html?lang=ta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://keerthinetworks.in/faq.html"/>
   </url>
   <url>
     <loc>https://keerthinetworks.in/request-a-quote.html</loc>
-    <lastmod>2026-09-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-09-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://keerthinetworks.in/request-a-quote.html"/>
+    <xhtml:link rel="alternate" hreflang="ta-IN" href="https://keerthinetworks.in/request-a-quote.html?lang=ta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://keerthinetworks.in/request-a-quote.html"/>
   </url>
   <url>
     <loc>https://keerthinetworks.in/request-site-visit.html</loc>
-    <lastmod>2026-09-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-09-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://keerthinetworks.in/request-site-visit.html"/>
+    <xhtml:link rel="alternate" hreflang="ta-IN" href="https://keerthinetworks.in/request-site-visit.html?lang=ta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://keerthinetworks.in/request-site-visit.html"/>
   </url>
   <url>
     <loc>https://keerthinetworks.in/contact-us.html</loc>
-    <lastmod>2026-09-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-09-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://keerthinetworks.in/contact-us.html"/>
+    <xhtml:link rel="alternate" hreflang="ta-IN" href="https://keerthinetworks.in/contact-us.html?lang=ta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://keerthinetworks.in/contact-us.html"/>
   </url>
   <url>
     <loc>https://keerthinetworks.in/privacy-policy.html</loc>
-    <lastmod>2026-09-11</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-09-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://keerthinetworks.in/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="ta-IN" href="https://keerthinetworks.in/privacy-policy.html?lang=ta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://keerthinetworks.in/privacy-policy.html"/>
   </url>
   <url>
     <loc>https://keerthinetworks.in/terms-and-conditions.html</loc>
-    <lastmod>2026-09-11</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-09-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://keerthinetworks.in/terms-and-conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="ta-IN" href="https://keerthinetworks.in/terms-and-conditions.html?lang=ta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://keerthinetworks.in/terms-and-conditions.html"/>
   </url>
   <url>
     <loc>https://keerthinetworks.in/disclaimer.html</loc>
-    <lastmod>2026-09-11</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-09-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://keerthinetworks.in/disclaimer.html"/>
+    <xhtml:link rel="alternate" hreflang="ta-IN" href="https://keerthinetworks.in/disclaimer.html?lang=ta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://keerthinetworks.in/disclaimer.html"/>
   </url>
 </urlset>

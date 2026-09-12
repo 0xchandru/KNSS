@@ -9,11 +9,9 @@
 var SITE_CONFIG = {
     businessName: "Keerthi Networks and Security Solution",
 
-    /* Client to provide verified phone number (currently unverified). */
     phone: "+91 63815 51316",
     phoneHref: "tel:+916381551316",
 
-    /* Client to provide verified WhatsApp number (currently unverified). */
     whatsapp: "916381551316",
 
     email: "knsschennai@gmail.com",

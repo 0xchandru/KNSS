@@ -326,10 +326,33 @@ const pageHero = ({ eyebrow, title, lead, waProduct = '', ctas = true, image = '
    FORM BUILDERS
    ============================================================ */
 
-const field = ({ id, name, label, type = 'text', required = false, maxlength = 120, autocomplete = '', placeholder = '', options = null, rows = 0, hint = '', col = '' }) => {
-  const req = required ? '<span class="req" aria-hidden="true">*</span>' : '';
+const ICON_MAP = {
+  name: 'user',
+  phone: 'phone',
+  tel: 'phone',
+  email: 'mail',
+  company: 'building',
+  location: 'map-pin',
+  address: 'map-pin',
+  city: 'map-pin',
+  pin: 'navigation',
+  service: 'shield',
+  property: 'home',
+  area: 'box',
+  floors: 'building',
+  users: 'users',
+  date: 'calendar',
+  time: 'clock',
+  message: 'message'
+};
+
+const field = ({ id, name, label, type = 'text', required = false, maxlength = 120, autocomplete = '', placeholder = '', options = null, rows = 0, hint = '', col = '', icon: explicitIcon = null, inputmode = '' }) => {
+  const req = required
+    ? '<span class="req" aria-hidden="true">*</span>'
+    : '<span class="field-optional">Optional</span>';
   const reqAttr = required ? ' required' : '';
   const describedBy = `aria-describedby="${id}-error"`;
+  const modeAttr = inputmode ? ` inputmode="${inputmode}"` : '';
   let control = '';
   if (options) {
     control = `<select id="${id}" name="${name}"${reqAttr} ${describedBy}>
@@ -339,11 +362,18 @@ const field = ({ id, name, label, type = 'text', required = false, maxlength = 1
   } else if (rows) {
     control = `<textarea id="${id}" name="${name}" rows="${rows}" maxlength="${maxlength}" placeholder="${esc(placeholder)}"${reqAttr} ${describedBy}></textarea>`;
   } else {
-    control = `<input id="${id}" name="${name}" type="${type}" maxlength="${maxlength}"${autocomplete ? ` autocomplete="${autocomplete}"` : ''}${placeholder ? ` placeholder="${esc(placeholder)}"` : ''}${reqAttr} ${describedBy}>`;
+    control = `<input id="${id}" name="${name}" type="${type}" maxlength="${maxlength}"${modeAttr}${autocomplete ? ` autocomplete="${autocomplete}"` : ''}${placeholder ? ` placeholder="${esc(placeholder)}"` : ''}${reqAttr} ${describedBy}>`;
   }
+  const iconName = explicitIcon !== null ? explicitIcon : (ICON_MAP[name] || ICON_MAP[type] || null);
+  const wrapClass = `field-control-wrap${iconName ? ' has-icon' : ''}${rows ? ' is-textarea' : ''}`;
+  const iconMarkup = iconName ? `<span class="field-icon" aria-hidden="true">${icon(iconName)}</span>` : '';
+
   return `<div class="field ${col ? `field--${col}` : ''}">
-    <label for="${id}">${esc(label)} ${req}</label>
-    ${control}
+    <label for="${id}"><span class="field-label-text">${esc(label)}</span> ${req}</label>
+    <div class="${wrapClass}">
+      ${iconMarkup}
+      ${control}
+    </div>
     ${hint ? `<p class="field-hint">${esc(hint)}</p>` : ''}
     <p class="field-error" id="${id}-error" hidden></p>
   </div>`;
@@ -360,7 +390,7 @@ const contactForm = () => `
 <form id="contactForm" class="form" data-form-type="contact" novalidate>
   ${formMeta('contact')}
   <div class="form-grid">
-    ${field({ id: 'cf-name', name: 'name', label: 'Name', required: true, maxlength: 80, autocomplete: 'name', placeholder: 'Your full name' })}
+    ${field({ id: 'cf-name', name: 'name', label: 'Name', required: true, maxlength: 80, autocomplete: 'name', placeholder: 'Your full name', hint: 'Enter your full name or company representative.' })}
     ${field({ id: 'cf-phone', name: 'phone', label: 'Phone Number', type: 'tel', required: true, maxlength: 15, autocomplete: 'tel', placeholder: '10-digit mobile number', hint: 'We will contact you on this number via WhatsApp or phone.' })}
     ${field({ id: 'cf-email', name: 'email', label: 'Email', type: 'email', maxlength: 120, autocomplete: 'email', placeholder: 'you@example.com', col: 'half' })}
     ${field({ id: 'cf-company', name: 'company', label: 'Company Name', maxlength: 100, autocomplete: 'organization', placeholder: 'Optional', col: 'half' })}
@@ -443,11 +473,7 @@ const siteVisitForm = () => `
     ${field({ id: 'sv-email', name: 'email', label: 'Email', type: 'email', maxlength: 120, autocomplete: 'email', col: 'half' })}
     ${field({ id: 'sv-location', name: 'location', label: 'Location', required: true, maxlength: 100, autocomplete: 'address-level2', col: 'half', placeholder: 'Site town / area' })}
     ${field({ id: 'sv-service', name: 'service', label: 'Service Required', required: true, options: ['CCTV', 'Intercom', 'Networking', 'Biometric', 'Access Control', 'Fire Safety', 'Multiple Services', 'Not Sure — Need Advice'] })}
-    <div class="field field--half">
-      <label for="sv-date">Preferred Date <span class="req" aria-hidden="true">*</span></label>
-      <input id="sv-date" name="date" type="date" required aria-describedby="sv-date-error">
-      <p class="field-error" id="sv-date-error" hidden></p>
-    </div>
+    ${field({ id: 'sv-date', name: 'date', label: 'Preferred Date', type: 'date', required: true, col: 'half' })}
     ${field({ id: 'sv-time', name: 'time', label: 'Preferred Time', required: true, options: ['Morning (9 AM – 12 PM)', 'Afternoon (12 PM – 4 PM)', 'Evening (4 PM – 7 PM)'] })}
     ${field({ id: 'sv-message', name: 'message', label: 'Requirement', rows: 4, maxlength: 600, col: 'full', placeholder: 'What should we look at during the visit? Property type, coverage areas, concerns…' })}
   </div>
@@ -493,6 +519,9 @@ const buildHome = () => {
     '@id': url('/#localbusiness'),
     name: site.businessName,
     parentOrganization: { '@id': url('/#organization') },
+    url: url('/'),
+    ...(site.phoneDisplay ? { telephone: site.phoneDisplay } : {}),
+    email: site.email,
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'No. 159, Karuppasamy Koil Street, Dharmathupatti, Melachokkanathapuram',
@@ -502,6 +531,14 @@ const buildHome = () => {
       addressCountry: 'IN'
     },
     areaServed: [...home.serviceArea.primary, ...home.serviceArea.extended].map((c) => ({ '@type': 'City', name: c })),
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        opens: '09:00',
+        closes: '19:30'
+      }
+    ],
     knowsAbout: ['CCTV installation', 'Intercom systems', 'Structured cabling', 'Biometric attendance systems', 'Access control', 'Fire extinguishers']
   };
   write('index.html', page({
@@ -835,7 +872,7 @@ const buildWhy = () => {
   ${ctaBand({ title: 'Experience the Difference Yourself', text: 'Call, message or request a site visit — let the quality of our response be your first impression.' })}`;
 
   write('why-choose-us.html', page({
-    path: '/why-choose-us.html', title: 'Why Choose Us | Keerthi Networks and Security Solution',
+    path: '/why-choose-us.html', title: 'Why Choose Keerthi Networks for Security Solutions in Theni',
     description: 'Requirement-first design, professional installation, transparent pricing and dependable after-sales support — why customers choose Keerthi Networks in Theni and Bodinayakanur.',
     content, crumbs: [{ label: 'Why Choose Us' }], activeId: 'why', pageType: 'why'
   }));
@@ -917,7 +954,7 @@ const buildContact = () => {
   </section>`;
 
   write('contact-us.html', page({
-    path: '/contact-us.html', title: 'Contact Us | Keerthi Networks and Security Solution, Theni',
+    path: '/contact-us.html', title: 'Contact Keerthi Networks | CCTV & Security Solutions in Theni',
     description: `Contact Keerthi Networks and Security Solution — Bodinayakanur, Theni. Email ${site.email}, WhatsApp enquiry or visit us. CCTV, networking, biometric, intercom and fire safety solutions.`,
     content, crumbs: [{ label: 'Contact Us' }], activeId: 'contact', pageType: 'contact'
   }));
@@ -991,7 +1028,22 @@ const buildSiteVisit = () => {
     content, crumbs: [{ label: 'Request a Site Visit' }], activeId: '', pageType: 'site-visit'
   });
   write('request-site-visit.html', siteVisitPageHtml);
-  write('site-visit.html', siteVisitPageHtml);
+  /* site-visit.html is a legacy alias — output an instant 301-equivalent redirect stub */
+  const redirectHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0; url=./request-site-visit.html">
+  <link rel="canonical" href="${url('/request-site-visit.html')}">
+  <meta name="robots" content="noindex, follow">
+  <title>Redirecting to Request a Site Visit...</title>
+  <script>window.location.replace('./request-site-visit.html');</script>
+</head>
+<body>
+  <p>Redirecting to <a href="./request-site-visit.html">Request a Site Visit</a>...</p>
+</body>
+</html>`;
+  write('site-visit.html', redirectHtml);
 };
 
 const buildLegal = () => {
@@ -1048,7 +1100,8 @@ const build404 = () => {
   write('404.html', page({
     path: '/404.html', title: 'Page Not Found (404) | Keerthi Networks and Security Solution',
     description: 'The page you requested was not found. Return home, explore our solutions, or contact Keerthi Networks and Security Solution.',
-    content, pageType: '404'
+    content, pageType: '404',
+    robotsMeta: 'noindex, nofollow'
   }));
 };
 
@@ -1072,18 +1125,28 @@ const buildMeta = () => {
     ['/terms-and-conditions.html', 0.3, 'yearly'],
     ['/disclaimer.html', 0.3, 'yearly']
   ];
+  /* Sitemap with hreflang xhtml:link alternates */
   write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${pages.map(([p, pri, freq]) => `  <url>
-    <loc>${url(p)}</loc>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${pages.map(([p]) => {
+  const loc = url(p);
+  const taLoc = loc + (loc.includes('?') ? '&' : '?') + 'lang=ta';
+  return `  <url>
+    <loc>${loc}</loc>
     <lastmod>${new Date().toISOString().slice(0, 10)}</lastmod>
-    <changefreq>${freq}</changefreq>
-    <priority>${pri.toFixed(1)}</priority>
-  </url>`).join('\n')}
+    <xhtml:link rel="alternate" hreflang="en-IN" href="${loc}"/>
+    <xhtml:link rel="alternate" hreflang="ta-IN" href="${taLoc}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${loc}"/>
+  </url>`;
+}).join('\n')}
 </urlset>`);
 
   write('robots.txt', `User-agent: *
 Allow: /
+Disallow: /site-visit.html
+Disallow: /404.html
+Disallow: /tools/
 
 Sitemap: ${url('/sitemap.xml')}
 `);
@@ -1122,11 +1185,9 @@ const buildConfig = () => {
 var SITE_CONFIG = {
     businessName: ${JSON.stringify(site.businessName)},
 
-    /* Client to provide verified phone number (currently unverified). */
     phone: ${JSON.stringify(site.phoneDisplay)},
     phoneHref: ${JSON.stringify(site.phoneHref)},
 
-    /* Client to provide verified WhatsApp number (currently unverified). */
     whatsapp: ${JSON.stringify(site.whatsapp)},
 
     email: ${JSON.stringify(site.email)},

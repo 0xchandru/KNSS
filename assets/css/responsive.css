@@ -2480,10 +2480,16 @@ body.header-compact .hamburger {
   .field input,
   .field select,
   .field textarea {
-    padding: 0.55rem 0.65rem !important;
+    padding: 0.65rem 0.75rem !important;
     font-size: 16px !important;
     width: 100% !important;
     box-sizing: border-box !important;
+  }
+
+  .field-control-wrap.has-icon input,
+  .field-control-wrap.has-icon select,
+  .field-control-wrap.has-icon textarea {
+    padding-left: 2.5rem !important;
   }
 
   .form-actions {
