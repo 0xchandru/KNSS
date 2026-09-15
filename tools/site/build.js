@@ -48,43 +48,31 @@ const projectCategoryLabel = (c) => PROJECT_CATEGORY_LABELS[c] || c;
    ============================================================ */
 
 const heroSection = () => `
-<section class="hero" aria-labelledby="heroTitle">
-  <div class="hero-bg" aria-hidden="true">
-    <div class="hero-grid-lines"></div>
-    <div class="hero-glow hero-glow--1"></div>
-    <div class="hero-glow hero-glow--2"></div>
-    <div class="hero-pattern">${iconSize('shield')}${iconSize('network')}${iconSize('camera')}${iconSize('fingerprint')}${iconSize('fire')}${iconSize('intercom')}</div>
+<section class="hero hero--fullwidth" aria-labelledby="heroTitle">
+  <div class="hero-visual-wrap">
+    <picture class="hero-picture">
+      <source media="(max-width: 768px)" srcset="/assets/images/hero-network-mobile.jpg" width="900" height="1200">
+      <img src="/assets/images/hero-network-desktop.jpg" alt="Enterprise Data Networking Infrastructure, Switches, and Structured Cabling by Keerthi Networks" width="1920" height="640" fetchpriority="high" class="hero-img">
+    </picture>
+    <div class="hero-scrim"></div>
+    <div class="hero-ambient-glow" aria-hidden="true"></div>
   </div>
-  <div class="container hero-inner">
-    <div class="hero-copy">
-      <p class="hero-eyebrow reveal">CCTV <span>|</span> Intercom <span>|</span> Networking <span>|</span> Biometric <span>|</span> Fire Safety</p>
-      <h1 id="heroTitle" class="hero-title reveal">Your Trusted Partner for <span class="accent-text">Security &amp; Networking</span> Solutions</h1>
-      <p class="hero-lead reveal">Complete CCTV, networking, intercom, biometric and fire safety solutions for homes, offices and businesses — professionally installed and honestly supported across Theni district and Tamil Nadu.</p>
+  <div class="container hero-content-container">
+    <div class="hero-content">
+      <h1 id="heroTitle" class="hero-title reveal" data-ta="நிறுவன &lt;span class=&quot;accent-gradient&quot;&gt;தரவு நெட்வொர்க்கிங்&lt;/span&gt; &amp; ஒருங்கிணைந்த பாதுகாப்பு அமைப்புகள்">
+        ${home.hero.title}
+      </h1>
+      <p class="hero-lead reveal">
+        ${esc(home.hero.lead)}
+      </p>
       <div class="hero-ctas reveal">
-        ${quoteCta({ cls: 'btn btn--primary btn--lg', track: 'hero_cta_click' })}
-        ${visitCta({ cls: 'btn btn--outline-light btn--lg', track: 'hero_cta_click' })}
-        <a href="#" class="btn btn--wa btn--lg" data-wa data-track="hero_cta_click">${WHATSAPP_ICON}<span>WhatsApp Us</span></a>
+        ${quoteCta({ cls: 'btn btn--primary btn--lg hero-cta-btn', track: 'hero_quote_click' })}
+        ${visitCta({ cls: 'btn btn--outline-light btn--lg', track: 'hero_visit_click' })}
+        <a href="#" class="btn btn--wa btn--lg" data-wa data-track="hero_wa_click">${WHATSAPP_ICON}<span>WhatsApp Us</span></a>
       </div>
-      <div class="hero-proof reveal">
-        ${site.phoneHref
-          ? `<a class="hero-proof-item" data-tel href="${site.phoneHref}" data-track="phone_click">${icon('phone-call')}<span>${esc(site.phoneDisplay)}</span></a>`
-          : `<span class="hero-proof-item hero-proof-item--muted">${icon('phone-call')}<span>Call: number updating shortly</span></span>`}
-        <span class="hero-proof-item">${icon('badge-check')}<span>GST Registered · ${esc(site.gstin)}</span></span>
-        <span class="hero-proof-item">${icon('map-pin')}<span>Serving Theni &amp; Tamil Nadu</span></span>
+      <div class="hero-badges-row reveal">
+        ${home.hero.badges.map((b) => `<span class="hero-stat-pill">${b.icon ? icon(b.icon) + ' ' : ''}${b.strong ? `<strong>${esc(b.strong)}</strong> ` : ''}${esc(b.text)}</span>`).join('')}
       </div>
-    </div>
-    <div class="hero-media reveal">
-      <figure class="hero-media-frame">
-        <img src="/assets/images/hero-main.jpg" alt="Security technician professionally installing a dome CCTV camera on a modern commercial building" width="1600" height="900" fetchpriority="high">
-      </figure>
-      <div class="hero-chip hero-chip--1">${icon('camera')}<span><strong>CCTV Surveillance</strong><em>Remote mobile viewing</em></span></div>
-      <div class="hero-chip hero-chip--2">${icon('network')}<span><strong>Networking</strong><em>Structured cabling</em></span></div>
-      <div class="hero-chip hero-chip--3">${icon('shield-check')}<span><strong>Protect. Connect. Secure.</strong><em>One accountable partner</em></span></div>
-    </div>
-  </div>
-  <div class="hero-strip" aria-hidden="true">
-    <div class="container hero-strip-inner">
-      <span>CCTV</span><span>Intercom</span><span>Networking</span><span>Biometric</span><span>Access Control</span><span>Fire Safety</span>
     </div>
   </div>
 </section>`;
@@ -116,29 +104,20 @@ const aboutSection = () => `
     </div>
     <div class="split-copy">
       <div class="section-head align-left reveal">
-        <p class="eyebrow">About the Company</p>
-        <h2 class="section-title" id="homeAboutTitle">Security, Surveillance &amp; Networking — Done Properly</h2>
+        <p class="eyebrow">${esc(home.aboutCompany.eyebrow)}</p>
+        <h2 class="section-title" id="homeAboutTitle">${esc(home.aboutCompany.title)}</h2>
       </div>
-      <p class="reveal">Keerthi Networks and Security Solution is a security technology and infrastructure company based in Bodinayakanur, Theni district. We design, install and maintain the systems that keep properties safe and connected — CCTV surveillance, intercom and video door phones, computer networks, biometric attendance and access control, and fire safety equipment.</p>
-      <p class="reveal">Because security and networking work best when they are planned together, you get one accountable partner instead of five different vendors — clearer coordination, neater installation and faster support.</p>
+      <p class="reveal">${esc(home.aboutCompany.lead)}</p>
+      <p class="reveal">${esc(home.aboutCompany.sublead)}</p>
       <div class="about-highlights-grid reveal">
+        ${home.aboutCompany.highlights.map((h) => `
         <div class="about-hl-card">
-          <span class="about-hl-num">5+</span>
-          <span class="about-hl-label">Core Specialisations</span>
-          <span class="about-hl-desc">CCTV, Intercom, Networks, Biometrics &amp; Fire</span>
-        </div>
-        <div class="about-hl-card">
-          <span class="about-hl-num">100%</span>
-          <span class="about-hl-label">Transparent Quotations</span>
-          <span class="about-hl-desc">Itemised parts &amp; labour, no hidden margins</span>
-        </div>
-        <div class="about-hl-card">
-          <span class="about-hl-num">1</span>
-          <span class="about-hl-label">Accountable Partner</span>
-          <span class="about-hl-desc">From initial site survey to long-term AMC</span>
-        </div>
+          <span class="about-hl-num">${esc(h.num)}</span>
+          <span class="about-hl-label">${esc(h.label)}</span>
+          <span class="about-hl-desc">${esc(h.desc)}</span>
+        </div>`).join('')}
       </div>
-      ${checkList(['One partner for security, communication and networking', 'Site-based system design — no guesswork', 'Neat, professional installation by trained technicians', 'Itemised quotations and honest recommendations'], 'reveal')}
+      ${checkList(home.aboutCompany.points, 'reveal')}
       <div class="split-actions reveal">
         <a href="/about-us.html" class="btn btn--primary">Discover Our Story ${icon('arrow-right')}</a>
         <a href="/why-choose-us.html" class="btn btn--ghost-dark">Why choose us ${icon('arrow-right')}</a>
@@ -151,20 +130,22 @@ const solutionsSection = () => `
 <section class="section section--gray solutions-section" id="solutions" aria-labelledby="solutionsTitle">
   <div class="container">
     ${sectionHead({
-      eyebrow: 'Our Solutions',
-      title: '<span id="solutionsTitle">Complete Security &amp; Infrastructure Solutions</span>',
-      lead: 'Five connected service lines, one accountable partner — designed around your property and installed to professional standards.'
+      eyebrow: esc(home.coreServices.eyebrow),
+      title: `<span id="solutionsTitle">${esc(home.coreServices.title)}</span>`,
+      lead: esc(home.coreServices.lead)
     })}
-    <div class="solutions-grid">
+    <div class="solutions-grid solutions-grid--highlighted">
       ${site.solutionOrder.map((slug) => {
         const s = solutions[slug];
+        const isPrimary = slug === 'networking-solutions';
         return `
-      <article class="sol-card reveal">
+      <article class="sol-card reveal ${isPrimary ? 'sol-card--primary' : ''}">
+        ${isPrimary ? `<span class="sol-primary-badge">${icon('network')} Primary Service</span>` : ''}
         <a class="sol-card-media" href="/solutions/${slug}.html" aria-label="${esc(s.name)} — explore solution">
           <div class="sol-card-media-frame">
-            <img src="${solImg(s.image)}" alt="${esc(s.name)} solution by Keerthi Networks" width="768" height="512">
+            <img src="${solImg(s.image)}" alt="${esc(s.name)} solution by Keerthi Networks" width="768" height="512" loading="lazy">
           </div>
-          <span class="sol-card-icon">${icon({ 'cctv-surveillance': 'camera', 'intercom-systems': 'intercom', 'networking-solutions': 'network', 'biometric-access-control': 'fingerprint', 'fire-safety': 'fire' }[slug])}</span>
+          <span class="sol-card-icon">${icon({ 'networking-solutions': 'network', 'cctv-surveillance': 'camera', 'intercom-systems': 'intercom', 'biometric-access-control': 'fingerprint', 'fire-safety': 'fire' }[slug])}</span>
         </a>
         <div class="sol-card-body">
           <h3><a href="/solutions/${slug}.html">${esc(s.name)}</a></h3>
@@ -173,7 +154,7 @@ const solutionsSection = () => `
             ${s.offers.slice(0, 3).map((o) => `<li>${icon('check')}<span>${esc(o.title)}</span></li>`).join('')}
           </ul>
           <div class="sol-card-actions">
-            <a class="btn btn--ghost-dark btn--sm" href="/solutions/${slug}.html">Explore ${icon('arrow-right')}</a>
+            <a class="btn ${isPrimary ? 'btn--primary' : 'btn--ghost-dark'} btn--sm" href="/solutions/${slug}.html">Explore ${esc(s.name)} ${icon('arrow-right')}</a>
             ${waCta(s.waProduct, { cls: 'btn btn--wa btn--sm', label: 'WhatsApp' })}
           </div>
         </div>
@@ -232,9 +213,9 @@ const serviceArea = () => `
     <div class="split-copy">
       <div class="section-head align-left reveal">
         <p class="eyebrow">Service Area</p>
-        <h2 class="section-title" id="areaTitle">Proudly Based in Theni District, Serving Tamil Nadu</h2>
+        <h2 class="section-title" id="areaTitle">Headquartered in Chennai, Serving All of Tamil Nadu</h2>
       </div>
-      <p class="reveal">Our base is Bodinayakanur in Theni district — and our work takes us across the region. Nearby towns are our home ground; for larger projects we travel across Tamil Nadu.</p>
+      <p class="reveal">Our headquarters is located in Chennai, Tamil Nadu — and our engineering teams execute projects all over Tamil Nadu. Whether you need local corporate installations in Chennai or statewide deployments across commercial hubs and industrial belts, we deliver comprehensive on-site survey, setup, and support.</p>
       <div class="area-tags reveal">
         <p class="area-label">${icon('map-pin')} Primary service area</p>
         <ul>${home.serviceArea.primary.map((c) => `<li class="tag tag--primary">${esc(c)}</li>`).join('')}</ul>
@@ -247,8 +228,8 @@ const serviceArea = () => `
       <div class="area-card">
         <div class="area-card-pin">${icon('map-pin')}</div>
         <h3>Keerthi Networks and Security Solution</h3>
-        <address>${site.address.line1}<br>${site.address.line2}<br>${site.address.line3}<br>${site.address.line4}</address>
-        <a class="btn btn--ghost-dark btn--sm" href="https://www.google.com/maps/search/?api=1&amp;query=${encodeURIComponent('Keerthi Networks and Security Solution, No. 159, Karuppasamy Koil Street, Dharmathupatti, Melachokkanathapuram, Bodinayakanur, Theni 625582, Tamil Nadu')}" target="_blank" rel="noopener">Get Directions ${icon('external')}</a>
+        <address>${site.address.line1 ? `${site.address.line1}<br>` : ''}${site.address.line2 ? `${site.address.line2}<br>` : ''}${site.address.line3 ? `${site.address.line3}` : ''}</address>
+        <a class="btn btn--ghost-dark btn--sm" href="${esc(site.googleMapsUrl)}" target="_blank" rel="noopener">Get Directions ${icon('external')}</a>
       </div>
     </div>
   </div>
@@ -301,11 +282,10 @@ const homeFaq = () => `
    ============================================================ */
 
 const pageHero = ({ eyebrow, title, lead, waProduct = '', ctas = true, image = '', imageAlt = '' }) => `
-<section class="page-hero" aria-labelledby="pageTitle">
+<section class="page-hero ${!image ? 'page-hero--no-media' : ''}" aria-labelledby="pageTitle">
   <div class="hero-bg" aria-hidden="true">
     <div class="hero-grid-lines"></div>
     <div class="hero-glow hero-glow--1"></div>
-    <div class="hero-pattern">${iconSize('shield')}${iconSize('network')}${iconSize('camera')}${iconSize('fingerprint')}</div>
   </div>
   <div class="container page-hero-inner">
     <div class="page-hero-copy">
@@ -394,7 +374,7 @@ const contactForm = () => `
     ${field({ id: 'cf-phone', name: 'phone', label: 'Phone Number', type: 'tel', required: true, maxlength: 15, autocomplete: 'tel', placeholder: '10-digit mobile number', hint: 'We will contact you on this number via WhatsApp or phone.' })}
     ${field({ id: 'cf-email', name: 'email', label: 'Email', type: 'email', maxlength: 120, autocomplete: 'email', placeholder: 'you@example.com', col: 'half' })}
     ${field({ id: 'cf-company', name: 'company', label: 'Company Name', maxlength: 100, autocomplete: 'organization', placeholder: 'Optional', col: 'half' })}
-    ${field({ id: 'cf-location', name: 'location', label: 'Location', required: true, maxlength: 100, autocomplete: 'address-level3', placeholder: 'Town / city — e.g. Bodinayakanur' })}
+    ${field({ id: 'cf-location', name: 'location', label: 'Location', required: true, maxlength: 100, autocomplete: 'address-level3', placeholder: 'Town / city — e.g. Chennai' })}
     ${field({ id: 'cf-service', name: 'service', label: 'Service Required', required: true, options: ['CCTV', 'Intercom', 'Networking', 'Biometric', 'Access Control', 'Fire Safety', 'Multiple Services', 'Other'] })}
     ${field({ id: 'cf-message', name: 'message', label: 'Message', rows: 4, maxlength: 600, placeholder: 'Briefly describe your requirement — property type, number of cameras/points, timelines…', col: 'full' })}
   </div>
@@ -492,16 +472,9 @@ const buildHome = () => {
   const crumbs = null;
   const content = `
   ${heroSection()}
-  ${trustHighlights()}
   ${aboutSection()}
   ${solutionsSection()}
-  ${whySection()}
-  ${howWeWork()}
-  ${industriesStrip()}
-  ${serviceArea()}
-  ${featuredProjects()}
-  ${testimonialsNote()}
-  ${homeFaq()}
+  ${trustHighlights()}
   ${ctaBand({ title: home.finalCta.title, text: home.finalCta.text })}`;
 
   const webSiteLd = {
@@ -524,10 +497,10 @@ const buildHome = () => {
     email: site.email,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'No. 159, Karuppasamy Koil Street, Dharmathupatti, Melachokkanathapuram',
-      addressLocality: 'Bodinayakanur',
+      streetAddress: 'Chennai',
+      addressLocality: 'Chennai',
       addressRegion: 'Tamil Nadu',
-      postalCode: '625582',
+      postalCode: '600001',
       addressCountry: 'IN'
     },
     areaServed: [...home.serviceArea.primary, ...home.serviceArea.extended].map((c) => ({ '@type': 'City', name: c })),
@@ -539,12 +512,12 @@ const buildHome = () => {
         closes: '19:30'
       }
     ],
-    knowsAbout: ['CCTV installation', 'Intercom systems', 'Structured cabling', 'Biometric attendance systems', 'Access control', 'Fire extinguishers']
+    knowsAbout: ['Data Networking', 'Structured Cabling', 'CCTV installation', 'Intercom systems', 'Biometric attendance systems', 'Access control', 'Fire extinguishers']
   };
   write('index.html', page({
     path: '/', title: home.title, description: home.description, content, crumbs,
     activeId: 'home', bodyClass: 'page-home', pageType: 'home',
-    extraJsonLd: [webSiteLd, localBizLd, faqJsonLdOf(home.homeFaq)]
+    extraJsonLd: [webSiteLd, localBizLd]
   }));
 };
 
@@ -556,15 +529,47 @@ const faqJsonLdOf = (items) => ({
 
 const buildAbout = () => {
   const content = `
-  ${pageHero({ eyebrow: 'About Us', title: 'Keerthi Networks and Security Solution', lead: 'A security technology and infrastructure partner you can actually reach, actually talk to, and actually rely on.', ctas: false })}
-  <section class="section section--white">
+  ${pageHero({ eyebrow: 'About Us', title: 'Keerthi Networks and Security Solution', lead: 'Enterprise-grade security technology and infrastructure partner headquartered in Chennai, delivering dependable installations, certified hardware, and rapid support all over Tamil Nadu.', ctas: false })}
+  <section class="section section--white about-main-section">
     <div class="container split">
       <div class="split-media reveal">
-        <figure class="frame"><img src="/assets/images/about-team.jpg" alt="Keerthi Networks technicians at work reviewing an installation plan" loading="lazy" width="1536" height="1024"></figure>
+        <div class="media-frame-wrap">
+          <figure class="frame frame--offset">
+            <img src="/assets/images/about-team.jpg" alt="Keerthi Networks certified technicians and network engineers reviewing site layout" loading="lazy" decoding="async" width="1536" height="1024">
+          </figure>
+          <div class="frame-badge frame-badge--bottom">${icon('shield-check')}<span><strong>Chennai HQ · Pan-Tamil Nadu</strong><em>Serving 38 districts statewide</em></span></div>
+          <div class="frame-badge frame-badge--top">${icon('award')}<span><strong>100% Genuine Hardware</strong><em>Certified OEM Components</em></span></div>
+        </div>
       </div>
       <div class="split-copy">
-        <div class="section-head align-left reveal"><p class="eyebrow">Who We Are</p><h2 class="section-title">Local Roots, Professional Standards</h2></div>
+        <div class="section-head align-left reveal">
+          <p class="eyebrow">Who We Are</p>
+          <h2 class="section-title">Headquartered in Chennai, Serving All Over Tamil Nadu</h2>
+        </div>
         ${about.intro.map((p) => `<p class="reveal">${p}</p>`).join('')}
+        <div class="about-highlights-grid reveal">
+          <div class="about-hl-card">
+            <span class="about-hl-num">38</span>
+            <span class="about-hl-label">Districts Covered</span>
+            <span class="about-hl-desc">Chennai to all across Tamil Nadu</span>
+          </div>
+          <div class="about-hl-card">
+            <span class="about-hl-num">5+</span>
+            <span class="about-hl-label">Core Domains</span>
+            <span class="about-hl-desc">CCTV, Networks, Biometrics, Intercom & Fire</span>
+          </div>
+          <div class="about-hl-card">
+            <span class="about-hl-num">100%</span>
+            <span class="about-hl-label">Itemised Quotations</span>
+            <span class="about-hl-desc">Transparent pricing & genuine parts</span>
+          </div>
+        </div>
+        ${checkList(['Chennai headquarters with deployment capability across all Tamil Nadu', 'Custom site survey & engineering — zero guesswork', 'Neat, structured cabling & certified equipment', 'Long-term AMC & responsive after-sales support'], 'reveal')}
+        <div class="split-actions reveal">
+          <a href="/request-a-quote.html" class="btn btn--primary">Get Free Quote ${icon('arrow-right')}</a>
+          <a href="/request-site-visit.html" class="btn btn--ghost-dark">Request Site Visit ${icon('calendar')}</a>
+          <a href="#" class="btn btn--wa" data-wa data-track="whatsapp_click">${WHATSAPP_ICON}<span>Chat on WhatsApp</span></a>
+        </div>
       </div>
     </div>
   </section>
@@ -590,7 +595,14 @@ const buildAbout = () => {
       ${sectionHead({ eyebrow: 'What We Do', title: '<span id="wwdTitle">Five Service Lines, One Standard</span>', dark: true })}
       <div class="wwd-grid">
         ${about.whatWeDo.map((s, i) => {
-          const slug = site.solutionOrder[i];
+          const slugMap = {
+            'CCTV Surveillance': 'cctv-surveillance',
+            'Intercom Systems': 'intercom-systems',
+            'Networking Solutions': 'networking-solutions',
+            'Biometric & Access Control': 'biometric-access-control',
+            'Fire Safety Solutions': 'fire-safety'
+          };
+          const slug = s.slug || slugMap[s.title] || site.solutionOrder[i];
           return `<a class="wwd-card reveal" href="/solutions/${slug}.html">${iconBox(s.icon, 'icon-box--accent')}<h3>${esc(s.title)}</h3><p>${esc(s.desc)}</p><span class="link-arrow link-arrow--light">Explore ${icon('arrow-right')}</span></a>`;
         }).join('')}
       </div>
@@ -619,6 +631,23 @@ const buildAbout = () => {
     path: '/about-us.html', title: about.title, description: about.description, content,
     crumbs: [{ label: 'About Us' }], activeId: 'about', pageType: 'about'
   }));
+
+  /* Instant redirect stub for about.html -> about-us.html */
+  const aboutRedirectHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0; url=./about-us.html">
+  <link rel="canonical" href="${url('/about-us.html')}">
+  <meta name="robots" content="noindex, follow">
+  <title>Redirecting to About Us...</title>
+  <script>window.location.replace('./about-us.html');</script>
+</head>
+<body>
+  <p>Redirecting to <a href="./about-us.html">About Us</a>...</p>
+</body>
+</html>`;
+  write('about.html', aboutRedirectHtml);
 };
 
 const SOLUTION_PAGE_ICONS = {
@@ -639,9 +668,9 @@ const buildSolution = (slug) => {
     serviceType: s.name,
     provider: { '@id': url('/#organization') },
     areaServed: [
-      { '@type': 'City', name: 'Bodinayakanur' },
-      { '@type': 'City', name: 'Theni' },
-      { '@type': 'State', name: 'Tamil Nadu' }
+      { '@type': 'City', name: 'Chennai' },
+      { '@type': 'State', name: 'Tamil Nadu' },
+      { '@type': 'Country', name: 'India' }
     ],
     description: s.lead
   };
@@ -872,8 +901,8 @@ const buildWhy = () => {
   ${ctaBand({ title: 'Experience the Difference Yourself', text: 'Call, message or request a site visit — let the quality of our response be your first impression.' })}`;
 
   write('why-choose-us.html', page({
-    path: '/why-choose-us.html', title: 'Why Choose Keerthi Networks for Security Solutions in Theni',
-    description: 'Requirement-first design, professional installation, transparent pricing and dependable after-sales support — why customers choose Keerthi Networks in Theni and Bodinayakanur.',
+    path: '/why-choose-us.html', title: 'Why Choose Keerthi Networks for Security Solutions in Chennai & Tamil Nadu',
+    description: 'Requirement-first design, professional installation, transparent pricing and dependable after-sales support — why customers choose Keerthi Networks in Chennai and across Tamil Nadu.',
     content, crumbs: [{ label: 'Why Choose Us' }], activeId: 'why', pageType: 'why'
   }));
 };
@@ -908,7 +937,7 @@ const buildFaq = () => {
 };
 
 const buildContact = () => {
-  const mapsUrl = `https://www.google.com/maps/search/?api=1&amp;query=${encodeURIComponent('Keerthi Networks and Security Solution, No. 159, Karuppasamy Koil Street, Dharmathupatti, Melachokkanathapuram, Bodinayakanur, Theni 625582, Tamil Nadu')}`;
+  const mapsUrl = esc(site.googleMapsUrl);
   const content = `
   ${pageHero({ eyebrow: 'Contact Us', title: 'Talk to a Real Person', lead: 'Message us on WhatsApp, send an email, or use the enquiry form — every message reaches us directly and gets a personal reply.', ctas: false })}
   <section class="section section--white contact-section">
@@ -918,7 +947,9 @@ const buildContact = () => {
           <h2>${icon('map-pin')} Visit Us</h2>
           <address>
             <strong>${esc(site.businessName)}</strong><br>
-            ${site.address.line1}<br>${site.address.line2}<br>${site.address.line3}<br>${site.address.line4}
+            ${site.address.line1 ? `${site.address.line1}<br>` : ''}
+            ${site.address.line2 ? `${site.address.line2}<br>` : ''}
+            ${site.address.line3 ? `${site.address.line3}` : ''}
           </address>
           <a class="btn btn--ghost-dark btn--sm" href="${mapsUrl}" target="_blank" rel="noopener">Get Directions ${icon('external')}</a>
         </div>
@@ -954,8 +985,8 @@ const buildContact = () => {
   </section>`;
 
   write('contact-us.html', page({
-    path: '/contact-us.html', title: 'Contact Keerthi Networks | CCTV & Security Solutions in Theni',
-    description: `Contact Keerthi Networks and Security Solution — Bodinayakanur, Theni. Email ${site.email}, WhatsApp enquiry or visit us. CCTV, networking, biometric, intercom and fire safety solutions.`,
+    path: '/contact-us.html', title: 'Contact Keerthi Networks | CCTV & Security Solutions in Chennai & Tamil Nadu',
+    description: `Contact Keerthi Networks and Security Solution — Chennai, Tamil Nadu. Email ${site.email}, WhatsApp enquiry or visit us. CCTV, networking, biometric, intercom and fire safety solutions.`,
     content, crumbs: [{ label: 'Contact Us' }], activeId: 'contact', pageType: 'contact'
   }));
 };
@@ -989,7 +1020,7 @@ const buildQuote = () => {
 
   write('request-a-quote.html', page({
     path: '/request-a-quote.html', title: 'Request a Free Quote | Keerthi Networks and Security Solution',
-    description: 'Request a free, itemised quotation for CCTV, intercom, networking, biometric access control or fire safety solutions in Theni, Bodinayakanur and across Tamil Nadu.',
+    description: 'Request a free, itemised quotation for CCTV, intercom, networking, biometric access control or fire safety solutions in Chennai and all over Tamil Nadu.',
     content, crumbs: [{ label: 'Request a Quote' }], activeId: '', pageType: 'quote'
   }));
 };
@@ -1024,7 +1055,7 @@ const buildSiteVisit = () => {
 
   const siteVisitPageHtml = page({
     path: '/request-site-visit.html', title: 'Request a Site Visit | Keerthi Networks and Security Solution',
-    description: 'Book a site assessment in Theni, Bodinayakanur or nearby areas for CCTV, networking, intercom, biometric access control or fire safety requirements.',
+    description: 'Book a site assessment in Chennai or anywhere across Tamil Nadu for CCTV, networking, intercom, biometric access control or fire safety requirements.',
     content, crumbs: [{ label: 'Request a Site Visit' }], activeId: '', pageType: 'site-visit'
   });
   write('request-site-visit.html', siteVisitPageHtml);
@@ -1154,7 +1185,7 @@ Sitemap: ${url('/sitemap.xml')}
   write('site.webmanifest', JSON.stringify({
     name: site.businessName,
     short_name: 'KNSS',
-    description: 'CCTV, Intercom, Networking, Biometric, Access Control & Fire Safety solutions in Theni, Tamil Nadu.',
+    description: 'CCTV, Intercom, Networking, Biometric, Access Control & Fire Safety solutions based in Chennai, serving all over Tamil Nadu.',
     start_url: './',
     scope: './',
     display: 'standalone',

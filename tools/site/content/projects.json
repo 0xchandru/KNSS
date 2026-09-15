@@ -10,7 +10,7 @@
       "desc": "Four-camera HD surveillance covering the gate, car port, backyard and entrance, with night vision and mobile viewing configured for the owner's family.",
       "category": "cctv",
       "industry": "residential",
-      "location": "Bodinayakanur",
+      "location": "Chennai (Anna Nagar)",
       "services": [
         "CCTV Supply",
         "Installation",
@@ -23,7 +23,7 @@
       "desc": "CAT6 structured cabling for a multi-cabin office with a wall-mount rack, patch panel, managed switch and labelled, tested outlets at every workstation.",
       "category": "networking",
       "industry": "office",
-      "location": "Theni",
+      "location": "Chennai (Guindy)",
       "services": [
         "CAT6 Cabling",
         "Network Rack",
@@ -37,7 +37,7 @@
       "desc": "Fingerprint attendance system with shift-wise reporting software, installed and commissioned with staff enrollment for the factory workforce.",
       "category": "biometric",
       "industry": "industrial",
-      "location": "Theni District",
+      "location": "Chengalpattu Industrial Hub",
       "services": [
         "Biometric Supply",
         "Installation",
@@ -51,7 +51,7 @@
       "desc": "Video intercom at the main gate with an indoor monitor in the living room, letting the family see and speak with visitors before opening the door.",
       "category": "intercom",
       "industry": "residential",
-      "location": "Bodinayakanur",
+      "location": "Chennai (ECR)",
       "services": [
         "Video Door Phone",
         "Gate Station",
@@ -64,7 +64,7 @@
       "desc": "ABC and CO2 extinguishers supplied, mounted and signed for a commercial establishment, with placement planned along escape routes and risk points.",
       "category": "fire-safety",
       "industry": "commercial",
-      "location": "Theni",
+      "location": "Chennai (T. Nagar)",
       "services": [
         "Extinguisher Supply",
         "Mounting & Signage",
@@ -77,7 +77,7 @@
       "desc": "High-resolution dome and bullet cameras covering billing counters, display floors and entrances, with secure remote viewing for the owner.",
       "category": "cctv",
       "industry": "commercial",
-      "location": "Theni District",
+      "location": "Coimbatore Commercial Hub",
       "services": [
         "CCTV Supply",
         "DVR Setup",
@@ -90,7 +90,7 @@
       "desc": "Access point planning and installation to eliminate dead zones across floors, wired back to a central rack for stable, full-building wireless.",
       "category": "networking",
       "industry": "office",
-      "location": "Bodinayakanur",
+      "location": "Chennai (OMR)",
       "services": [
         "Wi-Fi Survey",
         "Access Points",
@@ -104,7 +104,7 @@
       "desc": "Card and PIN based access control restricting entry to stock and cash rooms, with electric locks and entry logs for the management.",
       "category": "biometric",
       "industry": "commercial",
-      "location": "Theni",
+      "location": "Madurai / Chennai",
       "services": [
         "Access Control",
         "Electric Lock",

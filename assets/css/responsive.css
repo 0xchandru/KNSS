@@ -111,21 +111,22 @@
   }
 
   .primary-nav-brand .pnav-name {
-    font-family: var(--font-display);
-    font-weight: 700;
+    font-family: var(--font-primary);
+    font-weight: 800;
     font-size: 0.88rem;
     color: var(--color-primary);
-    text-transform: none;
+    text-transform: none !important;
     white-space: nowrap;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.035em;
   }
 
   .primary-nav-brand .pnav-sub {
-    font-size: 0.54rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--color-accent-strong);
+    font-family: var(--font-body);
+    font-size: 0.56rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase !important;
+    color: var(--charcoal-600);
     white-space: nowrap;
   }
 
@@ -2753,6 +2754,71 @@ body.header-compact .hamburger {
     padding: 0 6px;
     font-size: 0.72rem;
   }
+}
+
+/* Mobile brand scaling for KEERTHI NETWORKS & Security Solutions */
+@media (max-width: 640px) {
+  .brand {
+    gap: 0.5rem;
+  }
+
+  .brand-logo-img {
+    width: 44px;
+    height: 36px;
+  }
+
+  .brand-name {
+    font-size: 0.88rem !important;
+    letter-spacing: 0.025em;
+  }
+
+  .brand-sub {
+    font-size: 0.56rem !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .brand {
+    gap: 0.38rem;
+  }
+
+  .brand-logo-img {
+    width: 38px;
+    height: 30px;
+  }
+
+  .brand-name {
+    font-size: 0.78rem !important;
+    letter-spacing: 0.02em;
+  }
+
+  .brand-sub {
+    font-size: 0.5rem !important;
+  }
+
+  .navbar-actions {
+    gap: 0.35rem;
+  }
+
+  .icon-btn {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+@media (max-width: 360px) {
+  .brand-logo-img {
+    width: 32px;
+    height: 26px;
+  }
+
+  .brand-name {
+    font-size: 0.72rem !important;
+  }
+
+  .brand-sub {
+    font-size: 0.46rem !important;
+  }
 
   .lang-toggle--nav .lang-btn:not(.is-active)::after {
     display: none;
@@ -2763,10 +2829,10 @@ body.header-compact .hamburger {
 /* Alignments, breakpoints, and header geometry remain fixed across languages */
 
 /* ---------- Language-based responsive adaptations (Tamil) ---------- */
-@media (max-width: 1280px) and (min-width: 1221px) {
+@media (max-width: 1320px) and (min-width: 1221px) {
   html.lang-ta .nav-link {
-    font-size: 0.78rem;
-    padding: 0.42rem 0.35rem;
+    font-size: 0.79rem;
+    padding: 0.4rem 0.28rem;
   }
 
   html.lang-ta .navbar-actions .btn {
@@ -2788,8 +2854,12 @@ body.header-compact .hamburger {
   }
 
   html.lang-ta .mobile-nav-link,
-  html.lang-ta .nav-link {
-    font-size: 0.95rem;
+  html.lang-ta .primary-nav-body .nav-link {
+    font-family: 'Noto Sans Tamil', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    font-size: 0.96rem;
+    font-weight: 600;
+    line-height: 1.35;
+    padding: 0.6rem 0.85rem;
   }
 
   html.lang-ta .mcb-item span {

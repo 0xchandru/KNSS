@@ -110,25 +110,14 @@ export const SOCIAL_ICONS = {
 /* ---------- logo ---------- */
 
 export const logoMark = (cls = 'logo-mark') => `
-<svg class="${cls}" viewBox="0 0 96 96" role="img" aria-label="KNSS logo" focusable="false">
-  <defs>
-    <linearGradient id="knssSh" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#16325F"/><stop offset="1" stop-color="#0B1F3A"/>
-    </linearGradient>
-  </defs>
-  <path d="M48 6 12 20v26c0 22 15.4 37.2 36 44 20.6-6.8 36-22 36-44V20Z" fill="url(#knssSh)"/>
-  <path d="M48 13.5 19 25v21c0 17.8 12.2 30.6 29 36.7C64.8 76.6 77 63.8 77 46V25Z" fill="none" stroke="#E8A23D" stroke-width="2.6" opacity=".9"/>
-  <path d="M35 33h9v30h-9zM61 33l-17 15 17 15v-8.6L54.5 48 61 41.6z" fill="#fff"/>
-  <circle cx="66.5" cy="61.5" r="4" fill="#E8A23D"/>
-  <circle cx="66.5" cy="61.5" r="7.6" fill="none" stroke="#E8A23D" stroke-width="1.6" opacity=".6"/>
-</svg>`;
+<img class="${cls}" src="/assets/icons/logo.png" alt="KNSS Logo" width="52" height="42" loading="eager">`;
 
 export const logo = (href = '/', cls = '') => `
-<a href="${href}" class="brand ${cls}" aria-label="Keerthi Networks and Security Solution — Home">
-  ${logoMark()}
+<a href="${href}" class="brand ${cls}" aria-label="Keerthi Networks and Security Solutions — Home">
+  <img class="brand-logo-img" src="/assets/icons/knss-logo.png" alt="Keerthi Networks and Security Solutions Logo" width="52" height="42" loading="eager">
   <span class="brand-text">
     <span class="brand-name" lang="en">Keerthi Networks</span>
-    <span class="brand-sub" lang="en">&amp; Security Solution</span>
+    <span class="brand-sub" lang="en">&amp; SECURITY SOLUTIONS</span>
   </span>
 </a>`;
 
@@ -136,11 +125,11 @@ export const preloader = () => `
 <div class="site-preloader" id="sitePreloader" aria-hidden="true">
   <div class="preloader-inner">
     <div class="preloader-shield">
-      ${logoMark()}
+      ${logoMark('preloader-logo-img')}
     </div>
     <div class="preloader-brand-title">
-      <span lang="en">Keerthi Networks</span>
-      <small lang="en">Security Solutions</small>
+      <span lang="en">KNSS</span>
+      <small lang="en">Keerthi Networks &amp; Security Solution</small>
     </div>
     <div class="preloader-bar" role="progressbar" aria-label="Loading site">
       <div class="preloader-progress"></div>
@@ -307,7 +296,7 @@ export const header = (activeId = '') => {
     <div class="topbar-left">
       <span class="topbar-item topbar-loc" title="Service Coverage Area">
         ${icon('map-pin')}
-        <span>Serving Theni, Cumbum &amp; Tamil Nadu</span>
+        <span>Chennai HQ · Serving All Over Tamil Nadu</span>
       </span>
       <span class="topbar-sep" aria-hidden="true"></span>
       <span class="topbar-item topbar-hours" title="Official Business Hours">
@@ -358,10 +347,10 @@ export const header = (activeId = '') => {
       <nav class="primary-nav" id="primaryNav" aria-label="Main navigation">
         <div class="primary-nav-head">
           <div class="primary-nav-brand">
-            ${logoMark('logo-mark logo-mark--nav')}
+            <img class="logo-mark logo-mark--nav" src="/assets/icons/knss-logo.png" alt="KNSS Logo" width="44" height="36" loading="eager">
             <span class="pnav-title">
               <span class="pnav-name" lang="en">Keerthi Networks</span>
-              <span class="pnav-sub" lang="en">&amp; Security Solution</span>
+              <span class="pnav-sub" lang="en">&amp; SECURITY SOLUTIONS</span>
             </span>
           </div>
           <div class="primary-nav-head-actions">
@@ -420,13 +409,13 @@ export const footer = () => {
         <div class="footer-map-info">
           <div class="footer-map-badge">${icon('map-pin')} <span>Our Location</span></div>
           <h2 class="footer-map-title">Visit Our Experience Center</h2>
-          <p class="footer-map-lead">Serving Theni, Bodinayakanur, Cumbum &amp; all surrounding regions across Tamil Nadu with certified security, CCTV, and network engineering.</p>
+          <p class="footer-map-lead">Headquartered in Chennai — proudly delivering certified CCTV, security, and enterprise networking engineering all over Tamil Nadu.</p>
           <address class="footer-map-address">
             <strong>${esc(site.businessName)}</strong><br>
-            ${site.address.line1}<br>
-            ${site.address.line2}<br>
-            ${site.address.line3}<br>
-            ${site.address.line4}
+            ${site.address.line1 ? `${site.address.line1}<br>` : ''}
+            ${site.address.line2 ? `${site.address.line2}<br>` : ''}
+            ${site.address.line3 ? `${site.address.line3}<br>` : ''}
+            ${site.address.line4 ? `${site.address.line4}` : ''}
           </address>
           <div class="footer-map-meta">
             <span class="footer-map-hours">${icon('clock')} <span>${esc(site.businessHours)}</span></span>
@@ -445,7 +434,7 @@ export const footer = () => {
           <iframe
             class="footer-map-iframe"
             title="Keerthi Networks and Security Solution Office Location Map"
-            src="https://maps.google.com/maps?q=10.0163,77.3507&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+            src="https://maps.google.com/maps?q=13.0827,80.2707&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
             allowfullscreen>
@@ -546,17 +535,16 @@ export const orgJsonLd = () => ({
   logo: url('/assets/icons/icon-512.png'),
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'No. 159, Karuppasamy Koil Street, Dharmathupatti, Melachokkanathapuram',
-    addressLocality: 'Bodinayakanur',
+    streetAddress: 'Chennai',
+    addressLocality: 'Chennai',
     addressRegion: 'Tamil Nadu',
-    postalCode: '625582',
+    postalCode: '600001',
     addressCountry: 'IN'
   },
   areaServed: [
-    { '@type': 'City', name: 'Bodinayakanur' },
-    { '@type': 'City', name: 'Theni' },
-    { '@type': 'District', name: 'Theni district' },
-    { '@type': 'State', name: 'Tamil Nadu' }
+    { '@type': 'City', name: 'Chennai' },
+    { '@type': 'State', name: 'Tamil Nadu' },
+    { '@type': 'Country', name: 'India' }
   ],
   openingHoursSpecification: [
     {
@@ -674,8 +662,8 @@ export function page({
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@300;400;500;600;700;900&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@300;400;500;600;700;900&display=swap"></noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&family=Orbitron:wght@700;800;900&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Tamil:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&family=Orbitron:wght@700;800;900&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Tamil:wght@400;500;600;700;800&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="stylesheet" href="/assets/css/pages.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">

@@ -10,17 +10,16 @@
   "phoneHref": "tel:+916381551316",
   "whatsapp": "916381551316",
   "businessHours": "Mon – Sat: 9:00 AM – 7:30 PM",
-  "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Keerthi+Networks+and+Security+Solution%2C+No.+159%2C+Karuppasamy+Koil+Street%2C+Dharmathupatti%2C+Melachokkanathapuram%2C+Bodinayakanur%2C+Theni+625582%2C+Tamil+Nadu",
+  "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Keerthi+Networks+and+Security+Solution%2C+Chennai%2C+Tamil+Nadu",
   "gaMeasurementId": "GA_MEASUREMENT_ID",
   "gtmContainerId": "GTM_CONTAINER_ID",
   "siteUrl": "https://www.knss.in/",
   "address": {
-    "line1": "No. 159, Karuppasamy Koil Street,",
-    "line2": "Dharmathupatti, Melachokkanathapuram,",
-    "line3": "Bodinayakanur, Theni – 625582,",
-    "line4": "Tamil Nadu, India"
+    "line1": "Keerthi Networks and Security Solution,",
+    "line2": "Chennai,",
+    "line3": "Tamil Nadu, India"
   },
-  "addressShort": "Bodinayakanur, Theni – 625582",
+  "addressShort": "Chennai, Tamil Nadu",
   "year": 2026,
   "socialLinks": {
     "whatsapp": "https://wa.me/916381551316",
@@ -31,10 +30,10 @@
     "twitter": null
   },
   "solutionOrder": [
-    "cctv-surveillance",
-    "intercom-systems",
     "networking-solutions",
+    "cctv-surveillance",
     "biometric-access-control",
+    "intercom-systems",
     "fire-safety"
   ]
 }

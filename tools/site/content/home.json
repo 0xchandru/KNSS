@@ -1,6 +1,50 @@
 {
-  "title": "CCTV, Networking & Security Solutions in Theni | Keerthi Networks",
-  "description": "CCTV surveillance, intercom, networking, biometric access control and fire safety solutions for homes, offices, shops, factories and institutions in Theni, Bodinayakanur and across Tamil Nadu.",
+  "title": "CCTV, Networking & Security Solutions in Chennai & Tamil Nadu | Keerthi Networks",
+  "description": "CCTV surveillance, intercom, networking, biometric access control and fire safety solutions for homes, offices, shops, factories and institutions in Chennai and all over Tamil Nadu.",
+  "hero": {
+    "title": "Enterprise <span class=\"accent-gradient\">Data Networking</span> &amp; Integrated Security Systems",
+    "lead": "High-performance structured cabling, enterprise switching, fiber connectivity, and high-reliability surveillance solutions engineered for modern enterprises, industries, and homes across Tamil Nadu.",
+    "badges": [
+      { "strong": "#1", "text": "Data Networking" },
+      { "icon": "shield-check", "text": "100% Genuine Hardware" },
+      { "icon": "badge-check", "text": "GST Registered" },
+      { "icon": "map-pin", "text": "Across Tamil Nadu" }
+    ]
+  },
+  "aboutCompany": {
+    "eyebrow": "About the Company",
+    "title": "Security, Surveillance & Networking — Done Properly",
+    "lead": "Keerthi Networks and Security Solution is an enterprise security technology and infrastructure solutions provider headquartered in Chennai, Tamil Nadu. We design, install and maintain high-reliability systems across Chennai and all over Tamil Nadu — CCTV surveillance, intercom and video door phones, structured computer networks, biometric attendance and access control, and fire safety systems.",
+    "sublead": "Because security and networking work best when they are planned together, you get one accountable partner instead of five different vendors — clearer coordination, neater installation and faster support.",
+    "highlights": [
+      {
+        "num": "5+",
+        "label": "Core Specialisations",
+        "desc": "CCTV, Intercom, Networks, Biometrics & Fire"
+      },
+      {
+        "num": "100%",
+        "label": "Transparent Quotations",
+        "desc": "Itemised parts & labour, no hidden margins"
+      },
+      {
+        "num": "1",
+        "label": "Accountable Partner",
+        "desc": "From initial site survey to long-term AMC"
+      }
+    ],
+    "points": [
+      "One partner for security, communication and networking",
+      "Site-based system design — no guesswork",
+      "Neat, professional installation by trained technicians",
+      "Itemised quotations and honest recommendations"
+    ]
+  },
+  "coreServices": {
+    "eyebrow": "Our Core Services",
+    "title": "Core Infrastructure & Security Services",
+    "lead": "Enterprise data networking presented as our primary infrastructure discipline, seamlessly integrated with certified surveillance and protection systems."
+  },
   "trustHighlights": [
     {
       "icon": "shield",
@@ -63,22 +107,26 @@
   ],
   "serviceArea": {
     "primary": [
-      "Bodinayakanur",
-      "Theni",
-      "Periyakulam",
-      "Gudalur",
-      "Andipatti"
+      "Chennai",
+      "Kanchipuram",
+      "Chengalpattu",
+      "Tiruvallur",
+      "Vellore"
     ],
     "extended": [
-      "Cumbum",
-      "Uthamapalayam",
-      "Theni Allinagaram",
-      "Palani",
-      "Dindigul",
+      "Coimbatore",
       "Madurai",
-      "Chennai"
+      "Tiruchirappalli",
+      "Salem",
+      "Tirunelveli",
+      "Erode",
+      "Tiruppur",
+      "Theni",
+      "Dindigul",
+      "Thanjavur",
+      "All Districts Across Tamil Nadu"
     ],
-    "note": "Based in Bodinayakanur, Theni district — serving customers across Tamil Nadu. Contact us to confirm availability in your location."
+    "note": "Headquartered in Chennai — serving commercial, industrial and residential clients all over Tamil Nadu. Contact us to schedule a site survey in your location."
   },
   "finalCta": {
     "title": "Ready to Secure Your Property?",

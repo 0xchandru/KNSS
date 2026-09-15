@@ -1,13 +1,13 @@
 {
-  "title": "About Keerthi Networks – Security & Surveillance Solutions in Theni",
-  "description": "Keerthi Networks and Security Solution, based in Bodinayakanur, Theni, provides CCTV surveillance, intercom, networking, biometric access control and fire safety solutions across Tamil Nadu.",
+  "title": "About Keerthi Networks – Security & Surveillance Solutions in Chennai & Tamil Nadu",
+  "description": "Keerthi Networks and Security Solution, based in Chennai, provides CCTV surveillance, intercom, networking, biometric access control and fire safety solutions all over Tamil Nadu.",
   "intro": [
-    "Keerthi Networks and Security Solution is a security technology and infrastructure solutions company based in Bodinayakanur, in Theni district, Tamil Nadu. We help homes, businesses and institutions protect their people and property, communicate more effectively and run on dependable networks.",
-    "We work across five connected domains — CCTV surveillance, intercom and video door phone systems, computer networking, biometric and access control, and fire safety. Because these systems increasingly work together, having one accountable partner who understands all of them means simpler coordination, neater installation and faster support when you need it.",
-    "Our approach is straightforward: understand the requirement properly, survey the site where needed, recommend what is genuinely suitable, install it neatly and stand behind the work afterwards. We would rather quote honestly and explain clearly than win a project with unrealistic promises."
+    "Keerthi Networks and Security Solution is a premier security technology and infrastructure solutions company headquartered in Chennai, Tamil Nadu. We help commercial enterprises, industrial facilities, institutions, and homes protect their people and property, communicate seamlessly, and operate on high-performance networks.",
+    "We engineer integrated solutions across five core domains — CCTV surveillance, intercom and video door phone systems, enterprise computer networking, biometric and access control, and fire safety systems. Because these systems increasingly communicate across shared infrastructure, having one accountable partner who understands all five ensures cleaner integration, tidy installations, and rapid, single-window support.",
+    "Our philosophy is rooted in engineering discipline: thoroughly survey the premises, specify genuine OEM components, install with neat structured cabling, and stand solidly behind every deployment with responsive after-sales support all over Tamil Nadu."
   ],
   "mission": "To deliver reliable, well-engineered security, communication and networking solutions that make homes and workplaces safer and more connected — installed professionally and supported responsibly.",
-  "vision": "To be the most trusted security and networking solutions partner in Theni district and across Tamil Nadu, known for technical competence, honest advice and service that customers can depend on year after year.",
+  "vision": "To be the most trusted security and networking solutions partner in Chennai and across all of Tamil Nadu, recognized for technical excellence, transparent advice, and dependable service year after year.",
   "values": [
     { "icon": "shield", "title": "Reliability First", "text": "We recommend systems we would trust on our own premises, installed to work dependably — not just on day one, but for years." },
     { "icon": "check", "title": "Honest, Transparent Advice", "text": "Clear itemised quotations and straightforward guidance. If something is unnecessary, we say so." },
@@ -25,8 +25,9 @@
     { "label": "Company Name", "value": "Keerthi Networks and Security Solution" },
     { "label": "GSTIN", "value": "33JIDPK6358B1ZC" },
     { "label": "Business Category", "value": "CCTV · Intercom · Networking · Biometric · Access Control · Fire Safety" },
-    { "label": "Location", "value": "Bodinayakanur, Theni district, Tamil Nadu" },
+    { "label": "Headquarters", "value": "Chennai, Tamil Nadu" },
+    { "label": "Service Reach", "value": "All over Tamil Nadu (Chennai, Coimbatore, Madurai, Trichy, Salem, Tirunelveli, Theni & all districts)" },
     { "label": "Email", "value": "knsschennai@gmail.com" },
-    { "label": "Phone", "value": "Available shortly — please use WhatsApp or email" }
+    { "label": "Phone", "value": "+91 63815 51316" }
   ]
 }

@@ -29,6 +29,7 @@
   /* original values, remembered the first time Tamil is applied */
   var origText = new Map();   /* Text node  -> original nodeValue        */
   var origAttr = new Map();   /* Element    -> { attr: originalValue }   */
+  var origHtml = new Map();   /* Element    -> original innerHTML        */
   var origTitle = null;
 
   var ATTR_NAMES = ['placeholder', 'aria-label', 'title', 'alt'];
@@ -82,6 +83,8 @@
         if (parent.closest && parent.closest('.lightbox')) return NodeFilter.FILTER_REJECT;
         /* do not translate language toggle pill labels */
         if (parent.closest && parent.closest('[data-lang-toggle]')) return NodeFilter.FILTER_REJECT;
+        /* do not touch elements managed directly by data-ta HTML translation */
+        if (parent.closest && parent.closest('[data-ta]')) return NodeFilter.FILTER_REJECT;
         return NodeFilter.FILTER_ACCEPT;
       }
     });
@@ -103,6 +106,19 @@
         }
       } else if (origText.has(node)) {
         node.nodeValue = origText.get(node);
+      }
+    });
+  }
+
+  function translateHtmlElements(root, toTa) {
+    var els = root.querySelectorAll('[data-ta]');
+    Array.prototype.forEach.call(els, function (el) {
+      if (toTa) {
+        if (!origHtml.has(el)) origHtml.set(el, el.innerHTML);
+        var taContent = el.getAttribute('data-ta');
+        if (taContent) el.innerHTML = taContent;
+      } else if (origHtml.has(el)) {
+        el.innerHTML = origHtml.get(el);
       }
     });
   }
@@ -184,6 +200,7 @@
 
     if (document.body) {
       translateTitle(toTa);
+      translateHtmlElements(document.body, toTa);
       translateTextNodes(document.body, toTa);
       translateAttrs(document.body, toTa);
     }
