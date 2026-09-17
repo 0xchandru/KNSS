@@ -128,20 +128,82 @@
     var nextBtn = document.getElementById('heroCarouselNext');
     if (totalSlides < 2) return;
 
-    // Create clones for seamless infinite loop (Slide 5 at start, Slide 1 at end)
-    var cloneFirst = originalSlides[0].cloneNode(true);
-    cloneFirst.classList.add('hero-carousel-clone');
-    cloneFirst.classList.remove('is-active');
-    cloneFirst.setAttribute('aria-hidden', 'true');
-    var firstLink = cloneFirst.querySelector('.hero-carousel-link');
-    if (firstLink) firstLink.setAttribute('tabindex', '-1');
+    // Helper to create and properly initialize clones
+    function createCloneSlide(sourceSlide, isCloneLast) {
+      var clone = sourceSlide.cloneNode(true);
+      clone.classList.add('hero-carousel-clone');
+      clone.classList.add(isCloneLast ? 'hero-carousel-clone--last' : 'hero-carousel-clone--first');
+      clone.classList.remove('is-active');
+      clone.setAttribute('aria-hidden', 'true');
+      var link = clone.querySelector('.hero-carousel-link');
+      if (link) link.setAttribute('tabindex', '-1');
 
-    var cloneLast = originalSlides[totalSlides - 1].cloneNode(true);
-    cloneLast.classList.add('hero-carousel-clone');
-    cloneLast.classList.remove('is-active');
-    cloneLast.setAttribute('aria-hidden', 'true');
-    var lastLink = cloneLast.querySelector('.hero-carousel-link');
-    if (lastLink) lastLink.setAttribute('tabindex', '-1');
+      var cloneImg = clone.querySelector('.hero-carousel-img');
+      var sourceImg = sourceSlide.querySelector('.hero-carousel-img');
+      var clonePic = clone.querySelector('picture');
+      var sourcePic = sourceSlide.querySelector('picture');
+
+      if (cloneImg && sourceImg) {
+        cloneImg.removeAttribute('loading');
+        cloneImg.setAttribute('decoding', 'async');
+
+        var isMobile = window.matchMedia('(max-width: 768px)').matches;
+        var sourceSource = sourcePic ? sourcePic.querySelector('source') : null;
+        var cloneSource = clonePic ? clonePic.querySelector('source') : null;
+
+        if (sourceSource && cloneSource && sourceSource.getAttribute('srcset')) {
+          cloneSource.setAttribute('srcset', sourceSource.getAttribute('srcset'));
+        }
+
+        var targetUrl = (isMobile && sourceSource && sourceSource.getAttribute('srcset'))
+          ? sourceSource.getAttribute('srcset')
+          : (sourceImg.currentSrc || sourceImg.getAttribute('src') || sourceImg.src);
+
+        if (targetUrl) {
+          cloneImg.src = targetUrl;
+        }
+
+        if (cloneImg.decode) {
+          cloneImg.decode().catch(function () {});
+        }
+      }
+
+      return clone;
+    }
+
+    function syncCloneWithSource(cloneEl, sourceSlide) {
+      if (!cloneEl || !sourceSlide) return;
+      var cloneImg = cloneEl.querySelector('.hero-carousel-img');
+      var sourceImg = sourceSlide.querySelector('.hero-carousel-img');
+      var clonePic = cloneEl.querySelector('picture');
+      var sourcePic = sourceSlide.querySelector('picture');
+      if (!cloneImg || !sourceImg) return;
+
+      var isMobile = window.matchMedia('(max-width: 768px)').matches;
+      var sourceSource = sourcePic ? sourcePic.querySelector('source') : null;
+      var cloneSource = clonePic ? clonePic.querySelector('source') : null;
+
+      if (sourceSource && cloneSource && sourceSource.getAttribute('srcset')) {
+        cloneSource.setAttribute('srcset', sourceSource.getAttribute('srcset'));
+      }
+
+      var targetUrl = (isMobile && sourceSource && sourceSource.getAttribute('srcset'))
+        ? sourceSource.getAttribute('srcset')
+        : (sourceImg.currentSrc || sourceImg.getAttribute('src') || sourceImg.src);
+
+      if (targetUrl && cloneImg.src !== targetUrl) {
+        cloneImg.src = targetUrl;
+      }
+
+      if (cloneImg.decode) {
+        cloneImg.decode().catch(function () {});
+      }
+      cloneEl.classList.add('is-loaded');
+    }
+
+    // Create clones for seamless infinite loop (Slide 5 at start, Slide 1 at end)
+    var cloneFirst = createCloneSlide(originalSlides[0], false);
+    var cloneLast = createCloneSlide(originalSlides[totalSlides - 1], true);
 
     track.appendChild(cloneFirst);
     track.insertBefore(cloneLast, originalSlides[0]);
@@ -152,6 +214,7 @@
     var autoplayDelay = 5000;
     var timer = null;
     var isTransitioning = false;
+    var resetTimeout = null;
 
     /* Hold-to-slide / Dragging state */
     var isDragging = false;
@@ -202,6 +265,11 @@
     }
 
     function moveToTrackIndex(targetIndex, animate) {
+      if (resetTimeout) {
+        clearTimeout(resetTimeout);
+        resetTimeout = null;
+      }
+
       if (animate === false) {
         track.style.transition = 'none';
         trackIndex = targetIndex;
@@ -216,9 +284,19 @@
       track.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
       track.style.transform = 'translateX(-' + (trackIndex * 100) + '%)';
       updateVisuals(trackIndex);
+
+      if (targetIndex <= 0 || targetIndex >= totalSlides + 1) {
+        resetTimeout = setTimeout(function () {
+          checkReset();
+        }, 550);
+      }
     }
 
     function checkReset() {
+      if (resetTimeout) {
+        clearTimeout(resetTimeout);
+        resetTimeout = null;
+      }
       if (trackIndex >= totalSlides + 1) {
         track.style.transition = 'none';
         trackIndex = 1;
@@ -242,11 +320,21 @@
 
     function nextSlide() {
       if (isTransitioning) checkReset();
+      if (trackIndex === totalSlides) {
+        syncCloneWithSource(cloneFirst, originalSlides[0]);
+      }
+      if (carousel.__preloadSlide) {
+        carousel.__preloadSlide(1);
+      }
       moveToTrackIndex(trackIndex + 1, true);
     }
 
     function prevSlide() {
       if (isTransitioning) checkReset();
+      syncCloneWithSource(cloneLast, originalSlides[totalSlides - 1]);
+      if (carousel.__preloadSlide) {
+        carousel.__preloadSlide(totalSlides - 1);
+      }
       moveToTrackIndex(trackIndex - 1, true);
     }
 
@@ -268,6 +356,15 @@
 
       if (isTransitioning) {
         checkReset();
+      }
+
+      if (trackIndex === 1) {
+        syncCloneWithSource(cloneLast, originalSlides[totalSlides - 1]);
+      } else if (trackIndex === totalSlides) {
+        syncCloneWithSource(cloneFirst, originalSlides[0]);
+      }
+      if (carousel.__preloadAllImmediately) {
+        carousel.__preloadAllImmediately();
       }
 
       isDragging = true;
@@ -309,6 +406,7 @@
         moveToTrackIndex(trackIndex + 1, true);
       } else if (movedBy > threshold) {
         // Dragged right -> smoothly slide to prev
+        syncCloneWithSource(cloneLast, originalSlides[totalSlides - 1]);
         moveToTrackIndex(trackIndex - 1, true);
       } else {
         // Snap back
@@ -376,14 +474,14 @@
       if (!isDragging) startAutoplay();
     });
 
-    /* Progressive One-by-One Idle Preloader:
-       Loads carousel images before scroll, sequentially one-by-one after critical page content is ready */
+    /* Progressive Idle Preloader:
+       1. Preloads adjacent slides (Slide 2 [forward] and Slide 5 / cloneLast [backward])
+          immediately once critical page content is ready.
+       2. Continues the lazy loading feature by sequentially loading remaining distant slides
+          (Slide 3, then Slide 4) one-by-one with micro-pauses in background idle time.
+       3. If user interacts (touch, drag, hover) at any time, instantly dispatches all remaining slides.
+    */
     function initProgressiveLoader() {
-      var queue = [];
-      for (var s = 1; s < totalSlides; s++) {
-        queue.push(s);
-      }
-
       var preloadedMap = {};
 
       function preloadSlide(idx, callback) {
@@ -415,13 +513,35 @@
         prefetcher.decoding = 'async';
 
         function markReady() {
+          var decodePromises = [];
           if (img.decode) {
-            img.decode().catch(function () {}).finally(function () {
-              slide.classList.add('is-loaded');
+            decodePromises.push(img.decode().catch(function () {}));
+          }
+          slide.classList.add('is-loaded');
+
+          // If this is Slide 5 (Fire Safety), sync and decode cloneLast immediately!
+          if (idx === totalSlides - 1 && cloneLast) {
+            syncCloneWithSource(cloneLast, slide);
+            var cLastImg = cloneLast.querySelector('.hero-carousel-img');
+            if (cLastImg && cLastImg.decode) {
+              decodePromises.push(cLastImg.decode().catch(function () {}));
+            }
+          }
+
+          // If this is Slide 1 (Data Networking), sync and decode cloneFirst immediately!
+          if (idx === 0 && cloneFirst) {
+            syncCloneWithSource(cloneFirst, slide);
+            var cFirstImg = cloneFirst.querySelector('.hero-carousel-img');
+            if (cFirstImg && cFirstImg.decode) {
+              decodePromises.push(cFirstImg.decode().catch(function () {}));
+            }
+          }
+
+          if (decodePromises.length > 0) {
+            Promise.all(decodePromises).finally(function () {
               if (callback) callback();
             });
           } else {
-            slide.classList.add('is-loaded');
             if (callback) callback();
           }
         }
@@ -433,44 +553,70 @@
         prefetcher.src = targetUrl;
       }
 
-      function processQueue() {
-        if (queue.length === 0) return;
-        var nextIdx = queue.shift();
+      // Slide 1 (index 0) is already loaded. Sync cloneFirst immediately.
+      syncCloneWithSource(cloneFirst, originalSlides[0]);
+
+      // Distant slides queue to load one by one dynamically: [2, 3] (Slide 3, then Slide 4)
+      var distantQueue = [];
+      for (var s = 2; s < totalSlides - 1; s++) {
+        distantQueue.push(s);
+      }
+
+      function processDistantQueue() {
+        if (distantQueue.length === 0) return;
+        var nextIdx = distantQueue.shift();
         preloadSlide(nextIdx, function () {
-          // Small micro-pause (60ms) between slides keeps the browser rendering butter smooth
-          setTimeout(processQueue, 60);
+          setTimeout(processDistantQueue, 60);
         });
       }
 
       function preloadAllImmediately() {
-        while (queue.length > 0) {
-          preloadSlide(queue.shift());
+        // Preload immediate adjacent slides first if not already done
+        preloadSlide(1); // Slide 2 (forward)
+        preloadSlide(totalSlides - 1); // Slide 5 (backward / cloneLast)
+        while (distantQueue.length > 0) {
+          preloadSlide(distantQueue.shift());
         }
       }
 
-      // Schedule sequential preloading once page content has finished rendering
-      var scheduleIdle = window.requestIdleCallback || function (cb) { return setTimeout(cb, 100); };
-
-      if (document.readyState === 'complete') {
-        scheduleIdle(processQueue);
-      } else {
-        window.addEventListener('load', function () {
-          scheduleIdle(processQueue);
+      function startLoadingSequence() {
+        // Step 1: Preload immediate neighbors (Slide 2 [forward] and Slide 5 [backward / cloneLast])
+        // so that swiping in EITHER direction is instantaneous with ZERO blank screen!
+        preloadSlide(1, function () {
+          preloadSlide(totalSlides - 1, function () {
+            // Step 2: Continue the lazy load feature dynamically one by one
+            setTimeout(processDistantQueue, 60);
+          });
         });
-        // Safety timeout so queue begins even if load event is deferred
-        setTimeout(function () {
-          scheduleIdle(processQueue);
-        }, 300);
       }
 
-      // If user hovers, touches, or starts interacting earlier, load all remaining immediately
+      var scheduleIdle = window.requestIdleCallback || function (cb) { return setTimeout(cb, 50); };
+
+      if (document.readyState === 'complete') {
+        scheduleIdle(startLoadingSequence);
+      } else {
+        window.addEventListener('load', function () {
+          scheduleIdle(startLoadingSequence);
+        });
+        setTimeout(function () {
+          scheduleIdle(startLoadingSequence);
+        }, 150);
+      }
+
+      // Preload everything immediately on any user gesture or interaction
       var onInteract = function () {
         preloadAllImmediately();
         carousel.removeEventListener('pointerenter', onInteract);
         carousel.removeEventListener('touchstart', onInteract);
+        carousel.removeEventListener('mousedown', onInteract);
       };
       carousel.addEventListener('pointerenter', onInteract, { passive: true, once: true });
       carousel.addEventListener('touchstart', onInteract, { passive: true, once: true });
+      carousel.addEventListener('mousedown', onInteract, { passive: true, once: true });
+
+      // Expose to carousel controls
+      carousel.__preloadAllImmediately = preloadAllImmediately;
+      carousel.__preloadSlide = preloadSlide;
     }
 
     initProgressiveLoader();
