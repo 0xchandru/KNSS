@@ -749,9 +749,9 @@ export function page({
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&family=Orbitron:wght@700;800;900&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Tamil:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&family=Orbitron:wght@700;800;900&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Tamil:wght@400;500;600;700;800&display=swap"></noscript>
-  <link rel="stylesheet" href="/assets/css/style.css?v=${site.version || '1.1.0'}">
-  <link rel="stylesheet" href="/assets/css/pages.css?v=${site.version || '1.1.0'}">
-  <link rel="stylesheet" href="/assets/css/responsive.css?v=${site.version || '1.1.0'}">
+  <link rel="stylesheet" href="/assets/css/style.css?v=${site.version || '1.2.0'}">
+  <link rel="stylesheet" href="/assets/css/pages.css?v=${site.version || '1.2.0'}">
+  <link rel="stylesheet" href="/assets/css/responsive.css?v=${site.version || '1.2.0'}">
   <script>document.documentElement.classList.add('js');try{var _p=new URLSearchParams(window.location.search).get('lang');if(_p==='ta'||(!_p&&localStorage.getItem('knss-lang')==='ta')){document.documentElement.lang='ta';document.documentElement.classList.add('lang-ta');}}catch(e){}try{if(sessionStorage.getItem('knss_preloaded')){document.documentElement.classList.add('preloader-done');}}catch(e){}</script>
   ${ld.map(jsonLdTag).join('\n  ')}
 </head>
@@ -764,17 +764,17 @@ ${content}
 </main>
 ${footer()}
 ${floats()}
-<script src="/assets/js/config.js?v=${site.version || '1.1.0'}" defer></script>
-<script src="/assets/js/i18n-data.js?v=${site.version || '1.1.0'}"></script>
-<script src="/assets/js/i18n.js?v=${site.version || '1.1.0'}"></script>
-<script src="/assets/js/whatsapp.js?v=${site.version || '1.1.0'}" defer></script>
-<script src="/assets/js/navigation.js?v=${site.version || '1.1.0'}" defer></script>
-<script src="/assets/js/animations.js?v=${site.version || '1.1.0'}" defer></script>
-<script src="/assets/js/faq.js?v=${site.version || '1.1.0'}" defer></script>
-<script src="/assets/js/projects.js?v=${site.version || '1.1.0'}" defer></script>
-<script src="/assets/js/forms.js?v=${site.version || '1.1.0'}" defer></script>
-<script src="/assets/js/analytics.js?v=${site.version || '1.1.0'}" defer></script>
-<script src="/assets/js/main.js?v=${site.version || '1.1.0'}" defer></script>
+<script src="/assets/js/config.js?v=${site.version || '1.2.0'}" defer></script>
+<script src="/assets/js/i18n-data.js?v=${site.version || '1.2.0'}"></script>
+<script src="/assets/js/i18n.js?v=${site.version || '1.2.0'}"></script>
+<script src="/assets/js/whatsapp.js?v=${site.version || '1.2.0'}" defer></script>
+<script src="/assets/js/navigation.js?v=${site.version || '1.2.0'}" defer></script>
+<script src="/assets/js/animations.js?v=${site.version || '1.2.0'}" defer></script>
+<script src="/assets/js/faq.js?v=${site.version || '1.2.0'}" defer></script>
+<script src="/assets/js/projects.js?v=${site.version || '1.2.0'}" defer></script>
+<script src="/assets/js/forms.js?v=${site.version || '1.2.0'}" defer></script>
+<script src="/assets/js/analytics.js?v=${site.version || '1.2.0'}" defer></script>
+<script src="/assets/js/main.js?v=${site.version || '1.2.0'}" defer></script>
 </body>
 </html>`;
 }
