@@ -1867,6 +1867,12 @@ body.nav-open .nav-backdrop {
   background-color: #030d1a;
   line-height: 0;
   user-select: none;
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.hero--carousel.is-dragging {
+  cursor: grabbing !important;
 }
 
 .hero-carousel-viewport {
@@ -1878,8 +1884,12 @@ body.nav-open .nav-backdrop {
 .hero-carousel-track {
   display: flex;
   width: 100%;
-  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
   will-change: transform;
+}
+
+.hero-carousel-track.is-dragging {
+  transition: none !important;
 }
 
 .hero-carousel-slide {
@@ -1896,11 +1906,19 @@ body.nav-open .nav-backdrop {
   line-height: 0;
   text-decoration: none;
   outline: none;
+  -webkit-user-drag: none;
+  user-select: none;
 }
 
 .hero-carousel-link:focus-visible {
   outline: 3px solid var(--color-primary-green, #10b981);
   outline-offset: -3px;
+}
+
+.hero-carousel-picture {
+  display: block;
+  width: 100%;
+  line-height: 0;
 }
 
 .hero-carousel-img {
@@ -1910,92 +1928,83 @@ body.nav-open .nav-backdrop {
   aspect-ratio: 2172 / 724;
   object-fit: cover;
   pointer-events: none;
+  -webkit-user-drag: none;
 }
 
-/* Prev / Next Navigation Buttons */
-.hero-carousel-btn {
+/* 4:3 size image for mobiles */
+@media (max-width: 768px) {
+  .hero-carousel-img {
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+}
+
+/* Unified Unobtrusive Bottom Control Bar (Does not block banner content) */
+.hero-carousel-controls {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 10;
-  width: 48px;
-  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: rgba(3, 13, 26, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.hero-carousel-nav-btn {
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  background: rgba(3, 13, 26, 0.55);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: none;
+  background: rgba(255, 255, 255, 0.12);
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   padding: 0;
-  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
 }
 
-.hero-carousel-btn svg {
-  width: 22px;
-  height: 22px;
+.hero-carousel-nav-btn svg {
+  width: 16px;
+  height: 16px;
   stroke: currentColor;
-  transition: transform 0.2s ease;
 }
 
-.hero-carousel-btn--prev {
-  left: 20px;
-}
-
-.hero-carousel-btn--next {
-  right: 20px;
-}
-
-.hero-carousel-btn:hover {
-  background: rgba(16, 185, 129, 0.85);
-  border-color: rgba(255, 255, 255, 0.6);
+.hero-carousel-nav-btn:hover {
+  background: var(--color-primary-green, #10b981);
   color: #ffffff;
-  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+  transform: scale(1.1);
 }
 
-.hero-carousel-btn--prev:hover {
-  transform: translateY(-50%) scale(1.08);
+.hero-carousel-nav-btn:active {
+  transform: scale(0.92);
 }
 
-.hero-carousel-btn--next:hover {
-  transform: translateY(-50%) scale(1.08);
-}
-
-.hero-carousel-btn:active {
-  transform: translateY(-50%) scale(0.96);
-}
-
-/* Dots Indicator */
+/* Dots Indicator inside bottom control bar */
 .hero-carousel-dots {
-  position: absolute;
-  bottom: 18px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 6px 14px;
-  border-radius: 9999px;
-  background: rgba(3, 13, 26, 0.45);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  gap: 8px;
 }
 
 .hero-carousel-dot {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 9999px;
   border: none;
   padding: 0;
-  background: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.4);
   cursor: pointer;
-  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease, transform 0.2s ease;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
 }
 
 .hero-carousel-dot:hover {
@@ -2003,38 +2012,32 @@ body.nav-open .nav-backdrop {
 }
 
 .hero-carousel-dot.is-active {
-  width: 28px;
+  width: 24px;
   background: var(--color-primary-green, #10b981);
   box-shadow: 0 0 10px rgba(16, 185, 129, 0.7);
 }
 
 /* Mobile Responsive Adjustments */
 @media (max-width: 768px) {
-  .hero-carousel-btn {
-    width: 36px;
-    height: 36px;
-  }
-  .hero-carousel-btn svg {
-    width: 16px;
-    height: 16px;
-  }
-  .hero-carousel-btn--prev {
-    left: 8px;
-  }
-  .hero-carousel-btn--next {
-    right: 8px;
-  }
-  .hero-carousel-dots {
-    bottom: 10px;
-    gap: 7px;
+  .hero-carousel-controls {
+    bottom: 12px;
+    gap: 10px;
     padding: 4px 10px;
   }
+  .hero-carousel-nav-btn {
+    width: 24px;
+    height: 24px;
+  }
+  .hero-carousel-nav-btn svg {
+    width: 14px;
+    height: 14px;
+  }
   .hero-carousel-dot {
-    width: 7px;
-    height: 7px;
+    width: 6px;
+    height: 6px;
   }
   .hero-carousel-dot.is-active {
-    width: 20px;
+    width: 18px;
   }
 }
 

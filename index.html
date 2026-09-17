@@ -371,69 +371,86 @@
           <!-- Slide 1: Enterprise Data Networking -->
           <div class="hero-carousel-slide is-active" role="group" aria-roledescription="slide" aria-label="1 of 5: Enterprise Data Networking &amp; Structured Cabling">
             <a href="./solutions/networking-solutions.html" class="hero-carousel-link" tabindex="0">
-              <img src="./assets/images/carousels/data-networking.webp"
-                alt="Keerthi Networks - Enterprise Data Networking &amp; Structured Cabling Solutions Chennai, Tamil Nadu"
-                width="2172" height="724" fetchpriority="high" class="hero-carousel-img">
+              <picture class="hero-carousel-picture">
+                <source media="(max-width: 768px)" srcset="./assets/images/carousels/data-networking-mob.webp" width="1448" height="1086">
+                <img src="./assets/images/carousels/data-networking.webp"
+                  alt="Keerthi Networks - Enterprise Data Networking &amp; Structured Cabling Solutions Chennai, Tamil Nadu"
+                  width="2172" height="724" fetchpriority="high" class="hero-carousel-img">
+              </picture>
             </a>
           </div>
 
           <!-- Slide 2: CCTV Surveillance -->
           <div class="hero-carousel-slide" role="group" aria-roledescription="slide" aria-label="2 of 5: CCTV Camera Installation &amp; 24/7 Surveillance">
             <a href="./solutions/cctv-surveillance.html" class="hero-carousel-link" tabindex="-1">
-              <img src="./assets/images/carousels/cctv.webp"
-                alt="Keerthi Networks - CCTV Camera Installation, HD IP Cameras &amp; 24/7 Video Surveillance Chennai"
-                width="2172" height="724" loading="lazy" class="hero-carousel-img">
+              <picture class="hero-carousel-picture">
+                <source media="(max-width: 768px)" srcset="./assets/images/carousels/cctv-mob.webp" width="1448" height="1086">
+                <img src="./assets/images/carousels/cctv.webp"
+                  alt="Keerthi Networks - CCTV Camera Installation, HD IP Cameras &amp; 24/7 Video Surveillance Chennai"
+                  width="2172" height="724" loading="lazy" class="hero-carousel-img">
+              </picture>
             </a>
           </div>
 
           <!-- Slide 3: Biometric Access Control -->
           <div class="hero-carousel-slide" role="group" aria-roledescription="slide" aria-label="3 of 5: Biometric Attendance &amp; Access Control">
             <a href="./solutions/biometric-access-control.html" class="hero-carousel-link" tabindex="-1">
-              <img src="./assets/images/carousels/biometric.webp"
-                alt="Keerthi Networks - Biometric Time Attendance &amp; Fingerprint Face Recognition Access Control Chennai"
-                width="2172" height="724" loading="lazy" class="hero-carousel-img">
+              <picture class="hero-carousel-picture">
+                <source media="(max-width: 768px)" srcset="./assets/images/carousels/biometric-mob.webp" width="1448" height="1086">
+                <img src="./assets/images/carousels/biometric.webp"
+                  alt="Keerthi Networks - Biometric Time Attendance &amp; Fingerprint Face Recognition Access Control Chennai"
+                  width="2172" height="724" loading="lazy" class="hero-carousel-img">
+              </picture>
             </a>
           </div>
 
           <!-- Slide 4: Intercom & Smart Security -->
           <div class="hero-carousel-slide" role="group" aria-roledescription="slide" aria-label="4 of 5: Intercom &amp; Video Door Phone Systems">
             <a href="./solutions/intercom-systems.html" class="hero-carousel-link" tabindex="-1">
-              <img src="./assets/images/carousels/intercom.webp"
-                alt="Keerthi Networks - EPABX Intercom Systems &amp; Smart Video Door Phones Chennai"
-                width="2172" height="724" loading="lazy" class="hero-carousel-img">
+              <picture class="hero-carousel-picture">
+                <source media="(max-width: 768px)" srcset="./assets/images/carousels/intercom-mob.webp" width="1448" height="1086">
+                <img src="./assets/images/carousels/intercom.webp"
+                  alt="Keerthi Networks - EPABX Intercom Systems &amp; Smart Video Door Phones Chennai"
+                  width="2172" height="724" loading="lazy" class="hero-carousel-img">
+              </picture>
             </a>
           </div>
 
           <!-- Slide 5: Certified Fire Safety -->
           <div class="hero-carousel-slide" role="group" aria-roledescription="slide" aria-label="5 of 5: Certified Fire Safety &amp; Extinguishers">
             <a href="./solutions/fire-safety.html" class="hero-carousel-link" tabindex="-1">
-              <img src="./assets/images/carousels/fire-safety.webp"
-                alt="Keerthi Networks - Certified Fire Safety Systems, Fire Alarms &amp; Extinguisher Refilling Chennai"
-                width="2172" height="724" loading="lazy" class="hero-carousel-img">
+              <picture class="hero-carousel-picture">
+                <source media="(max-width: 768px)" srcset="./assets/images/carousels/fire-safety-mob.webp" width="1448" height="1086">
+                <img src="./assets/images/carousels/fire-safety.webp"
+                  alt="Keerthi Networks - Certified Fire Safety Systems, Fire Alarms &amp; Extinguisher Refilling Chennai"
+                  width="2172" height="724" loading="lazy" class="hero-carousel-img">
+              </picture>
             </a>
           </div>
         </div>
       </div>
 
-      <!-- Carousel Navigation Arrows -->
-      <button type="button" class="hero-carousel-btn hero-carousel-btn--prev" id="heroCarouselPrev" aria-label="Previous slide" aria-controls="heroCarouselTrack">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <polyline points="15 18 9 12 15 6"></polyline>
-        </svg>
-      </button>
-      <button type="button" class="hero-carousel-btn hero-carousel-btn--next" id="heroCarouselNext" aria-label="Next slide" aria-controls="heroCarouselTrack">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <polyline points="9 18 15 12 9 6"></polyline>
-        </svg>
-      </button>
+      <!-- Carousel Unified Navigation & Indicator Bar (Unobtrusive bottom dock) -->
+      <div class="hero-carousel-controls" role="toolbar" aria-label="Carousel navigation">
+        <button type="button" class="hero-carousel-nav-btn hero-carousel-nav-btn--prev" id="heroCarouselPrev" aria-label="Previous slide" aria-controls="heroCarouselTrack">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
 
-      <!-- Carousel Dots Indicator -->
-      <div class="hero-carousel-dots" role="tablist" aria-label="Carousel slide controls">
-        <button type="button" class="hero-carousel-dot is-active" role="tab" aria-selected="true" aria-label="Go to slide 1" data-slide="0"></button>
-        <button type="button" class="hero-carousel-dot" role="tab" aria-selected="false" aria-label="Go to slide 2" data-slide="1"></button>
-        <button type="button" class="hero-carousel-dot" role="tab" aria-selected="false" aria-label="Go to slide 3" data-slide="2"></button>
-        <button type="button" class="hero-carousel-dot" role="tab" aria-selected="false" aria-label="Go to slide 4" data-slide="3"></button>
-        <button type="button" class="hero-carousel-dot" role="tab" aria-selected="false" aria-label="Go to slide 5" data-slide="4"></button>
+        <div class="hero-carousel-dots" role="tablist" aria-label="Carousel slide controls">
+          <button type="button" class="hero-carousel-dot is-active" role="tab" aria-selected="true" aria-label="Go to slide 1" data-slide="0"></button>
+          <button type="button" class="hero-carousel-dot" role="tab" aria-selected="false" aria-label="Go to slide 2" data-slide="1"></button>
+          <button type="button" class="hero-carousel-dot" role="tab" aria-selected="false" aria-label="Go to slide 3" data-slide="2"></button>
+          <button type="button" class="hero-carousel-dot" role="tab" aria-selected="false" aria-label="Go to slide 4" data-slide="3"></button>
+          <button type="button" class="hero-carousel-dot" role="tab" aria-selected="false" aria-label="Go to slide 5" data-slide="4"></button>
+        </div>
+
+        <button type="button" class="hero-carousel-nav-btn hero-carousel-nav-btn--next" id="heroCarouselNext" aria-label="Next slide" aria-controls="heroCarouselTrack">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
       </div>
     </section>
 
