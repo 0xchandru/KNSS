@@ -1862,8 +1862,9 @@ body.nav-open .nav-backdrop {
    ========================================================================== */
 .hero--carousel {
   position: relative;
+  z-index: 15;
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
   background-color: #030d1a;
   line-height: 0;
   user-select: none;
@@ -1939,71 +1940,77 @@ body.nav-open .nav-backdrop {
   }
 }
 
-/* Unified Unobtrusive Bottom Control Bar (Does not block banner content) */
+/* Floating Seam Control Bar — Half in slide, half outside on container below */
 .hero-carousel-controls {
   position: absolute;
-  bottom: 2px;
+  bottom: 0;
   left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
+  transform: translate(-50%, 50%);
+  z-index: 25;
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 6px 14px;
+  justify-content: center;
+  gap: 8px;
+  padding: 5px 12px;
   border-radius: 9999px;
-  background: rgba(3, 13, 26, 0.6);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  background: rgba(3, 13, 26, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35), 0 1px 4px rgba(0, 0, 0, 0.18);
+  pointer-events: auto;
 }
 
 .hero-carousel-nav-btn {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   border: none;
   background: rgba(255, 255, 255, 0.12);
   color: #ffffff;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   padding: 0;
+  flex-shrink: 0;
   transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
 }
 
 .hero-carousel-nav-btn svg {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   stroke: currentColor;
+  display: block;
 }
 
 .hero-carousel-nav-btn:hover {
   background: var(--color-primary-green, #10b981);
   color: #ffffff;
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
 .hero-carousel-nav-btn:active {
   transform: scale(0.92);
 }
 
-/* Dots Indicator inside bottom control bar */
+/* Dots Indicator inside floating control bar */
 .hero-carousel-dots {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 7px;
 }
 
 .hero-carousel-dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 9999px;
   border: none;
   padding: 0;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.38);
   cursor: pointer;
+  flex-shrink: 0;
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
 }
 
@@ -2012,19 +2019,46 @@ body.nav-open .nav-backdrop {
 }
 
 .hero-carousel-dot.is-active {
-  width: 24px;
+  width: 20px;
   background: var(--color-primary-green, #10b981);
   box-shadow: 0 0 10px rgba(16, 185, 129, 0.7);
 }
 
-/* Mobile Responsive Adjustments */
+/* Tablet & Intermediate Screens (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero-carousel-controls {
+    gap: 7px;
+    padding: 4px 10px;
+  }
+  .hero-carousel-nav-btn {
+    width: 22px;
+    height: 22px;
+  }
+  .hero-carousel-nav-btn svg {
+    width: 12px;
+    height: 12px;
+  }
+  .hero-carousel-dots {
+    gap: 6px;
+  }
+  .hero-carousel-dot {
+    width: 6px;
+    height: 6px;
+  }
+  .hero-carousel-dot.is-active {
+    width: 17px;
+  }
+}
+
+/* Mobile Responsive Adjustments (<= 768px) */
 @media (max-width: 768px) {
   .hero-carousel-controls {
-    bottom: 1px;
+    bottom: 0;
+    transform: translate(-50%, 50%);
     gap: 6px;
-    padding: 2px 7px;
+    padding: 3px 8px;
     border-radius: 9999px;
-    background: rgba(3, 13, 26, 0.65);
+    background: rgba(3, 13, 26, 0.88);
     border-width: 0.75px;
   }
   .hero-carousel-nav-btn {
