@@ -2020,7 +2020,7 @@ body.nav-open .nav-backdrop {
 /* Mobile Responsive Adjustments */
 @media (max-width: 768px) {
   .hero-carousel-controls {
-    bottom: 3px;
+    bottom: 1px;
     gap: 6px;
     padding: 2px 7px;
     border-radius: 9999px;

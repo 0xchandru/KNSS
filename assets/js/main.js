@@ -376,6 +376,105 @@
       if (!isDragging) startAutoplay();
     });
 
+    /* Progressive One-by-One Idle Preloader:
+       Loads carousel images before scroll, sequentially one-by-one after critical page content is ready */
+    function initProgressiveLoader() {
+      var queue = [];
+      for (var s = 1; s < totalSlides; s++) {
+        queue.push(s);
+      }
+
+      var preloadedMap = {};
+
+      function preloadSlide(idx, callback) {
+        if (preloadedMap[idx]) {
+          if (callback) callback();
+          return;
+        }
+        preloadedMap[idx] = true;
+
+        var slide = originalSlides[idx];
+        if (!slide) {
+          if (callback) callback();
+          return;
+        }
+
+        var img = slide.querySelector('.hero-carousel-img');
+        var picture = slide.querySelector('picture');
+        var source = picture ? picture.querySelector('source') : null;
+
+        if (!img) {
+          if (callback) callback();
+          return;
+        }
+
+        var isMobile = window.matchMedia('(max-width: 768px)').matches;
+        var targetUrl = (isMobile && source && source.srcset) ? source.srcset : (img.currentSrc || img.src);
+
+        var prefetcher = new Image();
+        prefetcher.decoding = 'async';
+
+        function markReady() {
+          if (img.decode) {
+            img.decode().catch(function () {}).finally(function () {
+              slide.classList.add('is-loaded');
+              if (callback) callback();
+            });
+          } else {
+            slide.classList.add('is-loaded');
+            if (callback) callback();
+          }
+        }
+
+        prefetcher.onload = markReady;
+        prefetcher.onerror = function () {
+          if (callback) callback();
+        };
+        prefetcher.src = targetUrl;
+      }
+
+      function processQueue() {
+        if (queue.length === 0) return;
+        var nextIdx = queue.shift();
+        preloadSlide(nextIdx, function () {
+          // Small micro-pause (60ms) between slides keeps the browser rendering butter smooth
+          setTimeout(processQueue, 60);
+        });
+      }
+
+      function preloadAllImmediately() {
+        while (queue.length > 0) {
+          preloadSlide(queue.shift());
+        }
+      }
+
+      // Schedule sequential preloading once page content has finished rendering
+      var scheduleIdle = window.requestIdleCallback || function (cb) { return setTimeout(cb, 100); };
+
+      if (document.readyState === 'complete') {
+        scheduleIdle(processQueue);
+      } else {
+        window.addEventListener('load', function () {
+          scheduleIdle(processQueue);
+        });
+        // Safety timeout so queue begins even if load event is deferred
+        setTimeout(function () {
+          scheduleIdle(processQueue);
+        }, 300);
+      }
+
+      // If user hovers, touches, or starts interacting earlier, load all remaining immediately
+      var onInteract = function () {
+        preloadAllImmediately();
+        carousel.removeEventListener('pointerenter', onInteract);
+        carousel.removeEventListener('touchstart', onInteract);
+      };
+      carousel.addEventListener('pointerenter', onInteract, { passive: true, once: true });
+      carousel.addEventListener('touchstart', onInteract, { passive: true, once: true });
+    }
+
+    initProgressiveLoader();
+
     /* Window resize recalculation */
     window.addEventListener('resize', function () {
       moveToTrackIndex(trackIndex, false);

@@ -72,7 +72,7 @@ const heroSection = () => `
         <a href="/solutions/networking-solutions.html" class="hero-carousel-link" tabindex="0">
           <picture class="hero-carousel-picture">
             <source media="(max-width: 768px)" srcset="/assets/images/carousels/data-networking-mob.webp" width="1448" height="1086">
-            <img src="/assets/images/carousels/data-networking.webp" alt="Keerthi Networks - Enterprise Data Networking &amp; Structured Cabling Solutions Chennai, Tamil Nadu" width="2172" height="724" fetchpriority="high" class="hero-carousel-img">
+            <img src="/assets/images/carousels/data-networking.webp" alt="Keerthi Networks - Enterprise Data Networking &amp; Structured Cabling Solutions Chennai, Tamil Nadu" width="2172" height="724" fetchpriority="high" decoding="async" class="hero-carousel-img">
           </picture>
         </a>
       </div>
@@ -80,7 +80,7 @@ const heroSection = () => `
         <a href="/solutions/cctv-surveillance.html" class="hero-carousel-link" tabindex="-1">
           <picture class="hero-carousel-picture">
             <source media="(max-width: 768px)" srcset="/assets/images/carousels/cctv-mob.webp" width="1448" height="1086">
-            <img src="/assets/images/carousels/cctv.webp" alt="Keerthi Networks - CCTV Camera Installation, HD IP Cameras &amp; 24/7 Video Surveillance Chennai" width="2172" height="724" loading="lazy" class="hero-carousel-img">
+            <img src="/assets/images/carousels/cctv.webp" alt="Keerthi Networks - CCTV Camera Installation, HD IP Cameras &amp; 24/7 Video Surveillance Chennai" width="2172" height="724" fetchpriority="low" decoding="async" class="hero-carousel-img">
           </picture>
         </a>
       </div>
@@ -88,7 +88,7 @@ const heroSection = () => `
         <a href="/solutions/biometric-access-control.html" class="hero-carousel-link" tabindex="-1">
           <picture class="hero-carousel-picture">
             <source media="(max-width: 768px)" srcset="/assets/images/carousels/biometric-mob.webp" width="1448" height="1086">
-            <img src="/assets/images/carousels/biometric.webp" alt="Keerthi Networks - Biometric Time Attendance &amp; Fingerprint Face Recognition Access Control Chennai" width="2172" height="724" loading="lazy" class="hero-carousel-img">
+            <img src="/assets/images/carousels/biometric.webp" alt="Keerthi Networks - Biometric Time Attendance &amp; Fingerprint Face Recognition Access Control Chennai" width="2172" height="724" fetchpriority="low" decoding="async" class="hero-carousel-img">
           </picture>
         </a>
       </div>
@@ -96,7 +96,7 @@ const heroSection = () => `
         <a href="/solutions/intercom-systems.html" class="hero-carousel-link" tabindex="-1">
           <picture class="hero-carousel-picture">
             <source media="(max-width: 768px)" srcset="/assets/images/carousels/intercom-mob.webp" width="1448" height="1086">
-            <img src="/assets/images/carousels/intercom.webp" alt="Keerthi Networks - EPABX Intercom Systems &amp; Smart Video Door Phones Chennai" width="2172" height="724" loading="lazy" class="hero-carousel-img">
+            <img src="/assets/images/carousels/intercom.webp" alt="Keerthi Networks - EPABX Intercom Systems &amp; Smart Video Door Phones Chennai" width="2172" height="724" fetchpriority="low" decoding="async" class="hero-carousel-img">
           </picture>
         </a>
       </div>
@@ -104,7 +104,7 @@ const heroSection = () => `
         <a href="/solutions/fire-safety.html" class="hero-carousel-link" tabindex="-1">
           <picture class="hero-carousel-picture">
             <source media="(max-width: 768px)" srcset="/assets/images/carousels/fire-safety-mob.webp" width="1448" height="1086">
-            <img src="/assets/images/carousels/fire-safety.webp" alt="Keerthi Networks - Certified Fire Safety Systems, Fire Alarms &amp; Extinguisher Refilling Chennai" width="2172" height="724" loading="lazy" class="hero-carousel-img">
+            <img src="/assets/images/carousels/fire-safety.webp" alt="Keerthi Networks - Certified Fire Safety Systems, Fire Alarms &amp; Extinguisher Refilling Chennai" width="2172" height="724" fetchpriority="low" decoding="async" class="hero-carousel-img">
           </picture>
         </a>
       </div>
