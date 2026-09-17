@@ -31,6 +31,8 @@
   var origAttr = new Map();   /* Element    -> { attr: originalValue }   */
   var origHtml = new Map();   /* Element    -> original innerHTML        */
   var origTitle = null;
+  var origDesc = null;
+  var origKeywords = null;
 
   var ATTR_NAMES = ['placeholder', 'aria-label', 'title', 'alt'];
 
@@ -169,14 +171,24 @@
     });
   }
 
-  function translateTitle(toTa) {
+  function translateMeta(toTa) {
     var path = document.body ? document.body.getAttribute('data-page') : null;
+    var metaDesc = document.querySelector('meta[name="description"]');
+    var metaKw = document.querySelector('meta[name="keywords"]');
     if (toTa) {
       if (origTitle === null) origTitle = document.title;
+      if (origDesc === null && metaDesc) origDesc = metaDesc.getAttribute('content') || '';
+      if (origKeywords === null && metaKw) origKeywords = metaKw.getAttribute('content') || '';
       var entry = path && DATA && DATA.meta && DATA.meta[path];
-      if (entry && entry.title) document.title = entry.title;
-    } else if (origTitle !== null) {
-      document.title = origTitle;
+      if (entry) {
+        if (entry.title) document.title = entry.title;
+        if (entry.description && metaDesc) metaDesc.setAttribute('content', entry.description);
+        if (entry.keywords && metaKw) metaKw.setAttribute('content', entry.keywords);
+      }
+    } else {
+      if (origTitle !== null) document.title = origTitle;
+      if (origDesc !== null && metaDesc) metaDesc.setAttribute('content', origDesc);
+      if (origKeywords !== null && metaKw) metaKw.setAttribute('content', origKeywords);
     }
   }
 
@@ -199,7 +211,7 @@
     var toTa = next === 'ta';
 
     if (document.body) {
-      translateTitle(toTa);
+      translateMeta(toTa);
       translateHtmlElements(document.body, toTa);
       translateTextNodes(document.body, toTa);
       translateAttrs(document.body, toTa);

@@ -437,7 +437,7 @@ export const footer = () => {
           <iframe
             class="footer-map-iframe"
             title="Keerthi Networks and Security Solution Office Location Map"
-            src="https://maps.google.com/maps?q=13.0827,80.2707&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+            src="https://maps.google.com/maps?q=13.0361256,80.1350731&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
             allowfullscreen>
@@ -526,28 +526,43 @@ const ORG_ID = url('/#organization');
 
 export const orgJsonLd = () => ({
   '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
+  '@type': ['ProfessionalService', 'LocalBusiness'],
   '@id': ORG_ID,
   name: site.businessName,
-  alternateName: 'KNSS',
-  description: 'Security, surveillance, communication and networking solutions provider offering CCTV, intercom, networking, biometric access control and fire safety solutions.',
+  alternateName: ['KNSS', 'Keerthi Networks', 'Keerthi Networks and Security Solution', 'KNSS Chennai'],
+  description: 'Enterprise data networking services, structured cabling, CCTV surveillance systems, biometric access control, intercoms, and fire safety solutions in Chennai and all over Tamil Nadu.',
   url: url('/'),
   email: site.email,
   ...(site.phoneDisplay ? { telephone: site.phoneDisplay } : {}),
   image: url('/assets/images/og-bg.jpg'),
-  logo: url('/assets/icons/icon-512.png'),
+  logo: url('/assets/icons/android-chrome-512x512.png'),
+  priceRange: '₹₹',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Chennai',
+    streetAddress: 'No.58, 1st floor, Ramachandra Nagar, Iyyapanthangal',
     addressLocality: 'Chennai',
     addressRegion: 'Tamil Nadu',
-    postalCode: '600001',
+    postalCode: '600056',
     addressCountry: 'IN'
   },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 13.0361256,
+    longitude: 80.1350731
+  },
+  hasMap: site.googleMapsUrl || 'https://maps.app.goo.gl/31oz9y1AqHzype5k9',
   areaServed: [
     { '@type': 'City', name: 'Chennai' },
-    { '@type': 'State', name: 'Tamil Nadu' },
-    { '@type': 'Country', name: 'India' }
+    { '@type': 'City', name: 'Kanchipuram' },
+    { '@type': 'City', name: 'Chengalpattu' },
+    { '@type': 'City', name: 'Tiruvallur' },
+    { '@type': 'City', name: 'Coimbatore' },
+    { '@type': 'City', name: 'Madurai' },
+    { '@type': 'City', name: 'Tiruchirappalli' },
+    { '@type': 'City', name: 'Salem' },
+    { '@type': 'City', name: 'Tirunelveli' },
+    { '@type': 'City', name: 'Theni' },
+    { '@type': 'AdministrativeArea', name: 'All 38 Districts Across Tamil Nadu' }
   ],
   openingHoursSpecification: [
     {
@@ -557,7 +572,60 @@ export const orgJsonLd = () => ({
       closes: '19:30'
     }
   ],
-  knowsAbout: ['CCTV Surveillance', 'Intercom Systems', 'Computer Networking', 'Biometric Attendance', 'Access Control', 'Fire Safety Equipment'],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Networking & Security Solutions',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Data Networking Services & Structured Cabling',
+          description: 'Office LAN setup, CAT6/CAT6A structured cabling, server rack setup, fiber optic splicing, switches, routers & Wi-Fi coverage.'
+        }
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'CCTV Surveillance Systems Installation',
+          description: 'HD analog & IP network CCTV camera installation, NVR/DVR setup, remote smartphone monitoring & maintenance.'
+        }
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Biometric Attendance & Access Control Systems',
+          description: 'Fingerprint, RFID & face-recognition biometric attendance machines with door access control locks & payroll software.'
+        }
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Intercom Systems & Video Door Phones',
+          description: 'Audio intercoms, multi-apartment video door phones (VDP) & IP door communication systems.'
+        }
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Fire Safety Equipment & Extinguisher Refilling',
+          description: 'ISI-certified fire extinguishers, ABC dry powder, CO2, smoke detectors, refilling & annual maintenance.'
+        }
+      }
+    ]
+  },
+  knowsAbout: [
+    'KNSS', 'Keerthi Networks', 'Data Networking Service', 'Data Networking Services Chennai',
+    'Structured Cabling Chennai', 'CAT6 Cabling Installation', 'Server Rack Installation',
+    'Fiber Optic Splicing Tamil Nadu', 'Office LAN Setup', 'Enterprise Wi-Fi Setup',
+    'CCTV Installation Chennai', 'CCTV Camera Dealers', 'Biometric Attendance Systems',
+    'Access Control Door Lock', 'Intercom Systems Chennai', 'Video Door Phone',
+    'Fire Safety Equipment', 'Fire Extinguisher Refilling', 'டேட்டா நெட்வொர்க்கிங் சேவை', 'சிசிடிவி கேமரா பொருத்துதல்'
+  ],
   ...(site.socialLinks && site.socialLinks.whatsapp ? { sameAs: [site.socialLinks.whatsapp] } : {})
 });
 
@@ -615,6 +683,7 @@ export function page({
   path,
   title,
   description,
+  keywords = '',
   content,
   crumbs = null,
   activeId = '',
@@ -632,44 +701,57 @@ export function page({
   /* hreflang: EN canonical + TA via ?lang=ta query parameter */
   const taUrl = canonical + (canonical.includes('?') ? '&' : '?') + 'lang=ta';
   return `<!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: https://ogp.me/ns#">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(description)}">
-  <link rel="canonical" href="${canonical}">
+  ${keywords ? `<meta name="keywords" content="${esc(keywords)}">\n  ` : ''}<link rel="canonical" href="${canonical}">
   <meta name="robots" content="${esc(robotsMeta)}">
   <link rel="alternate" hreflang="en-IN" href="${canonical}">
   <link rel="alternate" hreflang="ta-IN" href="${taUrl}">
   <link rel="alternate" hreflang="x-default" href="${canonical}">
   <meta name="theme-color" content="#0B1F3A">
   <meta name="author" content="${esc(site.businessName)}">
+  <!-- Open Graph / Facebook / WhatsApp -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="${esc(site.businessName)}">
   <meta property="og:title" content="${esc(title)}">
   <meta property="og:description" content="${esc(description)}">
   <meta property="og:url" content="${canonical}">
   <meta property="og:image" content="${ogImg}">
+  <meta property="og:image:secure_url" content="${ogImg}">
+  <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+  <meta property="og:image:height" content="628">
+  <meta property="og:image:alt" content="${esc(title)}">
   <meta property="og:locale" content="en_IN">
   <meta property="og:locale:alternate" content="ta_IN">
+  <!-- Microdata / WhatsApp Fallback -->
+  <meta itemprop="name" content="${esc(title)}">
+  <meta itemprop="description" content="${esc(description)}">
+  <meta itemprop="image" content="${ogImg}">
+  <link rel="image_src" href="${ogImg}">
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${esc(title)}">
   <meta name="twitter:description" content="${esc(description)}">
   <meta name="twitter:image" content="${ogImg}">
+  <meta name="twitter:image:alt" content="${esc(title)}">
+  <link rel="icon" href="/assets/icons/favicon.ico" sizes="any">
   <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/assets/icons/favicon-32x32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/assets/icons/favicon-16x16.png" sizes="16x16" type="image/png">
   <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&family=Orbitron:wght@700;800;900&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Tamil:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&family=Orbitron:wght@700;800;900&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Tamil:wght@400;500;600;700;800&display=swap"></noscript>
-  <link rel="stylesheet" href="/assets/css/style.css?v=${site.version || '2.1.0'}">
-  <link rel="stylesheet" href="/assets/css/pages.css?v=${site.version || '2.1.0'}">
-  <link rel="stylesheet" href="/assets/css/responsive.css?v=${site.version || '2.1.0'}">
+  <link rel="stylesheet" href="/assets/css/style.css?v=${site.version || '1.0.0'}">
+  <link rel="stylesheet" href="/assets/css/pages.css?v=${site.version || '1.0.0'}">
+  <link rel="stylesheet" href="/assets/css/responsive.css?v=${site.version || '1.0.0'}">
   <script>document.documentElement.classList.add('js');try{var _p=new URLSearchParams(window.location.search).get('lang');if(_p==='ta'||(!_p&&localStorage.getItem('knss-lang')==='ta')){document.documentElement.lang='ta';document.documentElement.classList.add('lang-ta');}}catch(e){}try{if(sessionStorage.getItem('knss_preloaded')){document.documentElement.classList.add('preloader-done');}}catch(e){}</script>
   ${ld.map(jsonLdTag).join('\n  ')}
 </head>
@@ -682,17 +764,17 @@ ${content}
 </main>
 ${footer()}
 ${floats()}
-<script src="/assets/js/config.js?v=${site.version || '2.1.0'}" defer></script>
-<script src="/assets/js/i18n-data.js?v=${site.version || '2.1.0'}"></script>
-<script src="/assets/js/i18n.js?v=${site.version || '2.1.0'}"></script>
-<script src="/assets/js/whatsapp.js?v=${site.version || '2.1.0'}" defer></script>
-<script src="/assets/js/navigation.js?v=${site.version || '2.1.0'}" defer></script>
-<script src="/assets/js/animations.js?v=${site.version || '2.1.0'}" defer></script>
-<script src="/assets/js/faq.js?v=${site.version || '2.1.0'}" defer></script>
-<script src="/assets/js/projects.js?v=${site.version || '2.1.0'}" defer></script>
-<script src="/assets/js/forms.js?v=${site.version || '2.1.0'}" defer></script>
-<script src="/assets/js/analytics.js?v=${site.version || '2.1.0'}" defer></script>
-<script src="/assets/js/main.js?v=${site.version || '2.1.0'}" defer></script>
+<script src="/assets/js/config.js?v=${site.version || '1.0.0'}" defer></script>
+<script src="/assets/js/i18n-data.js?v=${site.version || '1.0.0'}"></script>
+<script src="/assets/js/i18n.js?v=${site.version || '1.0.0'}"></script>
+<script src="/assets/js/whatsapp.js?v=${site.version || '1.0.0'}" defer></script>
+<script src="/assets/js/navigation.js?v=${site.version || '1.0.0'}" defer></script>
+<script src="/assets/js/animations.js?v=${site.version || '1.0.0'}" defer></script>
+<script src="/assets/js/faq.js?v=${site.version || '1.0.0'}" defer></script>
+<script src="/assets/js/projects.js?v=${site.version || '1.0.0'}" defer></script>
+<script src="/assets/js/forms.js?v=${site.version || '1.0.0'}" defer></script>
+<script src="/assets/js/analytics.js?v=${site.version || '1.0.0'}" defer></script>
+<script src="/assets/js/main.js?v=${site.version || '1.0.0'}" defer></script>
 </body>
 </html>`;
 }

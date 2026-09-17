@@ -1,7 +1,7 @@
 {
-  "name": "Keerthi Networks and Security Solution",
+  "name": "KNSS - Keerthi Networks | Data Networking & Security Solutions",
   "short_name": "KNSS",
-  "description": "CCTV, Intercom, Networking, Biometric, Access Control & Fire Safety solutions based in Chennai, serving all over Tamil Nadu.",
+  "description": "KNSS (Keerthi Networks) is Chennai's premier data networking service provider, structured cabling, CCTV camera installation, biometric access control, intercom & fire safety systems.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
@@ -10,13 +10,13 @@
   "lang": "en-IN",
   "icons": [
     {
-      "src": "assets/icons/icon-192.png",
+      "src": "assets/icons/android-chrome-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "assets/icons/icon-512.png",
+      "src": "assets/icons/android-chrome-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"

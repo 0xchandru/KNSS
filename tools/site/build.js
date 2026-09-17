@@ -46,7 +46,7 @@ const write = (rel, html) => {
   console.log('✓', rel);
 };
 
-const solImg = (name) => `/assets/images/solutions/${name}.jpg`;
+const solImg = (name) => `/assets/images/solutions/${name}.webp`;
 
 /* Category chips on project cards — correct acronym casing (never title-case
    programmatically; "cctv" would become "Cctv"). */
@@ -1170,8 +1170,8 @@ Sitemap: ${url('/sitemap.xml')}
     theme_color: '#0B1F3A',
     lang: 'en-IN',
     icons: [
-      { src: 'assets/icons/icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
-      { src: 'assets/icons/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
+      { src: 'assets/icons/android-chrome-192x192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
+      { src: 'assets/icons/android-chrome-512x512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
       { src: 'assets/icons/favicon.svg', sizes: 'any', type: 'image/svg+xml' }
     ]
   }, null, 2) + '\n');

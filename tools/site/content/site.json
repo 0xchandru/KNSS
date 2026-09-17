@@ -1,5 +1,5 @@
 {
-  "version": "2.2.4",
+  "version": "1.0.0",
   "businessName": "Keerthi Networks and Security Solution",
   "businessNameUpper": "KEERTHI NETWORKS AND SECURITY SOLUTION",
   "tagline": "Protect. Connect. Secure.",
@@ -11,16 +11,16 @@
   "phoneHref": "tel:+916381551316",
   "whatsapp": "916381551316",
   "businessHours": "Mon – Sat: 9:00 AM – 7:30 PM",
-  "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Keerthi+Networks+and+Security+Solution%2C+Chennai%2C+Tamil+Nadu",
+  "googleMapsUrl": "https://maps.app.goo.gl/31oz9y1AqHzype5k9",
   "gaMeasurementId": "GA_MEASUREMENT_ID",
   "gtmContainerId": "GTM_CONTAINER_ID",
   "siteUrl": "https://www.knss.in/",
   "address": {
-    "line1": "Keerthi Networks and Security Solution,",
-    "line2": "Chennai,",
-    "line3": "Tamil Nadu, India"
+    "line1": "No.58, 1st floor, Ramachandra Nagar,",
+    "line2": "Iyyapanthangal, Chennai,",
+    "line3": "Tamil Nadu, India - 600056"
   },
-  "addressShort": "Chennai, Tamil Nadu",
+  "addressShort": "Iyyapanthangal, Chennai, Tamil Nadu - 600056",
   "year": 2026,
   "socialLinks": {
     "whatsapp": "https://wa.me/916381551316",

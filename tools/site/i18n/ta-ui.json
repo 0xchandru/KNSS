@@ -703,61 +703,99 @@
   },
   "meta": {
     "/": {
-      "title": "சி.சி.டி.வி நிறுவல் — தேனி & போடிநாயக்கனூர் | Keerthi Networks"
-    },
-    "/about-us.html": {
-      "title": "எங்களைப் பற்றி | Keerthi Networks and Security Solution"
-    },
-    "/contact-us.html": {
-      "title": "தொடர்பு | Keerthi Networks and Security Solution, தேனி"
-    },
-    "/faq.html": {
-      "title": "அடிக்கடி கேட்கப்படும் கேள்விகள் | Keerthi Networks and Security Solution"
-    },
-    "/industries.html": {
-      "title": "நாங்கள் சேவையளிக்கும் தொழில்துறைகள் | Keerthi Networks"
-    },
-    "/projects.html": {
-      "title": "திட்டங்கள் | Keerthi Networks and Security Solution"
-    },
-    "/request-a-quote.html": {
-      "title": "இலவச மதிப்பீடு கோருங்கள் | Keerthi Networks and Security Solution"
-    },
-    "/request-site-visit.html": {
-      "title": "நேரில் பார்வையிட கோருங்கள் | Keerthi Networks and Security Solution"
-    },
-    "/why-choose-us.html": {
-      "title": "எங்களை ஏன் தேர்வு செய்ய வேண்டும் | Keerthi Networks and Security Solution"
-    },
-    "/privacy-policy.html": {
-      "title": "தனியுரிமைக் கொள்கை | Keerthi Networks and Security Solution"
-    },
-    "/terms-and-conditions.html": {
-      "title": "விதிமுறைகள் & நிபந்தனைகள் | Keerthi Networks and Security Solution"
-    },
-    "/disclaimer.html": {
-      "title": "பொறுப்புத் துறப்பு | Keerthi Networks and Security Solution"
-    },
-    "/404.html": {
-      "title": "பக்கம் கிடைக்கவில்லை (404) | Keerthi Networks and Security Solution"
-    },
-    "/solutions/cctv-surveillance.html": {
-      "title": "சி.சி.டி.வி கண்காணிப்புத் தீர்வுகள் — தேனி | Keerthi Networks"
-    },
-    "/solutions/intercom-systems.html": {
-      "title": "இண்டர்காம் & வீடியோ டோர் போன் நிறுவல் — தேனி | Keerthi Networks"
-    },
-    "/solutions/networking-solutions.html": {
-      "title": "நெட்வொர்க்கிங் & அமைப்புசார் கேபிளிங் — தேனி | Keerthi Networks"
-    },
-    "/solutions/biometric-access-control.html": {
-      "title": "பயோமெட்ரிக் வருகை & அணுகல் கட்டுப்பாடு — தேனி | Keerthi Networks"
-    },
-    "/solutions/fire-safety.html": {
-      "title": "தீ பாதுகாப்பு உபகரணங்கள் & தீயணைப்பான்கள் — தேனி | Keerthi Networks"
+      "title": "KNSS - கீர்த்தி நெட்வொர்க்ஸ் | டேட்டா நெட்வொர்க்கிங் & சிசிடிவி பாதுகாப்பு தீர்வுகள் சென்னை, தமிழ்நாடு",
+      "description": "KNSS (கீர்த்தி நெட்வொர்க்ஸ்) - சென்னை மற்றும் தமிழ்நாடு முழுவதும் தொழில்முறை டேட்டா நெட்வொர்க்கிங் சேவை, CAT6 கேபிளிங், CCTV கேமரா பொருத்துதல், பயோமெட்ரிக் & இண்டர்காம் தீர்வுகள்.",
+      "keywords": "KNSS, கீர்த்தி நெட்வொர்க்ஸ், டேட்டா நெட்வொர்க்கிங் சேவை, டேட்டா நெட்வொர்க்கிங் சென்னை, சிசிடிவி கேமரா பொருத்துதல், நெட்வொர்க் கேபிளிங், பயோமெட்ரிக் வருகை பதிவு, இண்டர்காம் அமைப்புகள், தீ பாதுகாப்பு சென்னை"
     },
     "/index.html": {
-      "title": "சி.சி.டி.வி நிறுவல் — தேனி & போடிநாயக்கனூர் | Keerthi Networks"
+      "title": "KNSS - கீர்த்தி நெட்வொர்க்ஸ் | டேட்டா நெட்வொர்க்கிங் & சிசிடிவி பாதுகாப்பு தீர்வுகள் சென்னை, தமிழ்நாடு",
+      "description": "KNSS (கீர்த்தி நெட்வொர்க்ஸ்) - சென்னை மற்றும் தமிழ்நாடு முழுவதும் தொழில்முறை டேட்டா நெட்வொர்க்கிங் சேவை, CAT6 கேபிளிங், CCTV கேமரா பொருத்துதல், பயோமெட்ரிக் & இண்டர்காம் தீர்வுகள்.",
+      "keywords": "KNSS, கீர்த்தி நெட்வொர்க்ஸ், டேட்டா நெட்வொர்க்கிங் சேவை, டேட்டா நெட்வொர்க்கிங் சென்னை, சிசிடிவி கேமரா பொருத்துதல், நெட்வொர்க் கேபிளிங், பயோமெட்ரிக் வருகை பதிவு, இண்டர்காம் அமைப்புகள், தீ பாதுகாப்பு சென்னை"
+    },
+    "/about-us.html": {
+      "title": "எங்களைப் பற்றி | KNSS - கீர்த்தி நெட்வொர்க்ஸ் சென்னை, தமிழ்நாடு",
+      "description": "KNSS (கீர்த்தி நெட்வொர்க்ஸ் மற்றும் செக்யூரிட்டி சொல்யூஷன்): சென்னையைத் தலைமையகமாகக் கொண்டு தமிழ்நாடு முழுவதும் உயர்தர நெட்வொர்க்கிங் மற்றும் பாதுகாப்பு அமைப்புகளை வழங்கும் முன்னணி நிறுவனம்.",
+      "keywords": "KNSS எங்களைப் பற்றி, கீர்த்தி நெட்வொர்க்ஸ் சென்னை, Keerthi Networks Chennai, செக்யூரிட்டி சிஸ்டம்ஸ் தமிழ்நாடு, நெட்வொர்க்கிங் நிறுவனம் சென்னை"
+    },
+    "/contact-us.html": {
+      "title": "தொடர்புக்கு | KNSS - கீர்த்தி நெட்வொர்க்ஸ் சென்னை | +91 63815 51316",
+      "description": "KNSS (கீர்த்தி நெட்வொர்க்ஸ்): No.58, அய்யப்பன்தாங்கல், சென்னை. தொலைபேசி / WhatsApp: +91 63815 51316. தமிழ்நாடு முழுவதும் எங்கள் பொறியாளர்கள் சேவை வழங்க தயாராக உள்ளனர்.",
+      "keywords": "KNSS தொடர்பு, கீர்த்தி நெட்வொர்க்ஸ் போன் நம்பர், KNSS contact Chennai, Keerthi Networks phone, அய்யப்பன்தாங்கல் சென்னை"
+    },
+    "/faq.html": {
+      "title": "அடிக்கடி கேட்கப்படும் கேள்விகள் (FAQ) | KNSS - கீர்த்தி நெட்வொர்க்ஸ்",
+      "description": "டேட்டா நெட்வொர்க்கிங், CCTV கேமரா, பயோமெட்ரிக் மற்றும் KNSS சேவைகள் குறித்த வாடிக்கையாளர்களின் முக்கிய கேள்விகளுக்கான விரிவான பதில்கள்.",
+      "keywords": "KNSS கேள்விகள், Networking FAQ Chennai, CCTV installation FAQ"
+    },
+    "/industries.html": {
+      "title": "நாங்கள் சேவையளிக்கும் துறைகள் | KNSS - கீர்த்தி நெட்வொர்க்ஸ்",
+      "description": "நிறுவனங்கள், தகவல் தொழில்நுட்ப அலுவலகங்கள், தொழிற்சாலைகள், மருத்துவமனைகள், பள்ளிகள் மற்றும் வணிக வளாகங்களுக்கான சிறப்பு நெட்வொர்க்கிங் தீர்வுகள்.",
+      "keywords": "கார்ப்பரேட் நெட்வொர்க்கிங், தொழிற்சாலை பாதுகாப்பு அமைப்புகள், பள்ளி CCTV கேமரா, KNSS industries"
+    },
+    "/projects.html": {
+      "title": "எங்கள் திட்டங்கள் & பணிகள் | KNSS - கீர்த்தி நெட்வொர்க்ஸ் தமிழ்நாடு",
+      "description": "சென்னை மற்றும் தமிழ்நாடு முழுவதும் வெற்றிகரமாக முடிக்கப்பட்ட டேட்டா நெட்வொர்க்கிங், CCTV, பயோமெட்ரிக் மற்றும் பாதுகாப்பு திட்டங்களின் விவரங்கள்.",
+      "keywords": "KNSS திட்டங்கள், நெட்வொர்க்கிங் பணிகள் சென்னை, CCTV installation projects Tamil Nadu, KNSS projects"
+    },
+    "/request-a-quote.html": {
+      "title": "இலவச மதிப்பீடு கோருங்கள் | KNSS - கீர்த்தி நெட்வொர்க்ஸ் சென்னை",
+      "description": "டேட்டா நெட்வொர்க்கிங், CCTV மற்றும் பாதுகாப்பு அமைப்புகளுக்கு உடனடி வெளிப்படையான விலை மதிப்பீடு பெற உங்கள் தேவையை அனுப்புங்கள்.",
+      "keywords": "இலவச மதிப்பீடு, Get Quote KNSS, நெட்வொர்க்கிங் மதிப்பீடு, CCTV quotation Chennai"
+    },
+    "/request-site-visit.html": {
+      "title": "நேரடி தள பார்வை முன்பதிவு | KNSS - கீர்த்தி நெட்வொர்க்ஸ் சென்னை",
+      "description": "உங்கள் வளாகத்தில் துல்லியமான திட்டமிடல் மற்றும் ஆலோசனை பெற KNSS பொறியாளர்களின் இலவச நேரடி தள பார்வையை முன்பதிவு செய்யுங்கள்.",
+      "keywords": "தள பார்வை முன்பதிவு, Book Site Visit KNSS, நேரடி ஆய்வு சென்னை"
+    },
+    "/why-choose-us.html": {
+      "title": "ஏன் KNSS தேர்வு செய்ய வேண்டும்? | கீர்த்தி நெட்வொர்க்ஸ் சென்னை",
+      "description": "அசல் OEM தயாரிப்புகள், வெளிப்படையான விலை நிர்ணயம், தொழில்முறை பொறியியல் மற்றும் உடனடி சேவை உத்தரவாதம் - KNSS.",
+      "keywords": "ஏன் கீர்த்தி நெட்வொர்க்ஸ், Why Choose KNSS, சிறந்த நெட்வொர்க்கிங் சேவை சென்னை"
+    },
+    "/privacy-policy.html": {
+      "title": "தனியுரிமைக் கொள்கை | KNSS - கீர்த்தி நெட்வொர்க்ஸ்",
+      "description": "Keerthi Networks and Security Solution (KNSS) நிறுவனத்தின் அதிகாரப்பூர்வ தனியுரிமைக் கொள்கை.",
+      "keywords": "KNSS தனியுரிமைக் கொள்கை, Privacy Policy KNSS"
+    },
+    "/terms-and-conditions.html": {
+      "title": "விதிமுறைகள் & நிபந்தனைகள் | KNSS - கீர்த்தி நெட்வொர்க்ஸ்",
+      "description": "Keerthi Networks and Security Solution (KNSS) சேவை விதிமுறைகள் மற்றும் நிபந்தனைகள்.",
+      "keywords": "KNSS விதிமுறைகள், Terms and Conditions KNSS"
+    },
+    "/disclaimer.html": {
+      "title": "பொறுப்புத் துறப்பு | KNSS - கீர்த்தி நெட்வொர்க்ஸ்",
+      "description": "Keerthi Networks and Security Solution (KNSS) இணையதள பொறுப்புத் துறப்பு விவரங்கள்.",
+      "keywords": "KNSS பொறுப்புத் துறப்பு, Disclaimer KNSS"
+    },
+    "/404.html": {
+      "title": "பக்கம் கிடைக்கவில்லை (404) | KNSS - கீர்த்தி நெட்வொர்க்ஸ்",
+      "description": "நீங்கள் தேடும் பக்கம் கிடைக்கவில்லை - KNSS முகப்புப் பக்கத்திற்குச் செல்லுங்கள்.",
+      "keywords": "404 KNSS, பக்கம் கிடைக்கவில்லை"
+    },
+    "/solutions/networking-solutions.html": {
+      "title": "டேட்டா நெட்வொர்க்கிங் & அமைப்புசார் கேபிளிங் சென்னை | KNSS - கீர்த்தி நெட்வொர்க்ஸ்",
+      "description": "அலுவலக டேட்டா நெட்வொர்க்கிங் சேவை, CAT6/CAT6A கேபிளிங், சர்வர் ரேக் பொருத்துதல், ஃபைபர் ஆப்டிக் ஸ்ப்ளிசிங் மற்றும் Wi-Fi அமைப்புகள் - KNSS சென்னை.",
+      "keywords": "டேட்டா நெட்வொர்க்கிங் சேவை, டேட்டா நெட்வொர்க்கிங் சென்னை, அலுவலக நெட்வொர்க் கேபிளிங், CAT6 கேபிளிங், சர்வர் ரேக் நிறுவுதல், ஃபைபர் நெட்வொர்க், Wi-Fi அமைப்புகள் தமிழ்நாடு, KNSS Networking"
+    },
+    "/solutions/cctv-surveillance.html": {
+      "title": "சிசிடிவி கேமரா பொருத்துதல் & பாதுகாப்பு கண்காணிப்பு சென்னை | KNSS",
+      "description": "HD மற்றும் IP சிசிடிவி கேமரா நிறுவுதல், DVR/NVR கட்டமைப்பு, மொபைல் நேரலை கண்காணிப்பு - வீடுகள், கடைகள் மற்றும் தொழிற்சாலைகளுக்கு KNSS சென்னை.",
+      "keywords": "சிசிடிவி கேமரா பொருத்துதல், சிசிடிவி நிறுவல் சென்னை, CCTV camera installation Chennai, CCTV சர்வீஸ் தமிழ்நாடு, IP கேமரா சென்னை, KNSS CCTV"
+    },
+    "/solutions/intercom-systems.html": {
+      "title": "இண்டர்காம் & வீடியோ டோர் போன் அமைப்புகள் சென்னை | KNSS",
+      "description": "அபார்ட்மெண்ட், வில்லா மற்றும் அலுவலகங்களுக்கான ஆடியோ & வீடியோ டோர் போன் இண்டர்காம் அமைப்புகள் நிறுவுதல் - KNSS சென்னை.",
+      "keywords": "இண்டர்காம் அமைப்புகள் சென்னை, வீடியோ டோர் போன், video door phone Chennai, intercom systems Chennai, EPABX சென்னை, KNSS Intercom"
+    },
+    "/solutions/biometric-access-control.html": {
+      "title": "பயோமெட்ரிக் வருகை & அணுகல் கட்டுப்பாடு அமைப்புகள் சென்னை | KNSS",
+      "description": "கைரேகை மற்றும் முக அடையாளம் பயோமெட்ரிக் வருகை பதிவு அமைப்புகள், தானியங்கி கதவு பூட்டு (Access Control) தீர்வுகள் - KNSS சென்னை.",
+      "keywords": "பயோமெட்ரிக் வருகை பதிவு இயந்திரம், பயோமெட்ரிக் சென்னை, biometric attendance Chennai, கதவு அணுகல் கட்டுப்பாடு, access control system Chennai, KNSS Biometric"
+    },
+    "/solutions/fire-safety.html": {
+      "title": "தீ பாதுகாப்பு உபகரணங்கள் & தீயணைப்பான் ரீஃபில்லிங் சென்னை | KNSS",
+      "description": "ISI சான்றளிக்கப்பட்ட தீயணைப்பான் கருவிகள் விநியோகம், புகை கண்டறிதல் மற்றும் வருடாந்திர பராமரிப்பு & ரீஃபில்லிங் - KNSS சென்னை.",
+      "keywords": "தீ பாதுகாப்பு உபகரணங்கள், தீயணைப்பான் ரீஃபில்லிங் சென்னை, fire safety equipment Chennai, fire extinguisher refilling Chennai, KNSS Fire Safety"
     }
   },
   "attrs": {
