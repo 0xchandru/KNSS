@@ -132,53 +132,82 @@
   /* ---------- message builders (structured, professional) ---------- */
 
   function contactMessage(data, sourcePage) {
+    var custFields = [
+      [T('wa.label.name', 'Name'), data.name],
+      [T('wa.label.phone', 'Phone'), data.phone]
+    ];
+    if (data.location) custFields.push([T('wa.label.location', 'Location'), data.location]);
+    if (data.email) custFields.push([T('wa.label.email', 'Email'), data.email]);
+    if (data.company) custFields.push([T('wa.label.company', 'Company'), data.company]);
+
+    var sections = [
+      { heading: T('wa.section.customer', 'CUSTOMER DETAILS'), fields: custFields }
+    ];
+    if (data.service) {
+      sections.push({ heading: T('wa.section.service', 'SERVICE REQUIRED'), fields: [[T('wa.label.service', 'Service'), data.service]] });
+    }
+
     return KNSS().buildWhatsAppMessage({
       intro: T('wa.contactIntro', 'I would like to enquire about your services.'),
-      sections: [
-        { heading: T('wa.section.customer', 'CUSTOMER DETAILS'), fields: [
-          [T('wa.label.name', 'Name'), data.name], [T('wa.label.phone', 'Phone'), data.phone], [T('wa.label.email', 'Email'), data.email],
-          [T('wa.label.company', 'Company'), data.company], [T('wa.label.location', 'Location'), data.location]
-        ] },
-        { heading: T('wa.section.service', 'SERVICE REQUIRED'), fields: [[T('wa.label.service', 'Service'), data.service]] }
-      ],
+      sections: sections,
       requirement: data.message,
       source: T('wa.src.contact', 'Contact Form') + ' — ' + sourcePage
     });
   }
 
   function quoteMessage(data, sourcePage) {
+    var custFields = [
+      [T('wa.label.name', 'Name'), data.name],
+      [T('wa.label.phone', 'Phone'), data.phone]
+    ];
+    if (data.city) custFields.push([T('wa.label.city', 'City/Town'), data.city]);
+    if (data.address) custFields.push([T('wa.label.address', 'Address'), data.address]);
+    if (data.email) custFields.push([T('wa.label.email', 'Email'), data.email]);
+    if (data.company) custFields.push([T('wa.label.company', 'Company'), data.company]);
+
+    var reqFields = [];
+    if (data.service) reqFields.push([T('wa.label.service', 'Service Required'), data.service]);
+    if (data.property) reqFields.push([T('wa.label.property', 'Property Type'), data.property]);
+    if (data.area) reqFields.push([T('wa.label.area', 'Approx. Area'), data.area]);
+    if (data.floors) reqFields.push([T('wa.label.floors', 'Floors'), data.floors]);
+    if (data.users) reqFields.push([T('wa.label.users', 'Users/Employees'), data.users]);
+
+    var sections = [
+      { heading: T('wa.section.customer', 'CUSTOMER DETAILS'), fields: custFields }
+    ];
+    if (reqFields.length) {
+      sections.push({ heading: T('wa.section.service', 'REQUIREMENT DETAILS'), fields: reqFields });
+    }
+
     return KNSS().buildWhatsAppMessage({
       intro: T('wa.quoteIntro', 'I would like to request a quotation.'),
-      sections: [
-        { heading: T('wa.section.customer', 'CUSTOMER DETAILS'), fields: [
-          [T('wa.label.name', 'Name'), data.name], [T('wa.label.phone', 'Phone'), data.phone], [T('wa.label.email', 'Email'), data.email], [T('wa.label.company', 'Company'), data.company]
-        ] },
-        { heading: T('wa.section.location', 'LOCATION'), fields: [
-          [T('wa.label.address', 'Address'), data.address], [T('wa.label.city', 'City'), data.city], [T('wa.label.pin', 'PIN Code'), data.pin]
-        ] },
-        { heading: T('wa.section.service', 'SERVICE REQUIRED'), fields: [[T('wa.label.service', 'Service'), data.service]] },
-        { heading: T('wa.section.property', 'PROPERTY DETAILS'), fields: [
-          [T('wa.label.property', 'Property'), data.property], [T('wa.label.area', 'Approximate Area'), data.area],
-          [T('wa.label.floors', 'Floors'), data.floors], [T('wa.label.users', 'Users/Employees'), data.users],
-          [T('wa.label.existing', 'Existing System'), data.existing]
-        ] }
-      ],
+      sections: sections,
       requirement: data.message,
       source: T('wa.src.quote', 'Website Quote Request') + ' — ' + sourcePage
     });
   }
 
   function siteVisitMessage(data, sourcePage) {
+    var custFields = [
+      [T('wa.label.name', 'Name'), data.name],
+      [T('wa.label.phone', 'Phone'), data.phone],
+      [T('wa.label.location', 'Site Location'), data.location]
+    ];
+    if (data.email) custFields.push([T('wa.label.email', 'Email'), data.email]);
+
+    var visitFields = [];
+    if (data.service) visitFields.push([T('wa.label.service', 'Service Needed'), data.service]);
+    if (data.date) visitFields.push([T('wa.label.date', 'Preferred Date'), data.date]);
+    if (data.time) visitFields.push([T('wa.label.time', 'Preferred Time Window'), data.time]);
+
+    var sections = [
+      { heading: T('wa.section.contact', 'CONTACT DETAILS'), fields: custFields },
+      { heading: T('wa.section.visit', 'VISIT REQUEST'), fields: visitFields }
+    ];
+
     return KNSS().buildWhatsAppMessage({
       intro: T('wa.visitIntro', 'I would like to request a site visit.'),
-      sections: [
-        { heading: T('wa.section.contact', 'CONTACT DETAILS'), fields: [
-          [T('wa.label.name', 'Name'), data.name], [T('wa.label.phone', 'Phone'), data.phone], [T('wa.label.email', 'Email'), data.email], [T('wa.label.location', 'Location'), data.location]
-        ] },
-        { heading: T('wa.section.visit', 'VISIT REQUEST'), fields: [
-          [T('wa.label.service', 'Service'), data.service], [T('wa.label.date', 'Preferred Date'), data.date], [T('wa.label.time', 'Preferred Time'), data.time]
-        ] }
-      ],
+      sections: sections,
       requirement: data.message,
       source: T('wa.src.visit', 'Site Visit Request') + ' — ' + sourcePage
     });

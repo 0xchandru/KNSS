@@ -104,6 +104,21 @@
     mqDesktop.addEventListener('change', function (e) {
       if (e.matches) closeDrawer(false);
     });
+
+    try {
+      var p = new URLSearchParams(window.location.search);
+      if (p.get('open_nav') === '1' || window.location.hash === '#menu') {
+        openDrawer();
+        if (p.get('open_dropdown') === '1') {
+          var wrapper = document.querySelector('.has-dropdown');
+          if (wrapper) {
+            wrapper.classList.add('is-open');
+            var toggle = wrapper.querySelector('.dropdown-toggle');
+            if (toggle) toggle.setAttribute('aria-expanded', 'true');
+          }
+        }
+      }
+    } catch (e) {}
   }
 
   /* ---------- Solutions dropdown ---------- */

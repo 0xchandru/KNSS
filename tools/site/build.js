@@ -16,6 +16,22 @@ import projects from './content/projects.json' with { type: 'json' };
 import faqData from './content/faq.json' with { type: 'json' };
 import legal from './content/legal.json' with { type: 'json' };
 
+// Optional CLI flag: node tools/site/build.js --version 2.2.0
+const vArgIdx = process.argv.indexOf('--version');
+if (vArgIdx !== -1 && process.argv[vArgIdx + 1]) {
+  const newVer = process.argv[vArgIdx + 1].trim();
+  site.version = newVer;
+  const siteJsonPath = path.resolve(import.meta.dirname, 'content/site.json');
+  try {
+    const rawSite = JSON.parse(fs.readFileSync(siteJsonPath, 'utf8'));
+    rawSite.version = newVer;
+    fs.writeFileSync(siteJsonPath, JSON.stringify(rawSite, null, 2) + '\n', 'utf8');
+    console.log(`Updated site.json version to: ${newVer}`);
+  } catch (e) {
+    console.warn('Could not write new version to site.json', e);
+  }
+}
+
 const ROOT = path.resolve(import.meta.dirname, '../..');
 const write = (rel, html) => {
   const file = path.join(ROOT, rel);
@@ -25,7 +41,7 @@ const write = (rel, html) => {
      to depth-correct relative URLs so the site works at ANY base path. */
   const depth = rel.split('/').length - 1;
   const prefix = depth === 0 ? './' : '../'.repeat(depth);
-  html = html.replace(/(href|src)="\/(?!\/)([^"]*)"/g, (_m, attr, p) => `${attr}="${prefix}${p}"`);
+  html = html.replace(/(href|src|srcset)="\/(?!\/)([^"]*)"/g, (_m, attr, p) => `${attr}="${prefix}${p}"`);
   fs.writeFileSync(file, html.trim() + '\n', 'utf8');
   console.log('✓', rel);
 };
@@ -48,33 +64,18 @@ const projectCategoryLabel = (c) => PROJECT_CATEGORY_LABELS[c] || c;
    ============================================================ */
 
 const heroSection = () => `
-<section class="hero hero--fullwidth" aria-labelledby="heroTitle">
-  <div class="hero-visual-wrap">
-    <picture class="hero-picture">
-      <source media="(max-width: 768px)" srcset="/assets/images/hero-network-mobile.jpg" width="900" height="1200">
-      <img src="/assets/images/hero-network-desktop.jpg" alt="Enterprise Data Networking Infrastructure, Switches, and Structured Cabling by Keerthi Networks" width="1920" height="640" fetchpriority="high" class="hero-img">
-    </picture>
-    <div class="hero-scrim"></div>
-    <div class="hero-ambient-glow" aria-hidden="true"></div>
-  </div>
-  <div class="container hero-content-container">
-    <div class="hero-content">
-      <h1 id="heroTitle" class="hero-title reveal" data-ta="நிறுவன &lt;span class=&quot;accent-gradient&quot;&gt;தரவு நெட்வொர்க்கிங்&lt;/span&gt; &amp; ஒருங்கிணைந்த பாதுகாப்பு அமைப்புகள்">
-        ${home.hero.title}
-      </h1>
-      <p class="hero-lead reveal">
-        ${esc(home.hero.lead)}
-      </p>
-      <div class="hero-ctas reveal">
-        ${quoteCta({ cls: 'btn btn--primary btn--lg hero-cta-btn', track: 'hero_quote_click' })}
-        ${visitCta({ cls: 'btn btn--outline-light btn--lg', track: 'hero_visit_click' })}
-        <a href="#" class="btn btn--wa btn--lg" data-wa data-track="hero_wa_click">${WHATSAPP_ICON}<span>WhatsApp Us</span></a>
-      </div>
-      <div class="hero-badges-row reveal">
-        ${home.hero.badges.map((b) => `<span class="hero-stat-pill">${b.icon ? icon(b.icon) + ' ' : ''}${b.strong ? `<strong>${esc(b.strong)}</strong> ` : ''}${esc(b.text)}</span>`).join('')}
-      </div>
-    </div>
-  </div>
+<section class="hero hero--banner" aria-label="Keerthi Networks and Security Solution">
+  <h1 class="sr-only">Keerthi Networks and Security Solution - Enterprise Data Networking &amp; Integrated Security Systems</h1>
+  <!-- English Hero Banner (Desktop: banner-des.webp, Mobile: banner-mob.webp) -->
+  <picture class="hero-banner-picture hero-banner--en">
+    <source media="(max-width: 768px)" srcset="/assets/images/banner-mob.webp" width="1448" height="1086">
+    <img src="/assets/images/banner-des.webp" alt="Keerthi Networks and Security Solution - Enterprise Data Networking &amp; Integrated Security Systems - Headquartered in Chennai, Serving All Over Tamil Nadu" width="2172" height="724" fetchpriority="high" class="hero-banner-img">
+  </picture>
+  <!-- Tamil Hero Banner (Desktop: banner-des-ta.webp, Mobile: banner-mob-ta.webp) -->
+  <picture class="hero-banner-picture hero-banner--ta">
+    <source media="(max-width: 768px)" srcset="/assets/images/banner-mob-ta.webp" width="1448" height="1086">
+    <img src="/assets/images/banner-des-ta.webp" alt="கீர்த்தி நெட்வொர்க்ஸ் &amp; செக்யூரிட்டி சொல்யூஷன்ஸ் - நிறுவன தரவு நெட்வொர்க்கிங் &amp; ஒருங்கிணைந்த பாதுகாப்பு அமைப்புகள்" width="2172" height="724" loading="lazy" class="hero-banner-img">
+  </picture>
 </section>`;
 
 const trustHighlights = () => `
@@ -96,7 +97,7 @@ const aboutSection = () => `
     <div class="split-media reveal">
       <div class="media-frame-wrap">
         <figure class="frame frame--offset">
-          <img src="/assets/images/about-team.jpg" alt="Keerthi Networks technicians reviewing an installation plan with CCTV equipment on site" loading="lazy" decoding="async" width="1536" height="1024">
+          <img src="/assets/images/about-team.webp" alt="Keerthi Networks technicians reviewing an installation plan with CCTV equipment on site" loading="lazy" decoding="async" width="1536" height="1024">
         </figure>
         <div class="frame-badge frame-badge--bottom">${icon('shield-check')}<span><strong>Protect. Connect. Secure.</strong><em>Our promise on every project</em></span></div>
         <div class="frame-badge frame-badge--top">${icon('award')}<span><strong>100% Quality Hardware</strong><em>Genuine OEM Components</em></span></div>
@@ -130,15 +131,15 @@ const solutionsSection = () => `
 <section class="section section--gray solutions-section" id="solutions" aria-labelledby="solutionsTitle">
   <div class="container">
     ${sectionHead({
-      eyebrow: esc(home.coreServices.eyebrow),
-      title: `<span id="solutionsTitle">${esc(home.coreServices.title)}</span>`,
-      lead: esc(home.coreServices.lead)
-    })}
+  eyebrow: esc(home.coreServices.eyebrow),
+  title: `<span id="solutionsTitle">${esc(home.coreServices.title)}</span>`,
+  lead: esc(home.coreServices.lead)
+})}
     <div class="solutions-grid solutions-grid--highlighted">
       ${site.solutionOrder.map((slug) => {
-        const s = solutions[slug];
-        const isPrimary = slug === 'networking-solutions';
-        return `
+  const s = solutions[slug];
+  const isPrimary = slug === 'networking-solutions';
+  return `
       <article class="sol-card reveal ${isPrimary ? 'sol-card--primary' : ''}">
         ${isPrimary ? `<span class="sol-primary-badge">${icon('network')} Primary Service</span>` : ''}
         <a class="sol-card-media" href="/solutions/${slug}.html" aria-label="${esc(s.name)} — explore solution">
@@ -159,7 +160,7 @@ const solutionsSection = () => `
           </div>
         </div>
       </article>`;
-      }).join('')}
+}).join('')}
     </div>
   </div>
 </section>`;
@@ -198,9 +199,9 @@ const industriesStrip = () => {
       ${sectionHead({ eyebrow: 'Industries We Serve', title: '<span id="indStripTitle">Solutions for Every Kind of Property</span>', lead: 'From a single home to a multi-floor facility — the same engineering discipline applies.' })}
       <div class="industry-grid">
         ${pick.map((id) => {
-          const ind = industries.industries.find((x) => x.id === id);
-          return `<a class="industry-card reveal" href="/industries.html#${ind.id}">${iconBox(ind.icon)}<h3>${esc(ind.name)}</h3><p>${esc(ind.solutions[0])}</p></a>`;
-        }).join('')}
+    const ind = industries.industries.find((x) => x.id === id);
+    return `<a class="industry-card reveal" href="/industries.html#${ind.id}">${iconBox(ind.icon)}<h3>${esc(ind.name)}</h3><p>${esc(ind.solutions[0])}</p></a>`;
+  }).join('')}
       </div>
       <div class="center reveal"><a href="/industries.html" class="btn btn--ghost-dark">Explore All Industries ${icon('arrow-right')}</a></div>
     </div>
@@ -367,100 +368,77 @@ const formMeta = (formType) => `
 const formStatus = () => `<div class="form-status" role="status" aria-live="polite" hidden></div>`;
 
 const contactForm = () => `
-<form id="contactForm" class="form" data-form-type="contact" novalidate>
+<div class="form-quick-wa">
+  <div class="form-quick-wa-text">
+    <strong>Need a fast reply?</strong>
+    <span>Chat directly with our engineering team on WhatsApp.</span>
+  </div>
+  <a href="#" class="btn btn--wa btn--sm" data-wa data-track="contact_quick_wa_click">${WHATSAPP_ICON}<span>Chat Now</span></a>
+</div>
+<form id="contactForm" class="form form--simple" data-form-type="contact" novalidate>
   ${formMeta('contact')}
   <div class="form-grid">
-    ${field({ id: 'cf-name', name: 'name', label: 'Name', required: true, maxlength: 80, autocomplete: 'name', placeholder: 'Your full name', hint: 'Enter your full name or company representative.' })}
-    ${field({ id: 'cf-phone', name: 'phone', label: 'Phone Number', type: 'tel', required: true, maxlength: 15, autocomplete: 'tel', placeholder: '10-digit mobile number', hint: 'We will contact you on this number via WhatsApp or phone.' })}
-    ${field({ id: 'cf-email', name: 'email', label: 'Email', type: 'email', maxlength: 120, autocomplete: 'email', placeholder: 'you@example.com', col: 'half' })}
-    ${field({ id: 'cf-company', name: 'company', label: 'Company Name', maxlength: 100, autocomplete: 'organization', placeholder: 'Optional', col: 'half' })}
-    ${field({ id: 'cf-location', name: 'location', label: 'Location', required: true, maxlength: 100, autocomplete: 'address-level3', placeholder: 'Town / city — e.g. Chennai' })}
-    ${field({ id: 'cf-service', name: 'service', label: 'Service Required', required: true, options: ['CCTV', 'Intercom', 'Networking', 'Biometric', 'Access Control', 'Fire Safety', 'Multiple Services', 'Other'] })}
-    ${field({ id: 'cf-message', name: 'message', label: 'Message', rows: 4, maxlength: 600, placeholder: 'Briefly describe your requirement — property type, number of cameras/points, timelines…', col: 'full' })}
+    ${field({ id: 'cf-name', name: 'name', label: 'Your Name', required: true, maxlength: 80, autocomplete: 'name', placeholder: 'Enter your full name', col: 'half' })}
+    ${field({ id: 'cf-phone', name: 'phone', label: 'Phone Number (WhatsApp)', type: 'tel', required: true, maxlength: 15, autocomplete: 'tel', placeholder: '10-digit mobile number', col: 'half' })}
+    ${field({ id: 'cf-location', name: 'location', label: 'Your City / Area', required: true, maxlength: 100, autocomplete: 'address-level2', placeholder: 'e.g. Chennai, Coimbatore, Salem...', col: 'half' })}
+    ${field({ id: 'cf-service', name: 'service', label: 'Service Needed', required: true, options: ['Data Networking Solutions', 'CCTV Surveillance Systems', 'Intercom & Video Door Phones', 'Biometric & Access Control', 'Fire Safety Solutions', 'Multiple Services', 'AMC / Repair Support', 'General Enquiry'], col: 'half' })}
+    ${field({ id: 'cf-message', name: 'message', label: 'How Can We Help?', rows: 3, maxlength: 600, placeholder: 'Briefly describe your requirement or question...', col: 'full' })}
   </div>
   ${formStatus()}
   <div class="form-actions">
-    <button type="submit" class="btn btn--wa btn--lg">${WHATSAPP_ICON}<span>Send Enquiry on WhatsApp</span></button>
-    <p class="form-note">${icon('info')} <span>Your enquiry opens in <strong>WhatsApp</strong> with all details pre-filled — please press <strong>Send</strong> there. Nothing is sent automatically.</span></p>
+    <button type="submit" class="btn btn--wa btn--lg">${WHATSAPP_ICON}<span>Send Message on WhatsApp</span></button>
+    <p class="form-note">${icon('info')} <span>Opens in WhatsApp pre-filled — press <strong>Send</strong> to start chatting with our team.</span></p>
   </div>
 </form>`;
 
 const quoteForm = () => `
-<div class="form-progress" aria-hidden="true">
-  <div class="form-progress-track"><div class="form-progress-fill" id="quoteProgress"></div></div>
-  <p class="form-progress-label"><span id="quoteProgressLabel">0% complete</span> — all fields marked <span class="req">*</span> are needed for an accurate quote</p>
+<div class="form-quick-wa">
+  <div class="form-quick-wa-text">
+    <strong>Want a quick estimate?</strong>
+    <span>You can also send your floor plan or requirements directly on WhatsApp.</span>
+  </div>
+  <a href="#" class="btn btn--wa btn--sm" data-wa data-track="quote_quick_wa_click">${WHATSAPP_ICON}<span>Chat on WhatsApp</span></a>
 </div>
-<form id="quoteForm" class="form" data-form-type="quote" novalidate>
+<form id="quoteForm" class="form form--simple" data-form-type="quote" novalidate>
   ${formMeta('quote')}
-  <fieldset class="form-section">
-    <legend><span>1</span> Contact Details</legend>
-    <div class="form-grid">
-      ${field({ id: 'qf-name', name: 'name', label: 'Name', required: true, maxlength: 80, autocomplete: 'name' })}
-      ${field({ id: 'qf-phone', name: 'phone', label: 'Phone', type: 'tel', required: true, maxlength: 15, autocomplete: 'tel' })}
-      ${field({ id: 'qf-email', name: 'email', label: 'Email', type: 'email', maxlength: 120, autocomplete: 'email', col: 'half' })}
-      ${field({ id: 'qf-company', name: 'company', label: 'Company', maxlength: 100, autocomplete: 'organization', col: 'half' })}
-    </div>
-  </fieldset>
-  <fieldset class="form-section">
-    <legend><span>2</span> Location</legend>
-    <div class="form-grid">
-      ${field({ id: 'qf-address', name: 'address', label: 'Address', maxlength: 200, autocomplete: 'street-address', col: 'full', placeholder: 'Street / area / landmark' })}
-      ${field({ id: 'qf-city', name: 'city', label: 'City / Town', required: true, maxlength: 80, autocomplete: 'address-level2', col: 'half' })}
-      ${field({ id: 'qf-pin', name: 'pin', label: 'PIN Code', type: 'text', inputmode: 'numeric', maxlength: 6, autocomplete: 'postal-code', col: 'half', hint: '6-digit PIN code' })}
-    </div>
-  </fieldset>
-  <fieldset class="form-section">
-    <legend><span>3</span> Service Requirement</legend>
-    <div class="form-grid">
-      ${field({ id: 'qf-service', name: 'service', label: 'Service Required', required: true, options: ['CCTV', 'Intercom', 'Networking', 'Biometric', 'Access Control', 'Fire Safety', 'Multiple Solutions'] })}
-      ${field({ id: 'qf-property', name: 'property', label: 'Property Type', required: true, options: ['Home', 'Office', 'Shop', 'Factory', 'Warehouse', 'Other'] })}
-    </div>
-  </fieldset>
-  <fieldset class="form-section">
-    <legend><span>4</span> Property Information</legend>
-    <div class="form-grid">
-      ${field({ id: 'qf-area', name: 'area', label: 'Approximate Area', maxlength: 40, col: 'half', placeholder: 'e.g. 1800 sq.ft', hint: 'Built-up area to be covered' })}
-      ${field({ id: 'qf-floors', name: 'floors', label: 'Number of Floors', type: 'text', inputmode: 'numeric', maxlength: 10, col: 'half' })}
-      ${field({ id: 'qf-users', name: 'users', label: 'Number of Users / Employees', type: 'text', inputmode: 'numeric', maxlength: 10, col: 'half' })}
-      <div class="field field--half">
-        <span class="field-label" id="qf-existing-label">Existing System?</span>
-        <div class="radio-row" role="radiogroup" aria-labelledby="qf-existing-label">
-          <label class="radio-pill"><input type="radio" name="existing" value="Yes"><span>Yes</span></label>
-          <label class="radio-pill"><input type="radio" name="existing" value="No" checked><span>No</span></label>
-        </div>
-      </div>
-    </div>
-  </fieldset>
-  <fieldset class="form-section">
-    <legend><span>5</span> Additional Requirements</legend>
-    <div class="form-grid">
-      ${field({ id: 'qf-message', name: 'message', label: 'Additional Requirements', rows: 5, maxlength: 800, col: 'full', placeholder: 'Tell us anything else that helps us quote accurately — coverage expectations, preferred timing, budget range…' })}
-    </div>
-  </fieldset>
+  <div class="form-grid">
+    ${field({ id: 'qf-name', name: 'name', label: 'Your Name', required: true, maxlength: 80, autocomplete: 'name', placeholder: 'Full name or company representative', col: 'half' })}
+    ${field({ id: 'qf-phone', name: 'phone', label: 'Phone Number (WhatsApp)', type: 'tel', required: true, maxlength: 15, autocomplete: 'tel', placeholder: '10-digit mobile number', col: 'half' })}
+    ${field({ id: 'qf-city', name: 'city', label: 'City / Town in Tamil Nadu', required: true, maxlength: 80, autocomplete: 'address-level2', placeholder: 'e.g. Chennai, Coimbatore, Salem...', col: 'half' })}
+    ${field({ id: 'qf-property', name: 'property', label: 'Property Type', required: true, options: ['Office / Corporate', 'Home / Apartment', 'Commercial Shop / Showroom', 'Factory / Industrial Plant', 'Warehouse / Godown', 'Hospital / Institution', 'Other'], col: 'half' })}
+    ${field({ id: 'qf-service', name: 'service', label: 'Service Required', required: true, options: ['Data Networking & Structured Cabling', 'CCTV Surveillance Setup', 'Intercom & Door Phone Systems', 'Biometric Attendance & Access Control', 'Fire Safety Equipment & Extinguishers', 'Complete Multi-Service Package'], col: 'full' })}
+    ${field({ id: 'qf-message', name: 'message', label: 'Project Scope / Requirements (Optional)', rows: 3, maxlength: 800, col: 'full', placeholder: 'e.g. Approximate number of cameras or network points, floors, target completion date...' })}
+  </div>
   ${formStatus()}
   <div class="form-actions">
-    <button type="submit" class="btn btn--wa btn--lg">${WHATSAPP_ICON}<span>Request Quote on WhatsApp</span></button>
-    <p class="form-note">${icon('info')} <span>Your request opens in <strong>WhatsApp</strong> fully formatted — please press <strong>Send</strong> there to reach us.</span></p>
+    <button type="submit" class="btn btn--wa btn--lg">${WHATSAPP_ICON}<span>Request Free Quote on WhatsApp</span></button>
+    <p class="form-note">${icon('info')} <span>Your quote request opens in <strong>WhatsApp</strong> pre-formatted — press <strong>Send</strong> and we will respond with an itemised estimate.</span></p>
   </div>
 </form>`;
 
 const siteVisitForm = () => `
-<form id="siteVisitForm" class="form" data-form-type="site-visit" novalidate>
+<div class="form-quick-wa">
+  <div class="form-quick-wa-text">
+    <strong>Need an immediate site inspection?</strong>
+    <span>Connect on WhatsApp to confirm technician availability in your district today.</span>
+  </div>
+  <a href="#" class="btn btn--wa btn--sm" data-wa data-track="visit_quick_wa_click">${WHATSAPP_ICON}<span>Instant Booking</span></a>
+</div>
+<form id="siteVisitForm" class="form form--simple" data-form-type="site-visit" novalidate>
   ${formMeta('site-visit')}
   <div class="form-grid">
-    ${field({ id: 'sv-name', name: 'name', label: 'Name', required: true, maxlength: 80, autocomplete: 'name' })}
-    ${field({ id: 'sv-phone', name: 'phone', label: 'Phone Number', type: 'tel', required: true, maxlength: 15, autocomplete: 'tel' })}
-    ${field({ id: 'sv-email', name: 'email', label: 'Email', type: 'email', maxlength: 120, autocomplete: 'email', col: 'half' })}
-    ${field({ id: 'sv-location', name: 'location', label: 'Location', required: true, maxlength: 100, autocomplete: 'address-level2', col: 'half', placeholder: 'Site town / area' })}
-    ${field({ id: 'sv-service', name: 'service', label: 'Service Required', required: true, options: ['CCTV', 'Intercom', 'Networking', 'Biometric', 'Access Control', 'Fire Safety', 'Multiple Services', 'Not Sure — Need Advice'] })}
+    ${field({ id: 'sv-name', name: 'name', label: 'Your Name', required: true, maxlength: 80, autocomplete: 'name', placeholder: 'Full name or contact person', col: 'half' })}
+    ${field({ id: 'sv-phone', name: 'phone', label: 'Phone Number (WhatsApp)', type: 'tel', required: true, maxlength: 15, autocomplete: 'tel', placeholder: '10-digit mobile number', col: 'half' })}
+    ${field({ id: 'sv-location', name: 'location', label: 'Site Location / Area', required: true, maxlength: 120, autocomplete: 'address-level2', placeholder: 'e.g. Guindy, Chennai / Anna Nagar / Theni...', col: 'half' })}
+    ${field({ id: 'sv-service', name: 'service', label: 'Service Needed', required: true, options: ['Data Networking & Cabling Survey', 'CCTV Camera Site Planning', 'Intercom & Door Phone Assessment', 'Biometric / Access Control Survey', 'Fire Safety Audit & Equipment', 'Multi-System Integration', 'Not Sure — Need On-Site Advice'], col: 'half' })}
     ${field({ id: 'sv-date', name: 'date', label: 'Preferred Date', type: 'date', required: true, col: 'half' })}
-    ${field({ id: 'sv-time', name: 'time', label: 'Preferred Time', required: true, options: ['Morning (9 AM – 12 PM)', 'Afternoon (12 PM – 4 PM)', 'Evening (4 PM – 7 PM)'] })}
-    ${field({ id: 'sv-message', name: 'message', label: 'Requirement', rows: 4, maxlength: 600, col: 'full', placeholder: 'What should we look at during the visit? Property type, coverage areas, concerns…' })}
+    ${field({ id: 'sv-time', name: 'time', label: 'Preferred Time Window', required: true, options: ['Morning (9:00 AM – 12:00 PM)', 'Afternoon (12:00 PM – 4:00 PM)', 'Evening (4:00 PM – 7:00 PM)', 'Flexible / Any Convenient Time'], col: 'half' })}
+    ${field({ id: 'sv-message', name: 'message', label: 'Site Details / Landmark (Optional)', rows: 3, maxlength: 600, col: 'full', placeholder: 'Landmark, gate instructions, or specific areas to inspect...' })}
   </div>
   ${formStatus()}
   <div class="form-actions">
-    <button type="submit" class="btn btn--wa btn--lg">${WHATSAPP_ICON}<span>Request Site Visit on WhatsApp</span></button>
-    <p class="form-note">${icon('info')} <span>Your request opens in <strong>WhatsApp</strong> pre-formatted — please press <strong>Send</strong> there. We will confirm the slot with you.</span></p>
+    <button type="submit" class="btn btn--wa btn--lg">${WHATSAPP_ICON}<span>Book Site Visit on WhatsApp</span></button>
+    <p class="form-note">${icon('info')} <span>Opens in WhatsApp with your requested date and location — press <strong>Send</strong> and our coordinator will confirm your visit slot.</span></p>
   </div>
 </form>`;
 
@@ -535,7 +513,7 @@ const buildAbout = () => {
       <div class="split-media reveal">
         <div class="media-frame-wrap">
           <figure class="frame frame--offset">
-            <img src="/assets/images/about-team.jpg" alt="Keerthi Networks certified technicians and network engineers reviewing site layout" loading="lazy" decoding="async" width="1536" height="1024">
+            <img src="/assets/images/about-team.webp" alt="Keerthi Networks certified technicians and network engineers reviewing site layout" loading="lazy" decoding="async" width="1536" height="1024">
           </figure>
           <div class="frame-badge frame-badge--bottom">${icon('shield-check')}<span><strong>Chennai HQ · Pan-Tamil Nadu</strong><em>Serving 38 districts statewide</em></span></div>
           <div class="frame-badge frame-badge--top">${icon('award')}<span><strong>100% Genuine Hardware</strong><em>Certified OEM Components</em></span></div>
@@ -595,16 +573,16 @@ const buildAbout = () => {
       ${sectionHead({ eyebrow: 'What We Do', title: '<span id="wwdTitle">Five Service Lines, One Standard</span>', dark: true })}
       <div class="wwd-grid">
         ${about.whatWeDo.map((s, i) => {
-          const slugMap = {
-            'CCTV Surveillance': 'cctv-surveillance',
-            'Intercom Systems': 'intercom-systems',
-            'Networking Solutions': 'networking-solutions',
-            'Biometric & Access Control': 'biometric-access-control',
-            'Fire Safety Solutions': 'fire-safety'
-          };
-          const slug = s.slug || slugMap[s.title] || site.solutionOrder[i];
-          return `<a class="wwd-card reveal" href="/solutions/${slug}.html">${iconBox(s.icon, 'icon-box--accent')}<h3>${esc(s.title)}</h3><p>${esc(s.desc)}</p><span class="link-arrow link-arrow--light">Explore ${icon('arrow-right')}</span></a>`;
-        }).join('')}
+    const slugMap = {
+      'CCTV Surveillance': 'cctv-surveillance',
+      'Intercom Systems': 'intercom-systems',
+      'Networking Solutions': 'networking-solutions',
+      'Biometric & Access Control': 'biometric-access-control',
+      'Fire Safety Solutions': 'fire-safety'
+    };
+    const slug = s.slug || slugMap[s.title] || site.solutionOrder[i];
+    return `<a class="wwd-card reveal" href="/solutions/${slug}.html">${iconBox(s.icon, 'icon-box--accent')}<h3>${esc(s.title)}</h3><p>${esc(s.desc)}</p><span class="link-arrow link-arrow--light">Explore ${icon('arrow-right')}</span></a>`;
+  }).join('')}
       </div>
     </div>
   </section>
@@ -960,8 +938,8 @@ const buildContact = () => {
         <div class="contact-card reveal">
           <h2>${icon('phone-call')} Phone &amp; WhatsApp</h2>
           ${site.phoneHref
-            ? `<p><a data-tel href="${site.phoneHref}" data-track="phone_click">${esc(site.phoneDisplay)}</a></p>`
-            : `<p class="contact-muted">Phone number is being updated —<br>please reach us on WhatsApp or email.</p>`}
+      ? `<p><a data-tel href="${site.phoneHref}" data-track="phone_click">${esc(site.phoneDisplay)}</a></p>`
+      : `<p class="contact-muted">Phone number is being updated —<br>please reach us on WhatsApp or email.</p>`}
           ${waCta('', { cls: 'btn btn--wa btn--sm', label: 'Chat on WhatsApp' })}
         </div>
         <div class="contact-card reveal">
@@ -1000,10 +978,9 @@ const buildQuote = () => {
         <div class="side-card reveal">
           <h2>${icon('doc')} What Happens Next?</h2>
           <ol class="side-steps">
-            <li><span>1</span><div><strong>Complete the form</strong><em>It takes about two minutes.</em></div></li>
-            <li><span>2</span><div><strong>Press Send in WhatsApp</strong><em>Your details reach us instantly and privately.</em></div></li>
-            <li><span>3</span><div><strong>We respond</strong><em>With questions if needed, or a clear quotation.</em></div></li>
-            <li><span>4</span><div><strong>Site visit if required</strong><em>For accurate pricing on larger scopes.</em></div></li>
+            <li><span>1</span><div><strong>Quick Details</strong><em>Takes under 30 seconds to fill out.</em></div></li>
+            <li><span>2</span><div><strong>Press Send in WhatsApp</strong><em>Your requirements reach our engineers directly.</em></div></li>
+            <li><span>3</span><div><strong>Receive Itemised Quote</strong><em>Clear pricing with transparent parts &amp; labour.</em></div></li>
           </ol>
         </div>
         <div class="side-card side-card--tint reveal">
@@ -1161,16 +1138,16 @@ const buildMeta = () => {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${pages.map(([p]) => {
-  const loc = url(p);
-  const taLoc = loc + (loc.includes('?') ? '&' : '?') + 'lang=ta';
-  return `  <url>
+    const loc = url(p);
+    const taLoc = loc + (loc.includes('?') ? '&' : '?') + 'lang=ta';
+    return `  <url>
     <loc>${loc}</loc>
     <lastmod>${new Date().toISOString().slice(0, 10)}</lastmod>
     <xhtml:link rel="alternate" hreflang="en-IN" href="${loc}"/>
     <xhtml:link rel="alternate" hreflang="ta-IN" href="${taLoc}"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="${loc}"/>
   </url>`;
-}).join('\n')}
+  }).join('\n')}
 </urlset>`);
 
   write('robots.txt', `User-agent: *

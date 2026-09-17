@@ -114,7 +114,7 @@ export const logoMark = (cls = 'logo-mark') => `
 
 export const logo = (href = '/', cls = '') => `
 <a href="${href}" class="brand ${cls}" aria-label="Keerthi Networks and Security Solutions — Home">
-  <img class="brand-logo-img" src="/assets/icons/knss-logo.png" alt="Keerthi Networks and Security Solutions Logo" width="52" height="42" loading="eager">
+  <img class="brand-logo-img" src="/assets/icons/logo.png" alt="Keerthi Networks and Security Solutions Logo" width="52" height="42" loading="eager">
   <span class="brand-text">
     <span class="brand-name" lang="en">Keerthi Networks</span>
     <span class="brand-sub" lang="en">&amp; SECURITY SOLUTIONS</span>
@@ -346,16 +346,19 @@ export const header = (activeId = '') => {
       ${logo()}
       <nav class="primary-nav" id="primaryNav" aria-label="Main navigation">
         <div class="primary-nav-head">
-          <div class="primary-nav-brand">
-            <img class="logo-mark logo-mark--nav" src="/assets/icons/knss-logo.png" alt="KNSS Logo" width="44" height="36" loading="eager">
-            <span class="pnav-title">
-              <span class="pnav-name" lang="en">Keerthi Networks</span>
-              <span class="pnav-sub" lang="en">&amp; SECURITY SOLUTIONS</span>
-            </span>
-          </div>
-          <div class="primary-nav-head-actions">
-            ${langToggle('lang-toggle--drawer')}
+          <div class="primary-nav-head-main">
+            <div class="primary-nav-brand">
+              <img class="logo-mark logo-mark--nav" src="/assets/icons/logo.png" alt="KNSS Logo" width="40" height="32" loading="eager">
+              <span class="pnav-title">
+                <span class="pnav-name" lang="en">Keerthi Networks</span>
+                <span class="pnav-sub" lang="en">&amp; SECURITY SOLUTIONS</span>
+              </span>
+            </div>
             <button type="button" class="nav-close" id="navClose" aria-label="Close menu">${icon('x')}</button>
+          </div>
+          <div class="primary-nav-lang-bar">
+            <span class="pnav-lang-label">Language / மொழி</span>
+            ${langToggle('lang-toggle--drawer')}
           </div>
         </div>
         <div class="primary-nav-body">
@@ -664,9 +667,9 @@ export function page({
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&family=Orbitron:wght@700;800;900&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Tamil:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&family=Orbitron:wght@700;800;900&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Tamil:wght@400;500;600;700;800&display=swap"></noscript>
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/pages.css">
-  <link rel="stylesheet" href="/assets/css/responsive.css">
+  <link rel="stylesheet" href="/assets/css/style.css?v=${site.version || '2.1.0'}">
+  <link rel="stylesheet" href="/assets/css/pages.css?v=${site.version || '2.1.0'}">
+  <link rel="stylesheet" href="/assets/css/responsive.css?v=${site.version || '2.1.0'}">
   <script>document.documentElement.classList.add('js');try{var _p=new URLSearchParams(window.location.search).get('lang');if(_p==='ta'||(!_p&&localStorage.getItem('knss-lang')==='ta')){document.documentElement.lang='ta';document.documentElement.classList.add('lang-ta');}}catch(e){}try{if(sessionStorage.getItem('knss_preloaded')){document.documentElement.classList.add('preloader-done');}}catch(e){}</script>
   ${ld.map(jsonLdTag).join('\n  ')}
 </head>
@@ -679,17 +682,17 @@ ${content}
 </main>
 ${footer()}
 ${floats()}
-<script src="/assets/js/config.js" defer></script>
-<script src="/assets/js/i18n-data.js"></script>
-<script src="/assets/js/i18n.js"></script>
-<script src="/assets/js/whatsapp.js" defer></script>
-<script src="/assets/js/navigation.js" defer></script>
-<script src="/assets/js/animations.js" defer></script>
-<script src="/assets/js/faq.js" defer></script>
-<script src="/assets/js/projects.js" defer></script>
-<script src="/assets/js/forms.js" defer></script>
-<script src="/assets/js/analytics.js" defer></script>
-<script src="/assets/js/main.js" defer></script>
+<script src="/assets/js/config.js?v=${site.version || '2.1.0'}" defer></script>
+<script src="/assets/js/i18n-data.js?v=${site.version || '2.1.0'}"></script>
+<script src="/assets/js/i18n.js?v=${site.version || '2.1.0'}"></script>
+<script src="/assets/js/whatsapp.js?v=${site.version || '2.1.0'}" defer></script>
+<script src="/assets/js/navigation.js?v=${site.version || '2.1.0'}" defer></script>
+<script src="/assets/js/animations.js?v=${site.version || '2.1.0'}" defer></script>
+<script src="/assets/js/faq.js?v=${site.version || '2.1.0'}" defer></script>
+<script src="/assets/js/projects.js?v=${site.version || '2.1.0'}" defer></script>
+<script src="/assets/js/forms.js?v=${site.version || '2.1.0'}" defer></script>
+<script src="/assets/js/analytics.js?v=${site.version || '2.1.0'}" defer></script>
+<script src="/assets/js/main.js?v=${site.version || '2.1.0'}" defer></script>
 </body>
 </html>`;
 }
