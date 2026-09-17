@@ -110,10 +110,136 @@
     });
   }
 
+  /* ---------- Hero Carousel ---------- */
+  function initHeroCarousel() {
+    var carousel = document.getElementById('heroCarousel');
+    var track = document.getElementById('heroCarouselTrack');
+    if (!carousel || !track) return;
+
+    var slides = Array.from(track.querySelectorAll('.hero-carousel-slide'));
+    var dots = Array.from(carousel.querySelectorAll('.hero-carousel-dot'));
+    var prevBtn = document.getElementById('heroCarouselPrev');
+    var nextBtn = document.getElementById('heroCarouselNext');
+    if (!slides.length) return;
+
+    var currentIndex = 0;
+    var totalSlides = slides.length;
+    var autoplayDelay = 5000;
+    var timer = null;
+    var touchStartX = 0;
+    var touchEndX = 0;
+
+    function goToSlide(index) {
+      currentIndex = (index + totalSlides) % totalSlides;
+      track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+
+      slides.forEach(function (slide, i) {
+        var isActive = i === currentIndex;
+        slide.classList.toggle('is-active', isActive);
+        var link = slide.querySelector('.hero-carousel-link');
+        if (link) {
+          link.setAttribute('tabindex', isActive ? '0' : '-1');
+        }
+      });
+
+      dots.forEach(function (dot, i) {
+        var isActive = i === currentIndex;
+        dot.classList.toggle('is-active', isActive);
+        dot.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+    }
+
+    function nextSlide() {
+      goToSlide(currentIndex + 1);
+    }
+
+    function prevSlide() {
+      goToSlide(currentIndex - 1);
+    }
+
+    function startAutoplay() {
+      stopAutoplay();
+      timer = window.setInterval(nextSlide, autoplayDelay);
+    }
+
+    function stopAutoplay() {
+      if (timer) {
+        window.clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    /* Button controls */
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function () {
+        nextSlide();
+        startAutoplay();
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function () {
+        prevSlide();
+        startAutoplay();
+      });
+    }
+
+    /* Dot indicators */
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        var slideIndex = parseInt(this.getAttribute('data-slide'), 10);
+        if (!isNaN(slideIndex)) {
+          goToSlide(slideIndex);
+          startAutoplay();
+        }
+      });
+    });
+
+    /* Pause on mouse hover & keyboard focus */
+    carousel.addEventListener('mouseenter', stopAutoplay);
+    carousel.addEventListener('mouseleave', startAutoplay);
+    carousel.addEventListener('focusin', stopAutoplay);
+    carousel.addEventListener('focusout', startAutoplay);
+
+    /* Touch gestures (mobile swipe) */
+    carousel.addEventListener('touchstart', function (e) {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    carousel.addEventListener('touchend', function (e) {
+      touchEndX = e.changedTouches[0].screenX;
+      var diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 40) {
+        if (diff > 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
+        startAutoplay();
+      }
+    }, { passive: true });
+
+    /* Keyboard navigation (Arrow keys) */
+    carousel.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') {
+        prevSlide();
+        startAutoplay();
+      } else if (e.key === 'ArrowRight') {
+        nextSlide();
+        startAutoplay();
+      }
+    });
+
+    /* Initial state & start */
+    goToSlide(0);
+    startAutoplay();
+  }
+
   /* ---------- Boot ---------- */
   function init() {
     initPreloader();
     initImageSkeletons();
+    initHeroCarousel();
     window.showNotice = showNotice;
 
     initYear();
