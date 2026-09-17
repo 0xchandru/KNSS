@@ -1942,7 +1942,7 @@ body.nav-open .nav-backdrop {
 /* Unified Unobtrusive Bottom Control Bar (Does not block banner content) */
 .hero-carousel-controls {
   position: absolute;
-  bottom: 18px;
+  bottom: 2px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
@@ -2020,24 +2020,31 @@ body.nav-open .nav-backdrop {
 /* Mobile Responsive Adjustments */
 @media (max-width: 768px) {
   .hero-carousel-controls {
-    bottom: 12px;
-    gap: 10px;
-    padding: 4px 10px;
+    bottom: 3px;
+    gap: 6px;
+    padding: 2px 7px;
+    border-radius: 9999px;
+    background: rgba(3, 13, 26, 0.65);
+    border-width: 0.75px;
   }
   .hero-carousel-nav-btn {
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
   }
   .hero-carousel-nav-btn svg {
-    width: 14px;
-    height: 14px;
+    width: 10px;
+    height: 10px;
+    stroke-width: 2.5;
+  }
+  .hero-carousel-dots {
+    gap: 5px;
   }
   .hero-carousel-dot {
-    width: 6px;
-    height: 6px;
+    width: 4px;
+    height: 4px;
   }
   .hero-carousel-dot.is-active {
-    width: 18px;
+    width: 13px;
   }
 }
 

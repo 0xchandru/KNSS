@@ -1507,7 +1507,7 @@ body.header-compact .hamburger {
   .brand-name,
   html.lang-ta .brand-name,
   [lang="en"].brand-name {
-    font-size: 1.10rem !important;
+    font-size: 1rem !important;
   }
 
   .brand-sub,
